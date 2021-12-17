@@ -1,0 +1,194 @@
+*,
+:after,
+:before {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    cursor: none;
+    user-select: none;
+}
+
+:root {
+    --font-primary: 'PNC Brand';
+    --font-size: calc(1vw + 1vh);
+    --bg-primary: 242, 242, 242;
+    --clr-primary: 245, 128, 37;
+    --clr-secondary: 153, 153, 158;
+    --clr-tertiary: 239, 239, 239;
+    --clr-quaternary: 142, 210, 242;
+    --clr-white: 255, 255, 255;
+    --clr-revealer-layer-1: rgba(var(--clr-primary), 0.8);
+    --clr-revealer-layer-2: rgba(var(--clr-secondary), 0.8);
+    --clr-revealer-layer-3: rgba(var(--clr-tertiary), 0.8);
+    --drop-shadow: 4px 4px 0 rgba(var(--clr-primary), 0.05);
+    --anime-speed: 750ms;
+    --anime-delay: 0ms;
+    --anime-stagger: 10;
+    --anime-duration: 15000ms;
+    --revealer-speed: 1000ms;
+    --revealer: 1;
+}
+
+body {
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    background: rgb(var(--background));
+    font-family: var(--font-primary);
+    font-size: var(--font-size);
+}
+
+section {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+}
+
+.hide {
+    display: none !important;
+}
+
+/** // **/
+
+#intro {
+    z-index: 1;
+    position: absolute;
+    width: 100%;
+    height: 100%;
+}
+
+#intro .date {
+    opacity: 0;
+    position: absolute;
+    display: flex;
+    align-items: center;
+    z-index: 10;
+    top: 60%;
+    left: 0;
+    right: auto;
+    margin: 0;
+    padding: .25em;
+    padding-left: 1em;
+    padding-right: 1em;
+    width: auto;
+    height: auto;
+    background: rgba(var(--clr-primary), 0.8);
+    color: #fff;
+    font-size: 3em;
+    font-weight: 600;
+    backdrop-filter: blur(5px);
+}
+
+#intro video,
+.container video {
+    position: absolute;
+    top: 0;
+    left: 0;
+    object-fit: cover;
+    width: 100%;
+    height: 100%;
+}
+
+.container {
+    display: flex;
+    width: 100%;
+    height: 100%;
+    background-color: transparent;
+    /* background-image: url('https://source.unsplash.com/600x900/?subtle'); */
+    background-image: url('../img/bg_bokeh.jpg');
+    background-attachment: scroll;
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center center;
+    padding: 4em;
+}
+
+.container .photo {
+    background-color: transparent;
+    background-image: url('https://source.unsplash.com/random/?manager');
+    background-attachment: scroll;
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center center;
+    filter: drop-shadow(0em 1em 1em rgba(0, 0, 0, 0.35));
+    aspect-ratio: 4.5 / 5;
+    /* border: 1px solid blue; */
+}
+
+.container .wrapper {
+    flex: auto;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    /* border: 1px solid magenta; */
+}
+
+.container .heading {
+    font-size: 5.5em;
+    font-style: italic;
+    font-weight: 500;
+    color: rgba(var(--clr-secondary), 1.0);
+    min-width: 100%;
+    padding: 1rem 5rem;
+    opacity: 0;
+    /* border: 1px solid red; */
+}
+
+.container .profile {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    flex-direction: column;
+    width: 100%;
+    height: 100%;
+    /* border: 2px dashed blue; */
+}
+
+.container .profile .card {
+    font-size: 2.5em;
+    font-style: italic;
+    color: rgba(var(--clr-white), 1.0);
+    width: 100%;
+    min-height: 65%;
+    background: rgba(var(--clr-primary), 1.0);
+    padding: .5em 1em;
+    /* border: 1px solid green; */
+}
+
+.container .profile .card .message {
+    display: flex;
+    align-items: center;
+    min-height: 100%;
+    font-weight: 500;
+    line-height: 1.2;
+}
+
+.container .profile .card .name {
+    font-weight: 500;
+    line-height: 1.2;
+    padding-top: .5em;
+}
+
+.container .profile .card .title {
+    font-weight: 300;
+    line-height: 1.2;
+    /* padding-top: .25em; */
+}
+
+.container .profile .card .disclaimer {
+    position: absolute;
+    left: 1.25em;
+    right: 1.25em;
+    bottom: 1em;
+    font-size: .35em;
+    font-weight: 500;
+    /* line-height: 1.2; */
+    /* border: 1px solid red; */
+}
+
+.container .profile .card .disclaimer .eho_logo {
+    content: url('../img/eho_logo.svg');
+    height: 2.5em;
+    margin-bottom: .5em;
+    filter: invert(200%) contrast(200%);
+}

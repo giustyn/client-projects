@@ -1,0 +1,120 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+:root {
+    --transition-speed: 2500ms;
+}
+
+@font-face {
+    font-family: 'NeutrafaceText-Book';
+    src: url('../fonts/NeutrafaceText-Book.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Gotham-Book';
+    src: url('../fonts/Gotham-Book.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+    font-display: swap;
+}
+
+body {
+    font-family: 'NeutrafaceText-Book';
+    font-size: calc(1vw + 1vh);
+    height: 100%;
+    background-color: #000;
+    pointer-events: none;
+    cursor: none;
+    user-select: none;
+}
+
+iframe {
+    width: 100%;
+    height: 100%;
+    border: none;
+    pointer-events: none;
+    cursor: none;
+    user-select: none;
+}
+
+h1 {
+    font-size: 1.1em;
+    font-weight: 300;
+    letter-spacing: 2px;
+    line-height: 1.5;
+    text-transform: uppercase;
+    text-shadow: 2px 2px 2px rgba(0, 0, 0, .8);
+    color: #fff;
+    opacity: 0;
+    animation: undulate calc(var(--transition-speed) * 3) forwards;
+    animation-delay: 350ms;
+}
+
+h2 {
+    font-size: .7em;
+    font-weight: 300;
+    font-style: italic;
+    letter-spacing: 2px;
+    line-height: 1.5;
+    text-transform: uppercase;
+    text-shadow: 2px 2px 2px rgba(0, 0, 0, .8);
+    color: #fff;
+    opacity: 0;
+    animation: undulate calc(var(--transition-speed) * 3) forwards;
+    animation-delay: 750ms;
+}
+
+@keyframes undulate {
+    0% {
+        opacity: 0;
+    }
+
+    25%,
+    50%,
+    75% {
+        opacity: 100;
+    }
+
+    100% {
+        opacity: 0;
+    }
+}
+
+.static-content {
+    display: flex !important;
+    justify-content: flex-end;
+    flex-direction: column;
+    padding: 1.35em;
+
+    /* border: 1px solid violet; */
+}
+
+.container {
+    z-index: 1;
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    opacity: 0;
+    /* border: 1px solid red; */
+}
+
+#slideshow {
+    opacity: 0;
+}
+
+.inactive {
+    transition: opacity var(--transition-speed);
+    opacity: 0 !important;
+}
+
+.active {
+    transition: opacity var(--transition-speed);
+    opacity: 1 !important;
+}

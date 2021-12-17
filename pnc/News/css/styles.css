@@ -1,0 +1,203 @@
+*,
+:after,
+:before {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  cursor: none;
+  user-select: none;
+}
+
+:root {
+  --weather: 0, 100, 180;
+  --fin: 41, 104, 229;
+  --news: 41, 104, 229;
+  --celeb: 253, 145, 50;
+  --sports: 253, 145, 50;
+  --font-primary: 'PNC Brand';
+  --font-size: calc(1vw + 1vh);
+  --background: 242, 242, 242;
+  --clr-primary: 0, 84, 148;
+  --clr-secondary: 91, 103, 112;
+  --clr-tertiary: 242, 242, 242;
+  --clr-quaternary: 0, 84, 148;
+  --clr-story-headline: 255, 255, 255;
+  --clr-story-background: var(--stocks);
+  --clr-revealer-layer-1: var(--clr-tertiary);
+  --clr-revealer-layer-2: var(--clr-secondary);
+  --clr-revealer-layer-3: var(--clr-story-background);
+  --anime-speed: 750ms;
+  --anime-delay: 100ms;
+  --anime-duration: 1000ms;
+  --revealer-speed: var(--anime-speed);
+  --revealer: 0;
+}
+
+html,
+body {
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  background: rgb(var(--background));
+  font-family: var(--font-primary);
+  font-size: var(--font-size);
+}
+
+#intro {
+  z-index: 0;
+  position: absolute;
+  width: 100%;
+  height: 100vh;
+  overflow: hidden;
+}
+
+#intro video {
+  object-fit: cover;
+  width: 100vw;
+  height: 100vh;
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+#intro .date {
+  position: absolute;
+  display: flex;
+  align-items: center;
+  z-index: 1;
+  top: 60%;
+  left: 0;
+  margin: 0;
+  padding-top: .35em;
+  padding-bottom: .35em;
+  padding-left: 2em;
+  padding-right: 2em;
+  width: auto;
+  height: auto;
+  background: transparent;
+  background: rgba(var(--clr-story-background), 0.85);
+  color: rgba(var(--clr-story-headline), 1.0);
+  font-size: 2.35em;
+  font-weight: 600;
+  backdrop-filter: blur(5px);
+}
+
+body.dual-screen .story:nth-of-type(even) {
+  transform: scaleX(calc(1 / 2)) translateY(0%);
+  transform-origin: left;
+}
+
+body.dual-screen .story:nth-of-type(odd) {
+  transform: scaleX(calc(1 / 2));
+  transform-origin: right;
+}
+
+img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.story {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  opacity: 0;
+  transition: opacity var(--anime-duration) linear;
+  transition-delay: var(--anime-delay);
+}
+
+.story.visible {
+  /* transition-delay: var(--anime-delay); */
+  opacity: 1;
+}
+
+.story .text {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  padding: .4em 1.1em .65em 1.1em;
+  overflow: hidden;
+  z-index: 1;
+  font-size: 2.2em;
+  font-weight: 500;
+  line-height: 1.2;
+  background: rgba(var(--clr-story-background), 0.85);
+  color: rgba(var(--clr-story-headline), 1.0);
+  text-shadow: .05em .05em 0 rgba(0, 0, 0, 0.05);
+  backdrop-filter: blur(10px);
+  transition: transform var(--anime-duration), opacity var(--anime-duration);
+  transition-delay: calc(var(--anime-delay));
+  transform: translateY(200%);
+  opacity: 0;
+}
+
+.story.visible .text {
+  transition: transform var(--anime-duration), opacity var(--anime-duration);
+  transition-delay: calc(var(--anime-delay) * 2);
+  transform: translateY(0%);
+  opacity: 1;
+}
+
+@media only screen and (orientation: portrait) {
+  .story .text {
+    display: flex;
+    align-items: center;
+    bottom: 1.2em;
+    /* height: 50%; */
+    padding: 1.5em;
+    /* font-size: 2.4em; */
+    line-height: 1.4;
+  }
+}
+
+/** 
+    Revealer styling
+**/
+
+#transition {
+  z-index: 10;
+  /* display: flex;
+  justify-content: center;
+  align-items: center; */
+  width: 100vw;
+  height: 100vh;
+}
+
+.revealer.revealer--top {
+  width: 100vw;
+  height: 100vh;
+  transform: rotate3d(0, 0, 1, 180deg);
+}
+
+.revealer.revealer--left {
+  width: 100vh;
+  height: 100vw;
+  transform: translate3d(-50%, -50%, 0px) rotate3d(0, 0, 1, 90deg) translate3d(0px, 100%, 0px);
+}
+
+.revealer.revealer--bottom {
+  width: 100vw;
+  height: 100vh;
+  transform: none;
+}
+
+.revealer.revealer--right {
+  width: 100vh;
+  height: 100vw;
+  transform: translate3d(-50%, -50%, 0px) rotate3d(0, 0, 1, -90deg) translate3d(0px, 100%, 0px);
+}
+
+.revealer__layer.top {
+  background: rgba(var(--clr-revealer-layer-1), 0.9);
+}
+
+.revealer__layer.middle {
+  background: rgba(var(--clr-revealer-layer-2), 0.9);
+}
+
+.revealer__layer.bottom {
+  background: rgba(var(--clr-revealer-layer-3), 0.9);
+}
