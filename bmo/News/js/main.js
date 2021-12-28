@@ -1,6 +1,6 @@
 $(document).ready(function () {
   const url = new ExtendedURL(window.location.href),
-    timerDuration = 7000,
+    timerDuration = 10000,
     screenConfig = 1,
     transition = 1;
 
