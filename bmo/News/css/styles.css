@@ -66,11 +66,11 @@ main.stage {
 **/
 
 main .article-container {
-  z-index: 1;
-  /* aspect-ratio: 16/9; */
+  z-index: 2;
+  aspect-ratio: 16/9;
   position: absolute;
   width: 65%;
-  height: 60%;
+  min-height: 65%;
   margin: 4em;
   font-size: .65em;
 }
@@ -236,7 +236,7 @@ main .video-container {
 
 main .roundel-container {
   position: absolute;
-  z-index: 1000;
+  z-index: 10;
   bottom: 35%;
   right: 3.125%;
   display: flex;
@@ -314,7 +314,7 @@ main .roundel-container {
 **/
 
 main .footer-container {
-  z-index: 1001;
+  z-index: 10;
   position: absolute;
   bottom: 0;
   width: 100%;
@@ -427,8 +427,8 @@ main #transition {
 **/
 
 .anamorphic .stage {
-  /* transform: scaleX(calc(1 / 3)) !important; */
-  left: 100%;
+  transform: scaleX(calc(1 / 3)) !important;
+  /* left: 100%; */
 }
 
 .anamorphic .article-container {
@@ -499,6 +499,7 @@ main #transition {
   position: absolute;
   left: -200%;
   bottom: 20%;
+  margin-left: -1rem;
 }
 
 .anamorphic .footer-right .date {

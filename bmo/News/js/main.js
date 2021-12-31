@@ -6,7 +6,7 @@ $(document).ready(function () {
       'config': 'standard'
     }, {
       'config': 'anamorphic'
-    }][0];
+    }][url.getSearchParam("config") || 0];
 
   let $date = $('.date').text(moment().format('dddd, MMMM Do')),
     folderName = url.getSearchParam("category") || ["news", "sports", "celeb"][1],
