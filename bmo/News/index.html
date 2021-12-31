@@ -12,15 +12,8 @@
 </head>
 
 <body>
-  <div id="intro">
-    <video id="bumper" autoplay muted playsinline></video>
-  </div>
-
-  <div class="content">
+  <main class="stage">
     <div class="article-container"></div>
-    <div class="video-container">
-      <video id="bgvideo" muted loop autoplay playsinline></video>
-    </div>
     <div class="roundel-container">
       <div class="roundel">
         <span class="tagline">
@@ -47,16 +40,17 @@
         </div>
       </div>
     </div>
-  </div>
-
-  <div id="transition" class="anim--effect-4">
-    <div class="revealer">
-      <div class="revealer__layer top"></div>
-      <div class="revealer__layer middle"></div>
-      <div class="revealer__layer bottom"></div>
+    <div class="video-container">
+      <video id="bgvideo" muted loop autoplay playsinline></video>
     </div>
-  </div>
-
+    <div id="transition" class="anim--effect-4">
+      <div class="revealer">
+        <div class="revealer__layer top"></div>
+        <div class="revealer__layer middle"></div>
+        <div class="revealer__layer bottom"></div>
+      </div>
+    </div>
+  </main>
   <script src="js/lib/jquery.min.js"></script>
   <script src="js/lib/anime.min.js"></script>
   <script src="js/lib/moment.min.js"></script>
