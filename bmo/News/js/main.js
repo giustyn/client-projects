@@ -146,19 +146,19 @@ $(document).ready(function () {
       .add({
         targets: '.roundel .circle-line',
         opacity: [0, 1],
-      }, '-=2500')
+      }, '-=1000')
       .add({
         targets: '.standard .footer-container',
         opacity: [0, 1],
         duration: ($animeSpeed / 1.5),
         translateY: ['100%', '0%'],
-      }, '-=2000')
+      }, '-=1500')
       .add({
         targets: '.anamorphic .footer-container',
         opacity: [0, 1],
         duration: ($animeSpeed / 1.5),
         translateX: ['100%', '0%'],
-      }, '-=2000')
+      }, '-=1500')
       .add({
         targets: '.footer-left *',
         opacity: [0, 1],
