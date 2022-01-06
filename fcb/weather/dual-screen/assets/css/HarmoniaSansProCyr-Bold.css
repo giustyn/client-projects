@@ -1,0 +1,10 @@
+@font-face {
+	font-family: 'HarmoniaSansProCyr-Bold';
+	src: url(../../assets/fonts/HarmoniaSansProCyr-Bold.eot) format('embedded-opentype'),
+	url(../../assets/fonts/HarmoniaSansProCyr-Bold.eot) format('embedded-opentype'),
+	url(../../assets/fonts/HarmoniaSansProCyr-Bold.woff2) format('woff2'),
+	url(../../assets/fonts/HarmoniaSansProCyr-Bold.woff) format('woff'),
+	url(../../assets/fonts/HarmoniaSansProCyr-Bold.ttf) format('truetype');
+	font-weight: bold;
+	font-style: normal;
+}

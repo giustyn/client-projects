@@ -1,0 +1,10 @@
+@font-face {
+	font-family: 'HarmoniaSansProCyr-BlackIt';
+	src: url(../../assets/fonts/HarmoniaSansProCyr-BlackIt.eot) format('embedded-opentype'),
+	url(../../assets/fonts/HarmoniaSansProCyr-BlackIt.eot) format('embedded-opentype'),
+	url(../../assets/fonts/HarmoniaSansProCyr-BlackIt.woff2) format('woff2'),
+	url(../../assets/fonts/HarmoniaSansProCyr-BlackIt.woff) format('woff'),
+	url(../../assets/fonts/HarmoniaSansProCyr-BlackIt.ttf) format('truetype');
+	font-weight: 900;
+	font-style: italic;
+}

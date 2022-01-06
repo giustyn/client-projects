@@ -1,0 +1,7 @@
+@font-face {
+	font-family: 'HarmoniaSansStd-SemiBd';
+	src: url(../../assets/fonts/HarmoniaSansStd-SemiBd.woff2) format('woff2'),
+	url(../../assets/fonts/HarmoniaSansStd-SemiBd.woff) format('woff');
+	font-weight: normal;
+	font-style: normal;
+}

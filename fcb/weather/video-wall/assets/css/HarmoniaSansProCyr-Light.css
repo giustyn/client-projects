@@ -1,0 +1,10 @@
+@font-face {
+	font-family: 'HarmoniaSansProCyr-Light';
+	src: url(../../assets/fonts/HarmoniaSansProCyr-Light.eot) format('embedded-opentype'),
+	url(../../assets/fonts/HarmoniaSansProCyr-Light.eot) format('embedded-opentype'),
+	url(../../assets/fonts/HarmoniaSansProCyr-Light.woff2) format('woff2'),
+	url(../../assets/fonts/HarmoniaSansProCyr-Light.woff) format('woff'),
+	url(../../assets/fonts/HarmoniaSansProCyr-Light.ttf) format('truetype');
+	font-weight: 300;
+	font-style: normal;
+}
