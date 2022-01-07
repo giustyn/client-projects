@@ -156,19 +156,19 @@
             $('.heading').html(photo.jobTitle.templateValues.heading.value);
             $('.message').html(photo.jobTitle.templateValues.message.value);
             $('.legal').html(photo.jobTitle.templateValues.legal.value);
-            $('.photo').css('background-image', 'url(' + photo.filename + ')');
+            $('.img').attr('src', photo.filename);
             animate();
         }));
     }
 
     function init() {
-        getStaff(assembleTeam, console.log);
+        // getStaff(assembleTeam, console.log);
+        
+        /* test example data  */
+        getTestData();
     }
 
-    // init();
-
-    /* test example data  */
-    getTestData();
+    init();
 
     function getTestData(response) {
         $(example).each((i => {
