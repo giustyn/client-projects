@@ -20,7 +20,7 @@ body {
     position: absolute;
     width: 100%;
     height: 100%;
-    background: rgb(var(--background));
+    background: rgb(var(--bg-primary));
     font-family: var(--font-primary);
     font-size: var(--font-size);
     cursor: none;
@@ -36,21 +36,21 @@ section {
 
 .background {
     position: absolute;
-    inset: 0;
-    background-image: url('../img/bg_bokeh.jpg');
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
     background-color: transparent;
+    background-image: url('../img/bg_bokeh.jpg');
     background-size: cover;
     background-repeat: no-repeat;
     background-position: center;
 }
 
 .background video {
-    position: absolute;
-    inset: 0;
     object-fit: cover;
     width: 100%;
     height: 100%;
-    /* display: none; */
 }
 
 .container {
@@ -65,30 +65,35 @@ section {
     width: 100%;
     height: 100%;
     overflow: hidden;
-    /* border: 1px solid magenta; */
 }
 
 .container .heading {
+    position: relative;
     font-size: 5.5em;
     font-style: italic;
     font-weight: 500;
     color: rgba(var(--clr-secondary), 1.0);
     min-width: 100%;
-    padding: 1rem 5rem;
+    padding: .1em .5em;
     opacity: 0;
-    /* border: 1px solid red; */
 }
 
 .container .photo {
+    position: relative;
     background-color: transparent;
     background-size: cover;
     background-repeat: no-repeat;
     background-position: center center;
+    width: 40em;
+    height: auto;
     filter: drop-shadow(0em 1em 1em rgba(0, 0, 0, 0.35));
+}
+
+.container .photo img {
     width: 100%;
     height: 100%;
-    /* aspect-ratio: 4.5 / 5; */
-    /* border: .1em solid rgba(var(--clr-primary), 1.0); */
+    object-fit: cover;
+    /* display: none; */
 }
 
 .container .profile {
@@ -98,11 +103,13 @@ section {
     flex-direction: column;
     width: 100%;
     height: 100%;
-    /* border: 2px dashed blue; */
 }
 
 .container .profile .card {
     position: relative;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
     width: 100%;
     min-height: 65%;
     padding: .5em 1em;
@@ -112,7 +119,6 @@ section {
     color: rgba(var(--clr-tertiary), 1.0);
     background: rgba(var(--clr-primary), 1.0);
     opacity: 0;
-    /* border: 1px solid green; */
 }
 
 .container .profile .card .message {
@@ -133,10 +139,7 @@ section {
 }
 
 .container .profile .card .disclaimer {
-    position: absolute;
-    left: 1.25em;
-    right: 1.25em;
-    bottom: 1em;
+    margin-left: -1.25em;
     font-size: .35em;
     font-weight: 500;
 }

@@ -1,34 +1,53 @@
 (function () {
-    let team = [{
-        "id": 1,
-        "name": "Zaphod Beeblebrox",
-        "title": "President of the Galaxy",
-        "line-of-business": {
-            "heading": "Let's Talk",
-            "message": "Let's talk about how my team can help you with your estate guidance and financial planning needs.",
-            "legal": "<p>©2021 The PNC Financial Services Group, Inc. All rights reserved.</p><p>PNC Bank, National Association. Member FDIC</p>"
-        },
-        "photo": "https://source.unsplash.com/random/?manager",
-        "username": "zbeeblebrox",
-        "email": "zbeeblebrox@universe.beyondl",
-        "address": {
-            "street": "Kulas Light",
-            "suite": "Apt. 556",
-            "city": "Gwenborough",
-            "zipcode": "92998-3874",
-            "geo": {
-                "lat": "-37.3159",
-                "lng": "81.1496"
+    var example = [{
+        // filename: "https://photos-dev.adrenalineamp.com/data/73025ae3-a51e-400c-8608-020bf70cc182.jpg",
+        filename: "./img/photo-1568493021943-4077b55c95a3.jpg",
+        id: 11,
+        jobTitle: {
+            title: "Branch Manager",
+            id: 1,
+            templateValues: {
+                heading: {
+                    key: "heading",
+                    value: "Let's talk",
+                    order: 0,
+                    id: 1
+                },
+                message: {
+                    key: "message",
+                    value: "I'm here to help you find the right solution to meet your goals.",
+                    order: 1,
+                    id: 2
+                },
+                legal: {
+                    key: "legal",
+                    value: "The PNC Financial Services Group, Inc. All rights reserved. PNC Bank, National Association. Member FDIC ",
+                    order: 2,
+                    id: 3
+                }
             }
         },
-        "phone": "1-770-736-8031 x56442",
-        "website": "hildegard.org",
-        "company": {
-            "name": "Romaguera-Crona",
-            "catchPhrase": "Multi-layered client-server neural-net",
-            "bs": "harness real-time e-markets"
+        user: {
+            displayName: "Kylo",
+            id: 23
         }
     }];
+
+    function getStaff(onSuccess, onError) {
+        return $.ajax({
+            method: "GET",
+            url: "https://photos-dev.adrenalineamp.com/public-api/mps/_MPS.PNC.TEST-PLAYER/staff?a=e85711db-6395-4811-94c4-93ec1e83f4b3",
+            dataType: 'json',
+            success: function (result) {
+                console.log(result)
+                onSuccess(result);
+            },
+            error: function (result) {
+                console.error(result);
+                onError(result);
+            }
+        });
+    }
 
     function animate() {
         let speed = 750,
@@ -122,29 +141,49 @@
         animation.play();
     }
 
-    function assembleTeam() {
-        // var url = "https://jsonplaceholder.typicode.com/users";
-        // $.get(url, {}, function (response) {
-        //     response.forEach((data, i) => {
-        //         i += 1;
-        //         team.push(data);
-        //         // console.log(team[i]);
-        //     });
-        // });
+    function assembleTeam(response) {
+        $(response).each((i => {
+            var photo = response[i];
 
-        // let id = 0;
-        $(team).each((i => {
-            console.log(team[i]);
-            $('.name').html(team[i].name);
-            $('.title').html(team[i].title);
-            $('.heading').html(team[i]["line-of-business"].heading);
-            $('.message').html(team[i]["line-of-business"].message);
-            $('.legal').html(team[i]["line-of-business"].legal);
-            $('.photo').css('background-image', 'url(' + team[i].photo + ')');
+            var img = new Image();
+
+            img.onerror = function () {
+                $('.heading').html("no img!");
+            }
+
+            img.src = photo.filename;
+
+            $('.name').html(photo.user.displayName);
+            $('.title').html(photo.jobTitle.title);
+            $('.heading').html(photo.jobTitle.templateValues.heading.value);
+            $('.message').html(photo.jobTitle.templateValues.message.value);
+            $('.legal').html(photo.jobTitle.templateValues.legal.value);
+            $('.photo').css('background-image', 'url(' + photo.filename + ')');
             animate();
         }));
     }
 
-    assembleTeam();
+    function init() {
+        getStaff(assembleTeam, console.log);
+    }
+
+    // init();
+
+    /* test example data  */
+    getTestData();
+
+    function getTestData(response) {
+        $(example).each((i => {
+            var data = example[i];
+            console.log(data);
+            $('.name').html(data.user.displayName);
+            $('.title').html(data.jobTitle.title);
+            $('.heading').html(data.jobTitle.templateValues.heading.value);
+            $('.message').html(data.jobTitle.templateValues.message.value);
+            $('.legal').html(data.jobTitle.templateValues.legal.value);
+            $('.img').attr('src', data.filename);
+            animate();
+        }));
+    }
 
 })();
