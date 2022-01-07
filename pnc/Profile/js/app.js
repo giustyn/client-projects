@@ -54,15 +54,15 @@
             delay = 50,
             pause = 5000,
             animation = anime.timeline({
-                loop: true,
+                loop: false,
                 autoplay: false,
                 duration: speed,
                 easing: 'easeInOutExpo',
             })
             .add({
                 targets: '.container',
-                duration: (speed * 2),
                 easing: 'easeInOutSine',
+                delay: speed,
                 opacity: [0, 1],
             })
             .add({
@@ -70,7 +70,7 @@
                 translateY: '100%',
                 translateX: ['100%', '0%'],
                 opacity: [0, 1],
-            }, '-=' + (speed) + '')
+            })
             .add({
                 targets: '.heading',
                 delay: speed,
@@ -78,7 +78,7 @@
             })
             .add({
                 targets: '.photo',
-                translateX: ['50%', '0%'],
+                translateX: ['100%', '0%'],
                 opacity: [0, 1],
                 scale: [0, 1],
                 duration: (speed * 2),
@@ -126,17 +126,15 @@
             /** fade-out */
             .add({
                 targets: '.heading, .photo',
-                translateX: ['0%', '100%'],
+                translateX: ['0%', '-100%'],
                 opacity: [1, 0],
-                delay: anime.stagger(delay, {
-                    direction: 'normal'
-                }),
+                delay: anime.stagger(delay),
             }, '-=' + (speed / 2) + '')
             .add({
-                targets: '.container',
+                targets: '#template',
                 easing: 'easeInOutSine',
                 opacity: [1, 0],
-            }, '-=' + (speed + delay) + '')
+            })
 
         animation.play();
     }
