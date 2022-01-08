@@ -1,4 +1,4 @@
-(function () {
+$(function () {
     var example = [{
         // filename: "https://photos-dev.adrenalineamp.com/data/73025ae3-a51e-400c-8608-020bf70cc182.jpg",
         filename: "img/photo-1573497490790-9053816a01d4.jpg",
@@ -224,4 +224,4 @@
         }));
     }
 
-})();
+});
