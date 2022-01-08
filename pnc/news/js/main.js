@@ -3,7 +3,7 @@
     timerDuration = 10000,
     screenConfig = 1;
 
-  let folderName = url.getSearchParam("category") || ["news", "sports", "celeb"][0],
+  let folderName = ["news", "sports", "celeb"][url.getSearchParam("feed") || 0],
     loadedStories = [],
     currentStory = 0,
     videoIntro = [{
