@@ -60,7 +60,7 @@
             delay = 50,
             pause = 5000,
             animation = anime.timeline({
-                loop: true,
+                loop: false,
                 autoplay: false,
                 duration: speed,
                 easing: 'easeInOutExpo',
@@ -198,7 +198,7 @@
     init();
 
     function contingency() {
-        var source = "./video/PNC5027_Mortgage_HLC_BED.mp4",
+        var source = "video/PNC5027_Mortgage_HLC_BED.mp4",
             video = $('.background video'),
             container = $('.container');
 
