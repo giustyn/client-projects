@@ -1,7 +1,7 @@
 (function () {
     var example = [{
         // filename: "https://photos-dev.adrenalineamp.com/data/73025ae3-a51e-400c-8608-020bf70cc182.jpg",
-        filename: "./img/photo-1568493021943-4077b55c95a3.jpg",
+        filename: "img/photo-1568493021943-4077b55c95a3.jpg",
         id: 11,
         jobTitle: {
             title: "Branch Manager",
@@ -24,6 +24,12 @@
                     value: "The PNC Financial Services Group, Inc. All rights reserved. PNC Bank, National Association. Member FDIC ",
                     order: 2,
                     id: 3
+                },
+                mloLicense: {
+                    key: "mloLicense",
+                    value: "123456",
+                    order: 0,
+                    id: 6
                 }
             }
         },
@@ -132,9 +138,8 @@
             }, '-=' + (speed / 2) + '')
             .add({
                 targets: '#template',
-                easing: 'easeInOutSine',
                 opacity: [1, 0],
-            })
+            }, '-=' + (speed / 2) + '')
 
         animation.play();
     }
@@ -163,14 +168,26 @@
 
     function init() {
         // getStaff(assembleTeam, console.log);
-        
+
         /* test example data  */
         getTestData();
     }
 
     init();
 
+    function contingency() {
+        var source = "./video/PNC5027_Mortgage_HLC_BED.mp4",
+            video = $('.background video'),
+            container = $('.container');
+
+        video.attr('src', source);
+        container.remove();
+    }
+
     function getTestData(response) {
+
+        if (example.length === 0) return contingency();
+        
         $(example).each((i => {
             var data = example[i];
             console.log(data);

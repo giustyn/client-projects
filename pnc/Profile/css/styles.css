@@ -68,17 +68,11 @@ section {
     font-style: italic;
     font-weight: 500;
     color: rgba(var(--clr-secondary), 1.0);
-    min-width: 100%;
     padding: .1em .5em;
-    opacity: 0;
 }
 
 .container .photo {
     position: relative;
-    background-color: transparent;
-    background-size: cover;
-    background-repeat: no-repeat;
-    background-position: center center;
     width: 40em;
     height: auto;
     filter: drop-shadow(0em 1em 1em rgba(0, 0, 0, 0.35));
@@ -87,63 +81,64 @@ section {
 .container .photo img {
     width: 100%;
     height: 100%;
-    border: none;
     object-fit: cover;
+    border: none;
 }
 
-.container .profile {
-    display: flex;
-    align-items: center;
-    justify-content: flex-start;
-    flex-direction: column;
-    width: 100%;
-    height: 100%;
-}
-
-.container .profile .card {
-    position: relative;
+.container .card {
     display: flex;
     flex-direction: column;
-    justify-content: space-between;
-    width: 100%;
-    min-height: 65%;
-    padding: .5em 1em;
-    font-size: 2.5em;
-    font-style: italic;
-    line-height: 1.1;
+    align-items: start;
+    justify-content: center;
+    min-height: 50vh;
+    padding: 2.5em;
     color: rgba(var(--clr-tertiary), 1.0);
     background: rgba(var(--clr-primary), 1.0);
-    opacity: 0;
 }
 
-.container .profile .card .message {
-    display: flex;
-    align-items: center;
-    min-height: 100%;
+.container .card .name {
+    font-size: 2.85em;
     font-weight: 500;
-    line-height: 1.2;
+    line-height: 1;
 }
 
-.container .profile .card .name {
-    font-weight: 500;
-    margin-top: .25em;
-}
-
-.container .profile .card .title {
+.container .card .title {
+    font-size: 2.5em;
     font-weight: 300;
+    font-style: italic;
+    margin-bottom: .25em;
 }
 
-.container .profile .card .disclaimer {
-    margin-left: -1.25em;
-    font-size: .35em;
+.container .card .license {
+    font-size: 1.85em;
+    font-weight: 300;
+    font-style: italic;
+}
+
+.container .card .license::before {
+    content: 'NMLS# ';
+    white-space: pre;
+}
+
+.container .card .message {
+    font-size: 3.2em;
     font-weight: 500;
+    font-style: italic;
+    line-height: 1;
 }
 
-.container .profile .card .disclaimer .eho_logo {
+.container .card .eho_logo {
     content: url('../img/eho_logo.svg');
     height: 2.5em;
+    margin-top: .5em;
     margin-bottom: .5em;
     filter: invert(200%) contrast(200%);
+}
+
+.container .card .legal {
+    font-size: 1em;
+    font-weight: 500;
+    line-height: 1.2;
 }
 
 .hide {
