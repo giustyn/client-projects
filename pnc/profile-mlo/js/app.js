@@ -70,7 +70,7 @@
                 easing: 'easeInOutSine',
                 delay: speed,
                 opacity: [0, 1],
-            })
+            }, '-=' + (speed) + '')
             .add({
                 targets: '.heading',
                 translateY: '100%',
