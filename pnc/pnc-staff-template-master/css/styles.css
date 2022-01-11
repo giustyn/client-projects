@@ -1,0 +1,151 @@
+*,
+:after,
+:before {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+:root {
+    --font-primary: 'PNC Brand';
+    --font-size: calc(1vw + 1vh);
+    --bg-primary: 242, 242, 242;
+    --clr-primary: 245, 128, 37;
+    --clr-secondary: 153, 153, 158;
+    --clr-tertiary: 255, 255, 255;
+    --drop-shadow: 4px 4px 0 rgba(var(--clr-primary), 0.05);
+}
+
+body {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background: rgb(var(--bg-primary));
+    font-family: var(--font-primary);
+    font-size: var(--font-size);
+    cursor: none;
+    user-select: none;
+}
+
+section {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+}
+
+.background {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+}
+
+.background video {
+    object-fit: cover;
+    width: 100%;
+    height: 100%;
+}
+
+.container {
+    display: flex;
+    width: 100%;
+    height: 100%;
+    padding: 4em;
+}
+
+.container .wrapper {
+    flex: auto;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+}
+
+.container .heading {
+    position: relative;
+    font-size: 5.5em;
+    font-style: italic;
+    font-weight: 500;
+    color: rgba(var(--clr-secondary), 1.0);
+    min-width: 100%;
+    padding: .1em .5em;
+    opacity: 0;
+}
+
+.container .photo {
+    position: relative;
+    background-color: transparent;
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center center;
+    width: 40em;
+    height: auto;
+    filter: drop-shadow(0em 1em 1em rgba(0, 0, 0, 0.35));
+}
+
+.container .photo img {
+    width: 100%;
+    height: 100%;
+    border: none;
+    object-fit: cover;
+}
+
+.container .profile {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    flex-direction: column;
+    width: 100%;
+    height: 100%;
+}
+
+.container .profile .card {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    width: 100%;
+    min-height: 65%;
+    padding: .5em 1em;
+    font-size: 2.5em;
+    font-style: italic;
+    line-height: 1.1;
+    color: rgba(var(--clr-tertiary), 1.0);
+    background: rgba(var(--clr-primary), 1.0);
+    opacity: 0;
+}
+
+.container .profile .card .message {
+    display: flex;
+    align-items: center;
+    min-height: 100%;
+    font-weight: 500;
+    line-height: 1.2;
+}
+
+.container .profile .card .name {
+    font-weight: 500;
+    margin-top: .25em;
+}
+
+.container .profile .card .title {
+    font-weight: 300;
+}
+
+.container .profile .card .disclaimer {
+    margin-left: -1.25em;
+    font-size: .35em;
+    font-weight: 500;
+}
+
+.container .profile .card .disclaimer .eho_logo {
+    content: url('../img/eho_logo.svg');
+    height: 2.5em;
+    margin-bottom: .5em;
+    filter: invert(200%) contrast(200%);
+}
+
+.hide {
+    display: none !important;
+}
