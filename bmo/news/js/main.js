@@ -83,7 +83,7 @@ $(document).ready(function () {
         // $(storyDiv).addClass('story');
         $('<div>').addClass('photo').appendTo(storyDiv);
         $(storyDiv).addClass('story').append(newImage);
-        $(storyDiv).find('.photo').css('background-image','url(' + newImage.src +')');
+        $(storyDiv).find('.photo').css('background-image', 'url(' + newImage.src + ')');
         articles.appendChild(storyDiv);
         loadedStories.push(storyDiv);
         loadXML(e.path[0].src.slice(0, -3) + "xml");
@@ -110,23 +110,46 @@ $(document).ready(function () {
         autoplay: true,
         loop: false,
         duration: $animeSpeed,
-        easing: 'easeOutSine',
+        easing: 'easeInOutQuad',
       })
       .add({
         targets: '.stage',
         opacity: [1],
-        duration: $animeSpeed,
+        duration: $animeSpeed
+      }, '-=0')
+      .add({
+        targets: '.article-container',
+        translateY: ['50%','0%'],
         complete: function () {
           $(loadedStories[currentStory]).addClass('visible'),
-            // revealer('revealer--bottom');
             cycleStories();
         }
       }, '-=0')
+
+      .add({
+        targets: '.standard .footer-container',
+        opacity: [0, 1],
+        duration: ($animeSpeed / 1.5),
+        translateY: [20, 0],
+      }, '-=500')
+      .add({
+        targets: '.anamorphic .footer-container',
+        opacity: [0, 1],
+        duration: ($animeSpeed / 1.5),
+        translateY: [20, 0],
+      }, '-=500')
+      .add({
+        targets: '.footer-wrapper *',
+        opacity: [0, 1],
+        translateX: [20, 0],
+        delay: anime.stagger(200),
+      }, '-=1000')
+
       .add({
         targets: '.roundel .circle-container',
-        scale: [0, 1],
+        scale: [.5, 1],
         opacity: [0, 1],
-      }, '-=500')
+      }, '-=1500')
       .add({
         targets: '.roundel .circle-white',
         scale: [0, 2],
@@ -136,41 +159,13 @@ $(document).ready(function () {
         targets: '.roundel .circle-inner',
         scale: [0, 1],
         opacity: [0, 1],
-      }, '-=0')
+      }, '-=500')
       .add({
         targets: '.roundel .text',
         opacity: [0, 1],
-        delay: anime.stagger(500),
-        translateX: ['200%', '0%'],
-      }, '-=0')
-      .add({
-        targets: '.roundel .circle-line',
-        opacity: [0, 1],
-      }, '-=1000')
-      .add({
-        targets: '.standard .footer-container',
-        opacity: [0, 1],
-        duration: ($animeSpeed / 1.5),
-        translateY: ['100%', '0%'],
-      }, '-=1500')
-      .add({
-        targets: '.anamorphic .footer-container',
-        opacity: [0, 1],
-        duration: ($animeSpeed / 1.5),
-        translateX: ['100%', '0%'],
-      }, '-=1500')
-      .add({
-        targets: '.footer-left *',
-        opacity: [0, 1],
-        delay: anime.stagger(300),
-      }, '-=1000')
-      .add({
-        targets: '.footer-right *',
-        opacity: [0, 1],
-        delay: anime.stagger(300),
-        translateY: ['50%', '0%'],
-      }, '-=0')
-
+        translateX: [100, 0],
+        delay: anime.stagger(200),
+      }, '-=500')
   }
 
   function cycleStories() {
