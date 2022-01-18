@@ -122,13 +122,13 @@ article {
     position: absolute;
     background-position: center center;
     background-repeat: no-repeat;
-    background-size: cover;
 }
 
 #media .photo.focus {
     position: absolute;
     width: 100%;
     height: 100%;
+    background-size: contain;
 }
 
 #media .photo.blur {
@@ -136,6 +136,7 @@ article {
     transform: scale(1.2);
     width: 100%;
     min-height: 100%;
+    background-size: cover;
     filter: blur(30px) brightness(0.8) contrast(120%);
 }
 
