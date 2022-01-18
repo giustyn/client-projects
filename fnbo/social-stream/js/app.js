@@ -4,7 +4,7 @@ $(function () {
 
         dataURI = [
             local = "c:\\data\\social\\social.json",
-            server = "http://kitchen.screenfeed.com/social/data/3jzp1h5xsxw684a2r5sk94b7fk.json"
+            server = "https://kitchen.screenfeed.com/social/data/3jzp1h5xsxw684a2r5sk94b7fk.json"
         ],
 
         revealerSpeed = parseInt($(':root').css('--revealer-speed')),
