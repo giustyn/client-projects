@@ -44,11 +44,7 @@ $(function () {
                     revealer();
 
                     resizeText({
-                        elements: document.querySelectorAll('.message'),
-                        step: 0.1,
-                        minSize: 1,
-                        maxSize: 3,
-                        unit: 'em'
+                        elements: document.querySelectorAll('.message')
                     })
 
                     isolateTag({

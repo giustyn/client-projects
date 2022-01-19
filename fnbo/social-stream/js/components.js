@@ -2,6 +2,22 @@
  *  API Components
  */
 
+
+ function revealer() {
+    // alert(revealerSpeed)
+    const $transition = $('.revealer'),
+        mode = [
+            'revealer--left',
+            'revealer--right',
+            'revealer--top',
+            'revealer--bottom'
+        ],
+        shuffle = mode[(Math.random() * mode.length) | 0];
+    $transition.addClass('revealer--animate').addClass(mode[1]).delay(revealerSpeed * 1.5).queue(function () {
+        $(this).removeClass('revealer--animate').removeClass(mode[1]).dequeue();
+    });
+}
+
 const isOverflown = ({
     clientHeight,
     scrollHeight
@@ -10,7 +26,7 @@ const resizeText = ({
     element,
     elements,
     minSize = 1,
-    maxSize = 2.25,
+    maxSize = 2,
     step = .1,
     unit = 'em'
 }) => {
@@ -36,13 +52,8 @@ const isolateTag = ({
     elements,
 }) => {
     (elements || [element]).forEach(el => {
-        console.log( $(el).last().html() )
-        // console.log( $(el).last().html() )
-        // let i = minSize
-        // const parent = el.parentNode
-        // el.style.fontSize = `${i}${unit}`
-        // .replace(/(^|\s)(#[a-z\d-]+)/ig, "$1<span class='hashtag'>$2</span>");
-        // let edt = $(el).text().replace(/(^|\s)(#[a-z\d-]+)/ig, "$1<span class='hashtag'>$2</span>");
+        let hashTag = $(el).last().html().replace(/(^|\s)(#[a-z\d-]+)/ig, "$1<span class='hashtag'>$2</span>");
+        $(el).last().html(hashTag);
     })
 }
 
