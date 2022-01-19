@@ -6,29 +6,26 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>FNBO Social Stream</title>
-    <link rel="stylesheet" href="css/revealer.css">
-    <link rel="stylesheet" href="css/styles.css">
-
-    <link rel="icon" type="image/svg+xml" href="/favicon.svg">
-    <link rel="alternate icon" href="/favicon.ico">
-    <link rel="mask-icon" href="/safari-pinned-tab.svg" color="#ff8a01">
+    <link rel="stylesheet" href="./css/revealer.css">
+    <link rel="stylesheet" href="./css/styles.css">
 </head>
 
 <body class="anim--effect-3">
-    <section id="main" class="container">
+
+    <main id="main" class="container">
         <article id="feed" class="hidden">
             <div id="media" class="">
                 <video class="video" autoplay playsinline muted loop></video>
                 <div class="photo blur"></div>
                 <div class="photo focus"></div>
             </div>
-            <div id="content">
-                <div id="post">
-                    <div id="socialicon">
+            <div class="content">
+                <div class="post">
+                    <div class="socialicon">
                         <img class="icon">
                     </div>
-                    <div class="wrap">
-                        <div id="message"></div>
+                    <div class="wrap text">
+                        <div class="message"></div>
                         <div id="posted"></div>
                     </div>
                     <div id="account">
@@ -43,18 +40,32 @@
                 </div>
             </div>
         </article>
-    </section>
-
+    </main>
     <div class="revealer">
         <div class="revealer__layer top"></div>
         <div class="revealer__layer middle"></div>
         <div class="revealer__layer bottom"></div>
     </div>
-    <!-- <div class="preload"></div> -->
-    <script src="js/anime.min.js"></script>
-    <script src="js/jquery.min.js"></script>
-    <script src="js/components.js"></script>
-    <script src="js/app.js"></script>
+
+
+    <div class="preload">
+        <div class="sk-cube-grid">
+            <div class="sk-cube sk-cube1"></div>
+            <div class="sk-cube sk-cube2"></div>
+            <div class="sk-cube sk-cube3"></div>
+            <div class="sk-cube sk-cube4"></div>
+            <div class="sk-cube sk-cube5"></div>
+            <div class="sk-cube sk-cube6"></div>
+            <div class="sk-cube sk-cube7"></div>
+            <div class="sk-cube sk-cube8"></div>
+            <div class="sk-cube sk-cube9"></div>
+        </div>
+    </div>
+
+    <script src="./js/anime.min.js"></script>
+    <script src="./js/jquery.min.js"></script>
+    <script src="./js/components.js"></script>
+    <script src="./js/app.js"></script>
 
 </body>
 
