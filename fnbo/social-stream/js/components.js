@@ -2,22 +2,6 @@
  *  API Components
  */
 
-
- function revealer() {
-    // alert(revealerSpeed)
-    const $transition = $('.revealer'),
-        mode = [
-            'revealer--left',
-            'revealer--right',
-            'revealer--top',
-            'revealer--bottom'
-        ],
-        shuffle = mode[(Math.random() * mode.length) | 0];
-    $transition.addClass('revealer--animate').addClass(mode[1]).delay(revealerSpeed * 1.5).queue(function () {
-        $(this).removeClass('revealer--animate').removeClass(mode[1]).dequeue();
-    });
-}
-
 const isOverflown = ({
     clientHeight,
     scrollHeight
@@ -26,8 +10,8 @@ const resizeText = ({
     element,
     elements,
     minSize = 1,
-    maxSize = 2,
-    step = .1,
+    maxSize = 2.5,
+    step = .01,
     unit = 'em'
 }) => {
     (elements || [element]).forEach(el => {

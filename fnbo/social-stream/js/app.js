@@ -8,7 +8,6 @@ $(function () {
         ],
 
         revealerSpeed = parseInt($(':root').css('--revealer-speed')),
-        // revealerSpeed = 750,
         timerDuration = 7000,
         animeDuration = 750;
 
@@ -16,7 +15,6 @@ $(function () {
         current = 0;
 
     function revealer() {
-        // alert(revealerSpeed)
         const $transition = $('.revealer'),
             mode = [
                 'revealer--left',
@@ -33,8 +31,9 @@ $(function () {
     function animateItem($template) {
         var item = $template[0];
         var animateIn = anime.timeline({
-                easing: 'easeInOutQuad',
-                // easing: 'easeInOutElastic(1.5, 1.2)',
+                // easing: 'easeInOutQuad',
+                easing: 'easeInOutExpo',
+                easing: 'cubicBezier(0.645, 0.045, 0.355, 1.000)',
                 duration: animeDuration,
                 autoplay: true,
                 loop: false
@@ -77,12 +76,10 @@ $(function () {
         if (data.Images === undefined || data.Images.length == 0) {
             // image array empty or does not exist
             data.Images.push(MediaUrl);
-            $clone.find('#media .video').attr('src', MediaUrl.Url);
-            $clone.find('#media .photo').css('background-image', 'url(' + (MediaUrl.Url) + ')');
+            $clone.find('.media video, .media img').attr('src', MediaUrl);
         } else {
             MediaUrl = data.Images[0].Url;
-            $clone.find('#media .video').attr('src', MediaUrl);
-            $clone.find('#media .photo').css('background-image', 'url(' + (MediaUrl) + ')');
+            $clone.find('.media video, .media img').attr('src', MediaUrl);
         }
 
         if (data.User.ProfileImageUrl === undefined || !data.User.ProfileImageUrl === true) {
@@ -92,16 +89,15 @@ $(function () {
         }
 
         $clone.attr("id", current).css('z-index', current).removeClass('hidden');
-        $clone.find('.socialicon .icon').attr('src', data.ProviderIcon);
-        $clone.find('#username').text(ProfileUserName);
-        $clone.find('#useraccount').text(data.User.Username);
-        $clone.find('#usericon .icon').attr('src', ProfileImageUrl);
+        $clone.find('.socialicon img').attr('src', data.ProviderIcon);
+        $clone.find('.username').text(ProfileUserName);
+        $clone.find('.useraccount').text(data.User.Username);
+        $clone.find('.usericon img').attr('src', ProfileImageUrl);
         $clone.find('.message').text(data.Content);
-        $clone.find('#posted').text(data.DisplayTime);
+        $clone.find('.published').text(data.DisplayTime);
         $container.append($clone);
 
         animateItem($clone);
-
 
         setTimeout(function () {
             $clone.remove();
@@ -132,7 +128,6 @@ $(function () {
                     feeds.push(response.Items[i]);
                 })
                 iterateAnimations();
-                // setData(response);
             })
             .always(function () {
                 // $bumper[0].addEventListener("timeupdate", videoTimeUpdate);
