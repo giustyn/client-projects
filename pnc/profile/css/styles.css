@@ -48,6 +48,10 @@ section {
     height: 100%;
 }
 
+.background video::-webkit-media-controls-overlay-play-button {
+    display: none;
+  }
+  
 .container {
     display: flex;
     width: 100%;
