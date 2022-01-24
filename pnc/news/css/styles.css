@@ -60,6 +60,10 @@ body {
   left: 0;
 }
 
+video::-webkit-media-controls-overlay-play-button {
+  display: none;
+}
+
 #intro .date {
   position: absolute;
   display: flex;

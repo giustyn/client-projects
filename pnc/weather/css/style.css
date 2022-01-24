@@ -184,6 +184,10 @@ section.dual-screen .container .header span {
     height: 100%;
 }
 
+video::-webkit-media-controls-overlay-play-button {
+    display: none;
+  }
+
 .container {
     transition: opacity var(--anime-speed);
     transition-delay: var(--anime-delay);
