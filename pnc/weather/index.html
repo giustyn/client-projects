@@ -12,64 +12,57 @@
 </head>
 
 <body>
-    <section id="weather">
-        <div id="intro">
-            <div class="date"></div>
-            <video id="bumper" autoplay muted playsinline></video>
+    <header id="intro">
+        <div class="date"></div>
+        <video id="bumper" autoplay muted playsinline></video>
+    </header>
+    <main class="container">
+        <div class="background">
+            <video autoplay muted loop playsinline></video>
+            <div class="photo"></div>
+            <div class="overlay"></div>
         </div>
-
-        <main class="container">
-            <div class="background">
-                <video autoplay muted loop playsinline></video>
-                <div class="photo"></div>
+        <div class="header">
+            <div class="col">
+                <div class="row">
+                    <div class="title">WEATHER</div>
+                    <span class="dual-screen">
+                        <div class="location"></div>
+                        <div class="date"></div>
+                        <img class="icon">
+                        <div class="wrapper">
+                            <div class="description"></div>
+                            <div class="temperature"></div>
+                        </div>
+                        <div class="wind"></div>
+                        <div class="humidity"></div>
+                    </span>
+                </div>
+            </div>
+        </div>
+        <div class="forecast">
+            <div id="template" class="day">
+                <video autoplay muted loop></video>
                 <div class="overlay"></div>
-            </div>
-            <div class="header">
-                <div class="col">
-                    <div class="row">
-                        <div class="title">WEATHER</div>
-                        <span class="dual-screen">
-                            <div class="location"></div>
-                            <div class="date"></div>
-                            <img class="icon">
-                            <div class="wrapper">
-                                <div class="description"></div>
-                                <div class="temperature"></div>
-                            </div>
-                            <div class="wind"></div>
-                            <div class="humidity"></div>
-                        </span>
+                <div class="dayofweek"></div>
+                <div class="conditions">
+                    <div class="current">
+                        <img class="icon">
+                        <span class="description"></span>
+                    </div>
+                    <div class="variance">
+                        <div class="high"><span class="htemp"></span></div>
+                        <div class="low"><span class="ltemp">-</span></div>
                     </div>
                 </div>
-            </div>
-            <div class="forecast">
-                <div id="template" class="day">
-                    <video autoplay muted loop></video>
-                    <div class="overlay"></div>
-                    <div class="dayofweek"></div>
-                    <div class="conditions">
-                        <div class="current">
-                            <img class="icon">
-                            <span class="description"></span>
-                        </div>
-                        <div class="variance">
-                            <div class="high"><span class="htemp"></span></div>
-                            <div class="low"><span class="ltemp">-</span></div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </main>
-        
-        <div id="transition" class="anim--effect-4">
-            <div class="revealer">
-                <div class="revealer__layer top"></div>
-                <div class="revealer__layer middle"></div>
-                <div class="revealer__layer bottom"></div>
             </div>
         </div>
-    </section>
-
+    </main>
+    <div class="revealer">
+        <div class="revealer__layer top"></div>
+        <div class="revealer__layer middle"></div>
+        <div class="revealer__layer bottom"></div>
+    </div>
     <script src="./js/jquery.min.js"></script>
     <script src="./js/ua-parser.min.js"></script>
     <script src="./js/anime.min.js"></script>

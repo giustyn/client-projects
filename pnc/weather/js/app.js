@@ -1,31 +1,30 @@
-(function () {
+
+$(function () {
     var url = new ExtendedURL(window.location.href),
         $bumper = $('#bumper'),
         $animeDelay = 0,
         $animeDuration = 15000,
-        $animeSpeed = 750,
-        $animeStagger = 20,
-        $revealerOn = 1,
-        $revealerSpeed = $(':root').css('var(--revealer-speed)'),
-        $revealerDirection = 'revealer--bottom',
-        videoEnabled = url.getSearchParam("bgvideo") || 0,
-        screenConfig = url.getSearchParam("screens") || 1,
-        zipcode = url.getSearchParam("zipcode") || "15219"; // 03801
+        $animeSpeed = 1000,
+        $revealerSpeed = parseInt($(':root').css('--revealer-speed')),
+        $revealerStyle = $('body').addClass('anim-effect-2'),
+        videoEnabled = url.getSearchParam('bgvideo') || 0,
+        screenConfig = url.getSearchParam('screens') || 1,
+        zipcode = url.getSearchParam('zipcode') || '03801';
 
-    let dataURI = [
-        local = "c:\\data\\weather\\weather.json",
-        server = "https://kitchen.screenfeed.com/weather/v2/data/40778ps5v9ke2m2nf22wpqk0sj.json?current=true&interval=Daily&forecasts=5&location=" + zipcode
-    ];
+    let dataURI = {
+        "local": "c:\\data\\weather\\weather.json",
+        "server": "https://kitchen.screenfeed.com/weather/v2/data/40778ps5v9ke2m2nf22wpqk0sj.json?current=true&interval=Daily&forecasts=5&location=" + zipcode
+    };
 
     function getOS() {
         var parser = new UAParser();
         var ua = navigator.userAgent;
         var result = parser.getResult();
         var os = result.os.name;
-        console.log(os);
         if (os != "Windows" && os != "Mac OS") {
             videoEnabled = 0;
         }
+        // console.log(os);
     }
 
     function dayPartGreeting(target) {
@@ -41,15 +40,18 @@
         $(target).text(phrase);
     }
 
-    function revealer(direction) {
-        let dir = direction || $revealerDirection;
-        let $transition = $('.revealer');
-        if ($revealerOn == 1) {
-            $transition.addClass(dir).show();
-            $transition.addClass('revealer--animate').delay($revealerSpeed * 2).queue(function () {
-                $(this).removeClass('revealer--animate ' + dir).hide().dequeue();
-            });
-        }
+    function revealer() {
+        const $transition = $('.revealer'),
+            mode = [
+                'revealer--left',
+                'revealer--right',
+                'revealer--top',
+                'revealer--bottom'
+            ],
+            shuffle = mode[(Math.random() * mode.length) | 0];
+        $transition.addClass('revealer--animate').addClass(mode[2]).delay($revealerSpeed * 1.5).queue(function () {
+            $(this).removeClass('revealer--animate').removeClass(mode[2]).dequeue();
+        });
     }
 
     function handleWeather(data) {
@@ -117,13 +119,12 @@
                 opacity: [0, 1],
                 translateX: ['-100%', '0%'],
                 duration: ($animeSpeed * 4),
-                delay: 500,
                 endDelay: 1000
             })
             .add({
                 opacity: [1, 0],
-                scale: [1, 0],
-                translateX: ['0%', '100%'],
+                // scale: [1, 0],
+                // translateX: ['0%', '100%'],
                 duration: $animeSpeed,
                 update: function (anim) {
                     $date.css('filter', 'blur(' + 10 * anim.progress / 100 + 'px)')
@@ -132,24 +133,21 @@
     }
 
     function animateWeather() {
+        revealer();
         anime.timeline({
                 autoplay: true,
                 loop: false,
                 easing: 'easeInOutQuad',
-                // easing: 'easeInOutSine',
                 duration: $animeSpeed,
             })
             /* main content animation-in */
             .add({
                 targets: '.container',
                 opacity: [0, 1],
-                changeBegin: function (anim) {
-                    revealer();
-                }
             }, '-=' + ($animeSpeed) + '')
             .add({
                 targets: '.header, .header .col *',
-                delay: anime.stagger($animeStagger, {
+                delay: anime.stagger(50, {
                     direction: 'normal',
                     start: $animeDelay
                 }),
@@ -157,8 +155,8 @@
                 opacity: [0, 1],
             }, '-=' + ($animeDelay) + '')
             .add({
-                targets: '.forecast *',
-                delay: anime.stagger($animeStagger, {
+                targets: '.forecast div',
+                delay: anime.stagger(50, {
                     direction: 'normal',
                     start: $animeDelay
                 }),
@@ -169,7 +167,7 @@
         /* main content animation-out */
         /*   .add({
               targets: '.forecast *',
-              delay: anime.stagger($animeStagger, {
+              delay: anime.stagger(50, {
                   direction: 'reverse',
                   start: $animeDelay
               }),
@@ -178,7 +176,7 @@
           }, '-=' + ($animeDelay) + '')
           .add({
               targets: '.header, .header .col *',
-              delay: anime.stagger($animeStagger, {
+              delay: anime.stagger(50, {
                   direction: 'reverse',
                   start: 0
               }),
@@ -203,7 +201,7 @@
                 eventItem.removeEventListener("timeupdate", handler);
                 handleWeather(data);
                 animateWeather();
-                $bumper.parent().fadeOut(500, function () {
+                $bumper.parent().fadeOut(1000, function () {
                     $bumper.remove();
                 });
             }
@@ -217,39 +215,47 @@
     }
 
     function setLayout() {
-        console.log("screen-config: " + screenConfig)
+        // console.log("screen-config: " + screenConfig)
         if (screenConfig == 1) {
-            $('section').addClass('single-screen')
+            $("body").addClass("single-screen")
             $bumper.attr("src", "./video/PNC_Syn_Weather.mp4")
         } else if (screenConfig == 2) {
-            $('section').addClass('dual-screen')
+            $("body").addClass("dual-screen")
             $bumper.attr("src", "./video/PNC_Syn_Weather.mp4")
         };
     }
 
-    function init() {
-        getWeather(dataURI[0])
-            .done(function (response) {
-                if (response.status !== 400) {
-                    setLayout();
-                    animateIntro();
-                    videoEventListener(response);
-                    console.log("data source: local");
-                    console.log(response.Locations[0]);
-                } else {
-                    return getWeather(dataURI[1])
-                        .done(function (response) {
-                            setLayout();
-                            animateIntro();
-                            videoEventListener(response);
-                            console.log("data source: server");
-                            console.log(response.Locations[0]);
-                        });
-                }
-            });
+    function onTemplateError(result) {
+        console.warn("could not get data")
     }
-    
-    getOS();
-    init();
 
-})();
+    function onTemplateSuccess(result) {
+        setLayout();
+        animateIntro();
+        videoEventListener(result);
+    }
+
+    function getJsonData(onSuccess, onError, data) {
+        return $.ajax({
+            method: "GET",
+            url: data,
+            dataType: "json",
+            success: function (result) {
+                // console.log(result)
+                onSuccess(result)
+            },
+            error: function (result) {
+                // console.error(result);
+                onError(result)
+            }
+        });
+    }
+
+    function init() {
+        getOS(); // determine if 
+        getJsonData(onTemplateSuccess, onTemplateError, dataURI.local); // get local data, located at c:\data
+        getJsonData(onTemplateSuccess, onTemplateError, dataURI.server); // get server data, via screenfeed.com
+    }
+
+    init();
+});

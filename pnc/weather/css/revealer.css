@@ -1,12 +1,36 @@
 /* Revealers */
 
 .revealer {
-  left: 100%;
+  left: 100vw;
   width: 100vw;
   height: 100vh;
-  position: fixed;
-  z-index: 1000;
+  position: absolute;
   pointer-events: none;
+  z-index: 10000;
+}
+
+.revealer--top {
+    width: 100vw;
+    height: 100vh;
+    transform: rotate3d(0, 0, 1, 180deg);
+}
+
+.revealer--left {
+    width: 100vh;
+    height: 100vw;
+    transform: translate3d(-50%, -50%, 0px) rotate3d(0, 0, 1, 90deg) translate3d(0px, 100%, 0px);
+}
+
+.revealer--bottom {
+    width: 100vw;
+    height: 100vh;
+    transform: none;
+}
+
+.revealer--right {
+    width: 100vh;
+    height: 100vw;
+    transform: translate3d(-50%, -50%, 0px) rotate3d(0, 0, 1, -90deg) translate3d(0px, 100%, 0px);
 }
 
 .revealer--cornertopleft,
@@ -43,7 +67,7 @@
   top: 0;
   left: 0;
   background: transparent;
-  /*backdrop-filter: blur(40px);*/
+  opacity: var(--revealer-opacity);
 }
 
 /* Revealer effects */

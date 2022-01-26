@@ -1,31 +1,31 @@
 /**
- *  Weather API Functions
+ *  Helper Functions
  */
 
-function request(filePath, dataType) {
-    var dfd = $.Deferred();
-    $.ajax({
-        url: filePath,
-        type: "GET",
-        dataType: dataType,
-        error: function () {
-            return dfd.resolve({
-                status: 400
-            });
-        },
-        success: function (response) {
-            return dfd.resolve(response);
-        }
-    });
-    return dfd.promise();
-}
+// function request(filePath, dataType) {
+//     var dfd = $.Deferred();
+//     $.ajax({
+//         url: filePath,
+//         type: "GET",
+//         dataType: (dataType || "JSON"),
+//         error: function () {
+//             return dfd.resolve({
+//                 status: 400
+//             });
+//         },
+//         success: function (response) {
+//             return dfd.resolve(response);
+//         }
+//     });
+//     return dfd.promise();
+// }
 
-function getWeather(filePath) {
-    var url = new URL(window.location.href);
-    return $.when(
-        request(filePath, "JSON")
-    )
-}
+// function getWeather(filePath) {
+//     var url = new URL(window.location.href);
+//     return $.when(
+//         request(filePath, "JSON")
+//     )
+// }
 
 function ExtendedURL(href) {
     this.url = new URL(href);

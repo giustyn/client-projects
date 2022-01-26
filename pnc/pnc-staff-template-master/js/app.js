@@ -167,7 +167,7 @@
             animate();
         }
 
-        img.onerror = function () {
+        img.onerror =  () => {
             onTemplateError();
         }
 

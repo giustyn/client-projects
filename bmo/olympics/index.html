@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BMO | 2022 Olympics</title>
+</head>
+
+<body>
+    <main class="container">
+        <section id="olympics" class="feed">
+        </section>
+    </main>
+    <script>
+        var data = {
+            "total": 3,
+            "item": [{
+                    "rank": 1,
+                    "medals": {
+                        "gold": 3,
+                        "silver": 4,
+                        "bronze": 2,
+                        "total": 9
+                    },
+                    "organisation": {
+                        "code": "USA",
+                        "description": "USA"
+                    }
+                },
+                {
+                    "rank": 2,
+                    "medals": {
+                        "gold": 2,
+                        "silver": 4,
+                        "bronze": 2,
+                        "total": 8
+                    },
+                    "organisation": {
+                        "code": "GBR",
+                        "description": "Great Britain"
+                    }
+                },
+                {
+                    "rank": 3,
+                    "medals": {
+                        "gold": 1,
+                        "silver": 4,
+                        "bronze": 2,
+                        "total": 7
+                    },
+                    "organisation": {
+                        "code": "CHN",
+                        "description": "China"
+                    }
+                }
+            ]
+        };
+
+        var i = 0;
+        
+        console.log(data.item[i].organisation.code);
+        console.log(data.item[i].medals.gold);
+        console.log(data.item[i].medals.silver);
+        console.log(data.item[i].medals.bronze);
+
+    </script>
+</body>
+
+</html>
