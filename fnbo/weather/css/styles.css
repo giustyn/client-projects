@@ -62,14 +62,14 @@
 
 :root {
     --font-size: calc(1vw + 1vh);
-    --bg-primary: 242, 242, 242;
+    --bg-primary: var(--clr-secondary);
     --clr-primary: 0, 99, 65;
     --clr-secondary: 0, 74, 55;
     --clr-tertiary: 242, 242, 242;
     --clr-quaternary: 20, 20, 20;
     --clr-white: 255, 255, 255;
     --clr-black: 0, 0, 0;
-    --drop-shadow: 4px 4px 0 rgba(var(--clr-primary), 0.05);
+    --drop-shadow: .25rem .25rem 0 rgba(var(--clr-primary), );
     --clr-revealer-layer-1: rgba(var(--clr-primary), 0.8);
     --clr-revealer-layer-2: rgba(var(--clr-secondary), 0.8);
     --clr-revealer-layer-3: rgba(var(--clr-tertiary), 0.8);
@@ -82,7 +82,7 @@ body {
     width: 100%;
     height: 100%;
     overflow: hidden;
-    background: rgb(var(--background));
+    background: rgb(var(--clr-white));
     font-size: var(--font-size);
     cursor: none;
     user-select: none;
@@ -149,35 +149,37 @@ main.container {
     align-items: flex-end;
     width: 100%;
     height: 25%;
-    padding: 1em 4em;
+    padding: 1.5em 4em;
     color: rgb(var(--clr-tertiary));
-    background-color: rgba(var(--fnbo-light-green), 0.9);
-    /* opacity: 0; */
-    /* filter: drop-shadow(5px 5px 5px rgba(var(--clr-primary), 1)) saturate(120%); */
+    background-color: rgba(var(--fnbo-light-green), 1);
 }
 
 .container .header .title {
-    font-size: 7em;
+    font-size: 6em;
     font-weight: 600;
     letter-spacing: -.45rem;
+    padding-right: .2em;
+}
+
+.container .header .location {
+    font-size: 2.4em;
+    font-weight: 600;
 }
 
 .container .header .temperature,
-.container .header .location {
-    display: inline-block;
+.container .header .description {
     font-size: 2em;
     font-weight: 300;
 }
 
-.container .header .location::before {
-    content: '';
-    padding-right: .5em;
+.container .header .location::after {
+    content: ',';
+    padding-right: .25em;
 }
 
-.container .header .location::after,
-.container .header .description::after {
-    content: ',';
-    padding-right: .35em;
+.container .header .temperature::after {
+    content: '°';
+    padding-right: .25em;
 }
 
 .container .forecast {
@@ -207,17 +209,16 @@ main.container {
     width: 100%;
     height: 100%;
     mix-blend-mode: soft-light;
-    background-image: linear-gradient(190deg,
-            rgba(var(--clr-black), .5),
-            rgba(var(--clr-white), 1));
+    background-image: linear-gradient(200deg,
+            rgba(var(--clr-secondary), .2),
+            rgba(var(--clr-white), .6));
     /* display: none; */
 }
 
 .container .forecast .day:first-child {
-    font-size: 110%;
-    padding: 0 4em;
+    /* font-size: 110%; */
+    padding: 0 2em;
 }
-
 
 .container .forecast .day video {
     /* padding: 0 .125em; */
@@ -234,7 +235,7 @@ main.container {
 }
 
 .container .forecast .day .dayofweek {
-    font-size: 2.35em;
+    font-size: 2.5em;
     font-weight: 600;
     color: rgb(var(--clr-white));
     text-transform: uppercase;
@@ -257,7 +258,7 @@ main.container {
 .container .forecast .day .htemp {
     font-size: 3.85em;
     font-weight: 600;
-    color: rgb(var(--clr-secondary));
+    color: rgb(var(--clr-white));
 }
 
 .container .forecast .day .ltemp {
@@ -266,10 +267,8 @@ main.container {
     color: rgb(var(--clr-primary));
 }
 
-
 .container .htemp::after,
-.container .ltemp::after,
-.container .temperature::after {
+.container .ltemp::after {
     content: '°';
 }
 

@@ -1,13 +1,11 @@
 $(function () {
     var url = new ExtendedURL(window.location.href),
         $animeDuration = 15000,
-        $animeSpeed = 2000,
-        $animeDelay = 100,
         $revealerSpeed = parseInt($(':root').css('--revealer-speed')),
         $revealerStyle = $('body').addClass('anim-effect-2'),
         videoEnabled = url.getSearchParam('bgvideo') || 1,
         screenConfig = url.getSearchParam('screens') || 1,
-        zipcode = url.getSearchParam('zipcode') || '03801';
+        zipcode = url.getSearchParam('zipcode') || '68102'; // default: 68102
 
     let dataURI = {
         "local": "c:\\data\\weather\\weather.json",
@@ -77,10 +75,10 @@ $(function () {
                 $el.find(".htemp").text(forecast[i].HighTempF);
                 $el.find(".ltemp").text(forecast[i].LowTempF);
                 $el.find(".ltemp").text(forecast[i].LowTempF);
-                $el.find("video").attr("poster", "./img/" + loadMedia(forecast[i].ConditionCode) + ".jpg");
-                if (videoEnabled !== 0) {
-                    $el.find("video").attr("src", "./video/" + loadMedia(forecast[i].ConditionCode) + ".mp4");
-                }
+                // $el.find("video").attr("poster", "./img/" + loadMedia(forecast[i].ConditionCode) + ".jpg");
+                // if (videoEnabled !== 0) {
+                //     $el.find("video").attr("src", "./video/" + loadMedia(forecast[i].ConditionCode) + ".mp4");
+                // }
             });
         }
 
@@ -107,35 +105,34 @@ $(function () {
     }
 
     function animateWeather() {
-        // revealer();
-        anime.timeline({
+        const $animeSpeed = 2000,
+            $animeDelay = 50;
+            
+            anime.timeline({
                 autoplay: true,
                 loop: false,
-                easing: 'easeInOutQuint',
+                easing: 'easeInOutQuad',
                 duration: $animeSpeed,
             })
             /* main content animation-in */
             .add({
                 targets: '.container',
-                duration: 0,
+                scale: [1.2, 1],
                 opacity: [0, 1],
             })
             .add({
                 targets: '.header, .header *',
-                delay: anime.stagger($animeDelay, {
-                    direction: 'normal',
-                    start: $animeDelay
-                }),
-                translateY: [-50,0],
+                delay: anime.stagger($animeDelay),
+                easing: 'easeInOutQuint',
+                translateY: [-100, 0],
                 opacity: [0, 1],
-            })
+            }, 500)
             .add({
                 targets: '.day *',
-                // duration: 0,
                 delay: anime.stagger($animeDelay),
-                translateY: [-20, 0],
+                translateY: [50, 0],
                 opacity: [0, 1]
-            }, '-=1000')
+            }, 1500)
     }
 
     function onTemplateError(result) {
