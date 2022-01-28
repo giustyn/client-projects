@@ -73,7 +73,7 @@ $(function () {
                 $el.find(".htemp").text(forecast[i].HighTempF + "°");
                 $el.find(".ltemp").text(forecast[i].LowTempF + "°");
                 $el.find("video").attr("poster", "./img/" + loadMedia(forecast[i].ConditionCode) + ".jpg");
-                if (videoEnabled) $el.find(".day video").attr("src", "./video/" + loadMedia(forecast[i].ConditionCode) + ".mp4");                
+                if (videoEnabled) $el.find(".day video").attr("src", "./video/" + loadMedia(forecast[i].ConditionCode) + ".mp4");
             });
         }
 
@@ -91,7 +91,7 @@ $(function () {
             $('.background video').attr("poster", "./img/" + loadMedia(forecast[0].ConditionCode) + ".jpg");
             if (videoEnabled) $('.primary.background video').attr("src", "./video/" + loadMedia(forecast[0].ConditionCode) + ".mp4");
         }
-        
+
         cloneDayOfWeek('#template', forecast.length);
         mainBgVideo();
         setForecast();
@@ -101,32 +101,37 @@ $(function () {
     function animateWeather() {
         var elements = document.querySelectorAll('.day');
 
-        const $animeSpeed = 1500,
-            $animeDelay = 300;
-
-        anime.timeline({
+        const $animeSpeed = 1000,
+            $animeDelay = 100,
+            animation = anime.timeline({
                 autoplay: true,
                 loop: false,
-                easing: 'easeInOutQuad',
                 duration: $animeSpeed,
             })
-            /* main content animation-in */
             .add({
                 targets: '.container',
-                // scale: [1.2, 1],
+                duration: 0,
+                easing: 'easeInSine',
                 opacity: [0, 1],
             }, 0)
             .add({
-                targets: '.header, .header *',
-                delay: anime.stagger($animeDelay),
-                easing: 'easeInOutQuint',
-                translateY: [-100, 0],
+                targets: '.header',
+                easing: 'easeInOutQuad',
+                translateY: [-500, 0],
                 opacity: [0, 1],
-            }, 1500)
+            }, 500)
+            .add({
+                targets: '.header *, img, span',
+                easing: 'easeInOutQuad',
+                translateY: [50, 0],
+                delay: anime.stagger($animeDelay),
+                opacity: [0, 1],
+            }, 1000)
             .add({
                 targets: '.day',
                 delay: anime.stagger($animeDelay),
-                translateY: [-500, 0],
+                translateY: [-50, 0],
+                scale: [.9, 1],
                 opacity: [0, 1]
             }, 2000)
     }
