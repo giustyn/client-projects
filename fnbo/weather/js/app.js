@@ -1,13 +1,10 @@
 $(function () {
     var url = new ExtendedURL(window.location.href),
-        $animeDuration = 15000,
-        $revealerSpeed = parseInt($(':root').css('--revealer-speed')),
-        $revealerStyle = $('body').addClass('anim-effect-2'),
+
         videoEnabled = url.getSearchParam('bgvideo') || 1,
-        screenConfig = url.getSearchParam('screens') || 1,
         zipcode = url.getSearchParam('zipcode') || '68102'; // default: 68102
 
-    let dataURI = {
+    const dataURI = {
         "local": "c:\\data\\weather\\weather.json",
         "server": "https://kitchen.screenfeed.com/weather/v2/data/40778ps5v9ke2m2nf22wpqk0sj.json?current=true&interval=Daily&forecasts=5&location=" + zipcode
     };
@@ -37,7 +34,9 @@ $(function () {
     }
 
     function revealer() {
-        const $transition = $('.revealer'),
+        const $revealerSpeed = parseInt($(':root').css('--revealer-speed')),
+            $revealerStyle = $('body').addClass('anim-effect-2'),
+            $transition = $('.revealer'),
             mode = [
                 'revealer--left',
                 'revealer--right',
@@ -55,60 +54,57 @@ $(function () {
         let current = location.WeatherItems[0] || {};
         let forecast = location.WeatherItems.slice(1, 6) || {};
 
-        function cloneDayOfWeek(el, num) {
-            var elem = document.querySelector(el);
+        const cloneDayOfWeek = (el, num) => {
+            var $elem = $(el);
             for (var i = 1; i <= num; i++) {
-                var clone = elem.cloneNode(true);
-                clone.id = 'day' + (num - i + 1);
-                elem.after(clone);
+                var clone = $elem.clone();
+                clone.attr('id', 'day' + (num - i + 1));
+                $('.forecast').append(clone);
             }
-            elem.remove();
+            $elem.remove();
         }
 
-        function setForecast() {
-            cloneDayOfWeek('#template', 5);
-            $(".forecast .day").each(function (i, el) {
+        const setForecast = () => {
+            $(".day").each(function (i, el) {
                 var $el = $(el);
                 $el.find(".icon").attr("src", "./img/icons/" + getIcon(forecast[i].ConditionCode));
                 $el.find(".dayofweek").text(moment(forecast[i].DateTime).format('ddd'));
                 $el.find(".description").text(forecast[i].ShortDescription);
-                $el.find(".htemp").text(forecast[i].HighTempF);
-                $el.find(".ltemp").text(forecast[i].LowTempF);
-                $el.find(".ltemp").text(forecast[i].LowTempF);
-                // $el.find("video").attr("poster", "./img/" + loadMedia(forecast[i].ConditionCode) + ".jpg");
-                // if (videoEnabled !== 0) {
-                //     $el.find("video").attr("src", "./video/" + loadMedia(forecast[i].ConditionCode) + ".mp4");
-                // }
+                $el.find(".htemp").text(forecast[i].HighTempF + "°");
+                $el.find(".ltemp").text(forecast[i].LowTempF + "°");
+                $el.find("video").attr("poster", "./img/" + loadMedia(forecast[i].ConditionCode) + ".jpg");
+                if (videoEnabled) $el.find(".day video").attr("src", "./video/" + loadMedia(forecast[i].ConditionCode) + ".mp4");                
             });
         }
 
-        function setCurrent() {
-            $('.day:first-child .dayofweek').replaceWith('<div class="dayofweek">TODAY</div>');
+        const setCurrent = () => {
+            $('.day:first-child .dayofweek').replaceWith('<span class="dayofweek">TODAY</span>');
             $('.location').text(location.City);
-            $('.temperature').text(current.CurrentTempF);
+            $('.temperature').text(current.CurrentTempF + "°");
             $('.description').text(current.Description);
             $('.wind').text("Wind: " + Number(current.WindSpeedMph) + "mph");
             $('.humidity').text("Humidity: " + Number(current.Humidity) + "%");
             $(".header .icon").attr("src", "./img/icons/" + getIcon(forecast[0].ConditionCode));
         }
 
-        function mainBgVideo() {
+        const mainBgVideo = () => {
             $('.background video').attr("poster", "./img/" + loadMedia(forecast[0].ConditionCode) + ".jpg");
-            if (videoEnabled !== 0) {
-                $('.background video').attr("src", "./video/" + loadMedia(forecast[0].ConditionCode) + ".mp4");
-            }
+            if (videoEnabled) $('.primary.background video').attr("src", "./video/" + loadMedia(forecast[0].ConditionCode) + ".mp4");
         }
-
+        
+        cloneDayOfWeek('#template', forecast.length);
         mainBgVideo();
         setForecast();
         setCurrent();
     }
 
     function animateWeather() {
-        const $animeSpeed = 2000,
-            $animeDelay = 50;
-            
-            anime.timeline({
+        var elements = document.querySelectorAll('.day');
+
+        const $animeSpeed = 1500,
+            $animeDelay = 300;
+
+        anime.timeline({
                 autoplay: true,
                 loop: false,
                 easing: 'easeInOutQuad',
@@ -117,22 +113,22 @@ $(function () {
             /* main content animation-in */
             .add({
                 targets: '.container',
-                scale: [1.2, 1],
+                // scale: [1.2, 1],
                 opacity: [0, 1],
-            })
+            }, 0)
             .add({
                 targets: '.header, .header *',
                 delay: anime.stagger($animeDelay),
                 easing: 'easeInOutQuint',
                 translateY: [-100, 0],
                 opacity: [0, 1],
-            }, 500)
-            .add({
-                targets: '.day *',
-                delay: anime.stagger($animeDelay),
-                translateY: [50, 0],
-                opacity: [0, 1]
             }, 1500)
+            .add({
+                targets: '.day',
+                delay: anime.stagger($animeDelay),
+                translateY: [-500, 0],
+                opacity: [0, 1]
+            }, 2000)
     }
 
     function onTemplateError(result) {
@@ -140,6 +136,8 @@ $(function () {
     }
 
     function onTemplateSuccess(result) {
+
+
         handleWeather(result);
         animateWeather();
     }
@@ -160,8 +158,26 @@ $(function () {
         });
     }
 
+    function getPlayerTagId(onSuccess, onError) {
+        var tag = window.parent.PlayerSDK.getTagByPrefix("Z.MPS.PNC.");
+
+        return $.ajax({
+            method: "GET",
+            url: "https://photos-dev.adrenalineamp.com/public-api/mps/" + tag.Name + "/staff?a=e85711db-6395-4811-94c4-93ec1e83f4b3",
+            dataType: 'json',
+            success: function (result) {
+                console.log(result)
+                onSuccess(result);
+            },
+            error: function (result) {
+                console.error(result);
+                onError(result);
+            }
+        });
+    }
+
     function init() {
-        getOS(); // determine if 
+        getOS();
         getJsonData(onTemplateSuccess, onTemplateError, dataURI.local); // get local data, located at c:\data
         getJsonData(onTemplateSuccess, onTemplateError, dataURI.server); // get server data, via screenfeed.com
     }

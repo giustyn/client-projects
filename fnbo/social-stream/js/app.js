@@ -1,15 +1,15 @@
 $(function () {
     const userName = "FNBO",
-        userIcon = "./img/fnbo-logo.svg",
+    userIcon = "./img/fnbo-logo.svg",
 
-        dataURI = [
-            local = "c:\\data\\social\\social.json",
-            server = "https://kitchen.screenfeed.com/social/data/3jzp1h5xsxw684a2r5sk94b7fk.json"
-        ],
+    animeDuration = 750,
+    timerDuration = 10000,
+    revealerSpeed = parseInt($(':root').css('--revealer-speed'));
 
-        revealerSpeed = parseInt($(':root').css('--revealer-speed')),
-        timerDuration = 7000,
-        animeDuration = 750;
+    const dataURI = {
+        "local": "c:\\data\\social\\social.json",
+        "server": "https://kitchen.screenfeed.com/social/data/3jzp1h5xsxw684a2r5sk94b7fk.json"
+    };
 
     let feeds = [],
         current = 0;
@@ -23,8 +23,8 @@ $(function () {
                 'revealer--bottom'
             ],
             shuffle = mode[(Math.random() * mode.length) | 0];
-        $transition.addClass('revealer--animate').addClass(mode[1]).delay(revealerSpeed * 1.5).queue(function () {
-            $(this).removeClass('revealer--animate').removeClass(mode[1]).dequeue();
+        $transition.addClass('revealer--animate').addClass(shuffle).delay(revealerSpeed * 1.5).queue(function () {
+            $(this).removeClass('revealer--animate').removeClass(shuffle).dequeue();
         });
     }
 
@@ -54,13 +54,13 @@ $(function () {
             .add({
                 targets: item,
                 opacity: [0, 1],
-                translateX: [100, 0],
+                // translateX: [100, 0],
                 endDelay: (timerDuration - (animeDuration * 2)),
             })
             .add({
                 targets: item,
                 opacity: [1, 0],
-                translateX: [0. - 100],
+                // translateX: [0. - 100],
             })
     }
 
@@ -108,12 +108,12 @@ $(function () {
         const $template = $("article");
         const $container = $("main");
 
-        console.log(current, feeds[current])
+        // console.log(current, feeds[current])
         animateTemplate($container, $template, feeds[current], current);
         current++;
 
         setInterval(function () {
-            console.log(current, feeds[current])
+            // console.log(current, feeds[current])
             animateTemplate($container, $template, feeds[current], current);
             current = (current + 1) % feeds.length;
         }, timerDuration);
@@ -121,30 +121,38 @@ $(function () {
         $template.remove();
     }
 
-    function getData() {
-        $.get(dataURI[1])
-            .done(function (response) {
-                $.each(response.Items, function (i) {
-                    feeds.push(response.Items[i]);
-                })
-                iterateAnimations();
-            })
-            .always(function () {
-                // $bumper[0].addEventListener("timeupdate", videoTimeUpdate);
-            });
+    function onTemplateError(result) {
+        console.warn("could not get data")
     }
 
-    function preLoad() {
-        // $(window).load(function() {
-        //     $(".preload").delay(2000).fadeOut("slow");
-        // })
+    function onTemplateSuccess(result) {
+        $.each(result.Items, function (i) {
+            feeds.push(result.Items[i]);
+        })
+        iterateAnimations();
+    }
+
+    function getJsonData(onSuccess, onError, data) {
+        return $.ajax({
+            method: "GET",
+            url: data,
+            dataType: "json",
+            success: function (result) {
+                // console.log(result)
+                onSuccess(result)
+            },
+            error: function (result) {
+                // console.error(result);
+                onError(result)
+            }
+        });
     }
 
     function init() {
-        getData();
+        // getJsonData(onTemplateSuccess, onTemplateError, dataURI.local); // get local data, located at c:\data
+        getJsonData(onTemplateSuccess, onTemplateError, dataURI.server); // get server data, via screenfeed.com
     }
 
-    preLoad();
     init();
 
 });
