@@ -73,7 +73,7 @@ $(function () {
                 $el.find(".htemp").text(forecast[i].HighTempF + "°");
                 $el.find(".ltemp").text(forecast[i].LowTempF + "°");
                 $el.find("video").attr("poster", "./img/" + loadMedia(forecast[i].ConditionCode) + ".jpg");
-                if (videoEnabled) $el.find(".day video").attr("src", "./video/" + loadMedia(forecast[i].ConditionCode) + ".mp4");
+                if (videoEnabled) $el.find("video").attr("src", "./video/" + loadMedia(forecast[i].ConditionCode) + ".mp4");
             });
         }
 
@@ -89,7 +89,7 @@ $(function () {
 
         const mainBgVideo = () => {
             $('.background video').attr("poster", "./img/" + loadMedia(forecast[0].ConditionCode) + ".jpg");
-            if (videoEnabled) $('.primary.background video').attr("src", "./video/" + loadMedia(forecast[0].ConditionCode) + ".mp4");
+            // if (videoEnabled) $('.primary.background video').attr("src", "./video/" + loadMedia(forecast[0].ConditionCode) + ".mp4");
         }
 
         cloneDayOfWeek('#template', forecast.length);
@@ -102,7 +102,7 @@ $(function () {
         var elements = document.querySelectorAll('.day');
 
         const $animeSpeed = 1000,
-            $animeDelay = 100,
+            $animeDelay = 50,
             animation = anime.timeline({
                 autoplay: true,
                 loop: false,
@@ -121,19 +121,19 @@ $(function () {
                 opacity: [0, 1],
             }, 500)
             .add({
-                targets: '.header *, img, span',
+                targets: '.header .wrap ',
                 easing: 'easeInOutQuad',
                 translateY: [50, 0],
                 delay: anime.stagger($animeDelay),
                 opacity: [0, 1],
             }, 1000)
             .add({
-                targets: '.day',
+                targets: '.day, .day *',
+                easing: 'easeInOutQuad',
                 delay: anime.stagger($animeDelay),
-                translateY: [-50, 0],
-                scale: [.9, 1],
+                translateY: [200, 0],
                 opacity: [0, 1]
-            }, 2000)
+            }, 1000)
     }
 
     function onTemplateError(result) {
