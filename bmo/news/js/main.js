@@ -2,19 +2,23 @@ $(document).ready(function () {
   const url = new ExtendedURL(window.location.href),
     timerDuration = 10000,
     transition = 1,
-    screen = [{
-      'config': 'standard'
-    }, {
-      'config': 'anamorphic'
-    }][url.getSearchParam("config") || 0];
+    screen = [
+      {
+        config: "standard",
+      },
+      {
+        config: "anamorphic",
+      },
+    ][url.getSearchParam("config") || 0];
 
-  let $date = $('.date').text(moment().format('dddd, MMMM Do')),
-    folderName = url.getSearchParam("category") || ["news", "sports", "celeb"][0],
+  let $date = $(".date").text(moment().format("dddd, MMMM Do")),
+    folderName =
+      url.getSearchParam("category") || ["news", "sports", "celeb"][1],
     loadedStories = [],
     currentStory = 0,
     dataURI = [
-      local = "c:\\data\\" + folderName,
-      server = "https://retail.adrenalineamp.com/rss/Xnews/"
+      (local = "c:\\data\\" + folderName),
+      (server = "https://retail.adrenalineamp.com/rss/Xnews/"),
       // server = "https://retail.adrenalineamp.com/rss/Hnews/"
     ],
     video_1S = $("#bgvideo").attr("src", "./video/Bokeh_1920x1080.mp4"),
@@ -29,24 +33,30 @@ $(document).ready(function () {
       input[i] = itemAtIndex;
     }
     return input;
-  }
+  };
 
   function ExtendedURL(href) {
     this.url = new URL(href);
     this.getSearchParam = function (param) {
-      return this.url.searchParams.get(param)
+      return this.url.searchParams.get(param);
     };
     return this;
   }
 
   function revealer(direction) {
-    let $transition = $('.revealer');
-    let $speed = parseInt($(':root').css('--revealer-speed'));
+    let $transition = $(".revealer");
+    let $speed = parseInt($(":root").css("--revealer-speed"));
     if (transition == 1) {
       $transition.addClass(direction).show();
-      $transition.addClass('revealer--animate').delay($speed * 2).queue(function () {
-        $(this).removeClass('revealer--animate ' + direction).hide().dequeue();
-      });
+      $transition
+        .addClass("revealer--animate")
+        .delay($speed * 2)
+        .queue(function () {
+          $(this)
+            .removeClass("revealer--animate " + direction)
+            .hide()
+            .dequeue();
+        });
     }
   }
 
@@ -60,11 +70,19 @@ $(document).ready(function () {
         // done
         if (request.status === 200 || request.status === 0) {
           // complete
-          const storyID = folderName + "_" + request.responseURL.slice(request.responseURL.lastIndexOf('/') + 1, -4);
-          const xmlstory = loadedStories.find(ele => ele.id == storyID);
-          let textDiv = document.createElement('div');
-          textDiv.classList.add('text');
-          textDiv.innerHTML = $(request.responseText).find("story")[0].innerHTML;
+          const storyID =
+            folderName +
+            "_" +
+            request.responseURL.slice(
+              request.responseURL.lastIndexOf("/") + 1,
+              -4
+            );
+          const xmlstory = loadedStories.find((ele) => ele.id == storyID);
+          let textDiv = document.createElement("div");
+          textDiv.classList.add("text");
+          textDiv.innerHTML = $(request.responseText).find(
+            "story"
+          )[0].innerHTML;
           xmlstory.appendChild(textDiv);
         }
       }
@@ -74,98 +92,97 @@ $(document).ready(function () {
   function addStories(imageNames, dataPath) {
     let ten = 10; //there are only 10 stories
 
-    while (ten) { //once 0 it will be false
+    while (ten) {
+      //once 0 it will be false
       const newImage = new Image();
-      newImage.addEventListener("load", function (e) {
-        const storyDiv = document.createElement("div");
-        const articles = document.querySelector(".article-container");
-        storyDiv.id = folderName + '_' + e.path[0].src.slice(e.path[0].src.lastIndexOf('/') + 1, -4);
-        // $(storyDiv).addClass('story');
-        $('<div>').addClass('photo').appendTo(storyDiv);
-        $(storyDiv).addClass('story').append(newImage);
-        $(storyDiv).find('.photo').css('background-image', 'url(' + newImage.src + ')');
-        articles.appendChild(storyDiv);
-        loadedStories.push(storyDiv);
-        loadXML(e.path[0].src.slice(0, -3) + "xml");
-      }, false);
+      newImage.addEventListener(
+        "load",
+        function (e) {
+          const storyDiv = document.createElement("div");
+          const articles = document.querySelector(".article-container");
+          storyDiv.id =
+            folderName +
+            "_" +
+            e.path[0].src.slice(e.path[0].src.lastIndexOf("/") + 1, -4);
+          // $(storyDiv).addClass('story');
+          $("<div>").addClass("photo").appendTo(storyDiv);
+          $(storyDiv).addClass("story").append(newImage);
+          $(storyDiv)
+            .find(".photo")
+            .css("background-image", "url(" + newImage.src + ")");
+          articles.appendChild(storyDiv);
+          loadedStories.push(storyDiv);
+          loadXML(e.path[0].src.slice(0, -3) + "xml");
+        },
+        false
+      );
       newImage.src = dataPath + folderName + "\\" + imageNames[ten - 1]; //offset to 0-1
       ten--;
     }
   }
 
   function showNextStory() {
-    revealer('revealer--left');
-    $(loadedStories[currentStory]).removeClass('visible');
+    $(loadedStories[currentStory]).removeClass("visible");
     currentStory = (currentStory + 1) % loadedStories.length;
-    $(loadedStories[currentStory]).addClass('visible');
+    $(loadedStories[currentStory]).addClass("visible");
+    revealer("revealer--right");
   }
 
   function animateContent() {
-    let
-      $animeSpeed = parseInt($(':root').css('--anime-speed')),
-      $animeDelay = parseInt($(':root').css('--anime-delay')),
-      $revealerSpeed = parseInt($(':root').css('--revealer-speed'));
+    let $animeSpeed = parseInt($(":root").css("--anime-speed")),
+      $animeDelay = parseInt($(":root").css("--anime-delay")),
+      $revealerSpeed = parseInt($(":root").css("--revealer-speed"));
 
-    let animation = anime.timeline({
+    let animation = anime
+      .timeline({
         autoplay: true,
         loop: false,
-        duration: $animeSpeed,
-        easing: 'easeInOutQuad',
+        duration: $animeSpeed * 1.5,
+        easing: "easeInOutQuad",
       })
       .add({
-        targets: '.stage',
-        opacity: [1],
-        duration: $animeSpeed
-      }, '-=0')
+        targets: ".stage",
+        opacity: [0, 1],
+        duration: $animeSpeed,
+        begin: function () {
+          revealer("revealer--bottom");
+        },
+      })
       .add({
-        targets: '.article-container',
-        translateY: ['50%','0%'],
+        targets: ".article-container",
+        duration: 0,
+        opacity: [0, 1],
         complete: function () {
-          $(loadedStories[currentStory]).addClass('visible'),
-            cycleStories();
-        }
-      }, '-=0')
-
+          $(loadedStories[currentStory]).addClass("visible"), cycleStories();
+        },
+      })
       .add({
-        targets: '.standard .footer-container',
+        targets: ".standard .footer-container, .anamorphic .footer-container",
         opacity: [0, 1],
-        duration: ($animeSpeed / 1.5),
         translateY: [20, 0],
-      }, '-=500')
+      })
       .add({
-        targets: '.anamorphic .footer-container',
+        targets: ".roundel .circle-container",
+        scale: [0.5, 1],
         opacity: [0, 1],
-        duration: ($animeSpeed / 1.5),
-        translateY: [20, 0],
-      }, '-=500')
+      })
       .add({
-        targets: '.footer-wrapper *',
-        opacity: [0, 1],
-        translateX: [20, 0],
-        delay: anime.stagger(200),
-      }, '-=1000')
-
-      .add({
-        targets: '.roundel .circle-container',
-        scale: [.5, 1],
-        opacity: [0, 1],
-      }, '-=1500')
-      .add({
-        targets: '.roundel .circle-white',
+        targets: ".roundel .circle-white",
         scale: [0, 2],
         opacity: [1, 0],
-      }, '-=500')
+      })
       .add({
-        targets: '.roundel .circle-inner',
+        targets: ".roundel .circle-inner",
         scale: [0, 1],
         opacity: [0, 1],
-      }, '-=500')
+      })
       .add({
-        targets: '.roundel .text',
+        targets: ".roundel .text",
         opacity: [0, 1],
         translateX: [100, 0],
         delay: anime.stagger(200),
-      }, '-=500')
+      })
+      ;
   }
 
   function cycleStories() {
@@ -173,6 +190,10 @@ $(document).ready(function () {
   }
 
   function setContent(dataPath) {
+    const brandLogo = $(".brand-logo").attr({
+      src: "./img/BMOHB_T2_White_Tagline.svg",
+    });
+
     const imageArray = [];
     for (let i = 0; i < 10; i++) {
       imageArray.push(i + ".jpg");
@@ -186,7 +207,7 @@ $(document).ready(function () {
     const eventItem = event.target;
     const current = Math.round(eventItem.currentTime * 1000);
     const total = Math.round(eventItem.duration * 1000);
-    if ((total - current) < 500) {
+    if (total - current < 500) {
       eventItem.removeEventListener("timeupdate", videoTimeUpdate);
       $($bumper).fadeOut(500, function () {
         $($bumper).parent().remove();
@@ -197,21 +218,21 @@ $(document).ready(function () {
   }
 
   function screenLayout() {
-    $('body').addClass(screen.config);
+    $("body").addClass(screen.config);
     // $bumper[0].addEventListener("timeupdate", videoTimeUpdate);
   }
 
   function init() {
     $.get(dataURI[0], function () {
-        console.log("local data found")
-      })
+      console.log("local data found");
+    })
       .done(function () {
         setContent(dataURI[0]);
       })
       .catch(function () {
         $.get(dataURI[1], function () {
           setContent(dataURI[1]);
-        })
+        });
       })
       .always(function () {
         screenLayout();
@@ -219,5 +240,4 @@ $(document).ready(function () {
   }
 
   init();
-
 });
