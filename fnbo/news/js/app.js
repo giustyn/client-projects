@@ -6,9 +6,12 @@ $(function () {
     revealerSpeed = parseInt($(":root").css("--revealer-speed"));
 
   const dataURI = {
-    local: "c:\\data\\social\\social.json",
-    server:
-      "https://kitchen.screenfeed.com/social/data/3jzp1h5xsxw684a2r5sk94b7fk.json",
+    local: "c:\\data\\news\\news.json",
+    news: "https://kitchen.screenfeed.com/feed/7s51fskbkrzabmbzhqdtdydjj1.json",
+    celeb:
+      "https://kitchen.screenfeed.com/feed/541t7bgbww0emmrwpgfqtzsddm.json",
+    sports:
+      "https://kitchen.screenfeed.com/feed/3vyb6d30j18tj4a5ep97nx7vbd.json",
   };
 
   let feeds = [],
@@ -70,39 +73,22 @@ $(function () {
   }
 
   function animateTemplate($container, $template, data, current) {
-    const $clone = $template.clone();
+    const $clone = $template
+      .clone()
+      .attr("id", current)
+      .css("z-index", current)
+      .removeClass("hidden");
 
-    let ProfileImageUrl = data.User.ProfileImageUrl,
-      ProfileUserName = data.User.Name,
-      MediaUrl = {
-        Url: "./img/default-icon.svg",
-      };
-
-    if (data.Images === undefined || data.Images.length == 0) {
-      // image array empty or does not exist
-      data.Images.push(MediaUrl);
-      $clone.find(".media video, .media img").attr("src", MediaUrl);
+    if (data.Media === undefined || data.Media.length == 0) {
+      let defaultImg = { Url: userIcon };
+      $clone.find(".media video, .media img").attr("src", defaultImg);
     } else {
-      MediaUrl = data.Images[0].Url;
-      $clone.find(".media video, .media img").attr("src", MediaUrl);
+      $clone.find(".media video, .media img").attr("src", data.Media[0].Url);
     }
 
-    if (
-      data.User.ProfileImageUrl === undefined ||
-      !data.User.ProfileImageUrl === true
-    ) {
-      // use default instagram image & username
-      ProfileImageUrl = userIcon;
-      ProfileUserName = userName;
-    }
+    $clone.find(".message").text(data.Title);
+    $clone.find(".credit").text(data.Media[0].Credit);
 
-    $clone.attr("id", current).css("z-index", current).removeClass("hidden");
-    $clone.find(".socialicon img").attr("src", data.ProviderIcon);
-    $clone.find(".username").text(ProfileUserName);
-    $clone.find(".useraccount").text(data.User.Username);
-    $clone.find(".usericon img").attr("src", ProfileImageUrl);
-    $clone.find(".message").text(data.Content);
-    $clone.find(".published").text(data.DisplayTime);
     $container.append($clone);
 
     animateItem($clone);
@@ -158,7 +144,7 @@ $(function () {
 
   function init() {
     // getJsonData(onTemplateSuccess, onTemplateError, dataURI.local); // get local data, located at c:\data
-    getJsonData(onTemplateSuccess, onTemplateError, dataURI.server); // get server data, via screenfeed.com
+    getJsonData(onTemplateSuccess, onTemplateError, dataURI.sports); // get server data, via screenfeed.com
   }
 
   init();

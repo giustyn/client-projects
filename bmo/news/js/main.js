@@ -1,7 +1,7 @@
 $(document).ready(function () {
   const url = new ExtendedURL(window.location.href),
     timerDuration = 10000,
-    transition = 1,
+    transition = 0,
     screen = [
       {
         config: "standard",
