@@ -1,31 +1,23 @@
-(function () {
+$(function () {
     var url = new ExtendedURL(window.location.href),
-        $bumper = $('#bumper'),
-        $animeDelay = 0,
-        $animeDuration = 15000,
-        $animeSpeed = 750,
-        $animeStagger = 20,
-        $revealerOn = 1,
-        $revealerSpeed = $(':root').css('var(--revealer-speed)'),
-        $revealerDirection = 'revealer--bottom',
-        videoEnabled = url.getSearchParam("bgvideo") || 0,
-        screenConfig = url.getSearchParam("screens") || 1,
-        zipcode = url.getSearchParam("zipcode") || "15219"; // 03801
 
-    let dataURI = [
-        local = "c:\\data\\weather\\weather.json",
-        server = "https://kitchen.screenfeed.com/weather/v2/data/40778ps5v9ke2m2nf22wpqk0sj.json?current=true&interval=Daily&forecasts=5&location=" + zipcode
-    ];
+        videoEnabled = url.getSearchParam('bgvideo') || 1,
+        zipcode = url.getSearchParam('zipcode') || 'M5X 1A1'; // default: 68102
+
+    const dataURI = {
+        "local": "c:\\data\\weather\\weather.json",
+        "server": "https://kitchen.screenfeed.com/weather/v2/data/40778ps5v9ke2m2nf22wpqk0sj.json?current=true&interval=Daily&forecasts=5&location=" + zipcode
+    };
 
     function getOS() {
         var parser = new UAParser();
         var ua = navigator.userAgent;
         var result = parser.getResult();
         var os = result.os.name;
-        console.log(os);
         if (os != "Windows" && os != "Mac OS") {
             videoEnabled = 0;
         }
+        console.log(os);
     }
 
     function dayPartGreeting(target) {
@@ -41,15 +33,20 @@
         $(target).text(phrase);
     }
 
-    function revealer(direction) {
-        let dir = direction || $revealerDirection;
-        let $transition = $('.revealer');
-        if ($revealerOn == 1) {
-            $transition.addClass(dir).show();
-            $transition.addClass('revealer--animate').delay($revealerSpeed * 2).queue(function () {
-                $(this).removeClass('revealer--animate ' + dir).hide().dequeue();
-            });
-        }
+    function revealer() {
+        const $revealerSpeed = parseInt($(':root').css('--revealer-speed')),
+            $revealerStyle = $('body').addClass('anim-effect-2'),
+            $transition = $('.revealer'),
+            mode = [
+                'revealer--left',
+                'revealer--right',
+                'revealer--top',
+                'revealer--bottom'
+            ],
+            shuffle = mode[(Math.random() * mode.length) | 0];
+        $transition.addClass('revealer--animate').addClass(mode[2]).delay($revealerSpeed * 1.5).queue(function () {
+            $(this).removeClass('revealer--animate').removeClass(mode[2]).dequeue();
+        });
     }
 
     function handleWeather(data) {
@@ -57,199 +54,135 @@
         let current = location.WeatherItems[0] || {};
         let forecast = location.WeatherItems.slice(1, 6) || {};
 
-        function cloneDayOfWeek(el, num) {
-            var elem = document.querySelector(el);
+        const cloneDayOfWeek = (el, num) => {
+            var $elem = $(el);
             for (var i = 1; i <= num; i++) {
-                var clone = elem.cloneNode(true);
-                clone.id = 'day' + (num - i + 1);
-                elem.after(clone);
+                var clone = $elem.clone();
+                clone.attr('id', 'day' + (num - i + 1));
+                $('.forecast').append(clone);
             }
-            elem.remove();
+            $elem.remove();
         }
 
-        function setForecast() {
-            cloneDayOfWeek('#template', 5);
-            $(".forecast .day").each(function (i, el) {
+        const setForecast = () => {
+            $(".day").each(function (i, el) {
                 var $el = $(el);
                 $el.find(".icon").attr("src", "./img/icons/" + getIcon(forecast[i].ConditionCode));
                 $el.find(".dayofweek").text(moment(forecast[i].DateTime).format('ddd'));
                 $el.find(".description").text(forecast[i].ShortDescription);
-                $el.find(".htemp").text(forecast[i].HighTempF);
-                $el.find(".ltemp").text(forecast[i].LowTempF);
-                $el.find(".ltemp").text(forecast[i].LowTempF);
+                $el.find(".htemp").text(forecast[i].HighTempF + "°");
+                $el.find(".ltemp").text(forecast[i].LowTempF + "°");
                 $el.find("video").attr("poster", "./img/" + loadMedia(forecast[i].ConditionCode) + ".jpg");
-                if (videoEnabled !== 0) {
-                    $el.find("video").attr("src", "./video/" + loadMedia(forecast[i].ConditionCode) + ".mp4");
-                }
+                if (videoEnabled) $el.find("video").attr("src", "./video/" + loadMedia(forecast[i].ConditionCode) + ".mp4");
             });
         }
 
-        function setCurrent() {
-            $('.day:first-child .dayofweek').replaceWith('<div class="dayofweek">TODAY</div>');
+        const setCurrent = () => {
+            $('.day:first-child .dayofweek').replaceWith('<span class="dayofweek">TODAY</span>');
             $('.location').text(location.City);
-            $('.temperature').text(current.CurrentTempF);
+            $('.temperature').text(current.CurrentTempF + "°");
             $('.description').text(current.Description);
             $('.wind').text("Wind: " + Number(current.WindSpeedMph) + "mph");
             $('.humidity').text("Humidity: " + Number(current.Humidity) + "%");
             $(".header .icon").attr("src", "./img/icons/" + getIcon(forecast[0].ConditionCode));
         }
 
-        function mainBgVideo() {
+        const mainBgVideo = () => {
             $('.background video').attr("poster", "./img/" + loadMedia(forecast[0].ConditionCode) + ".jpg");
-            if (videoEnabled !== 0) {
-                $('.background video').attr("src", "./video/" + loadMedia(forecast[0].ConditionCode) + ".mp4");
-            }
+            // if (videoEnabled) $('.primary.background video').attr("src", "./video/" + loadMedia(forecast[0].ConditionCode) + ".mp4");
         }
 
+        cloneDayOfWeek('#template', forecast.length);
         mainBgVideo();
         setForecast();
         setCurrent();
     }
 
-    function animateIntro() {
-        let $date = $('.date').text(moment().format('dddd, MMMM Do'));
-        let animation = anime.timeline({
-                targets: '#intro .date',
-                easing: 'easeInOutExpo',
-            })
-            .add({
-                scale: [0, 1],
-                opacity: [0, 1],
-                translateX: ['-100%', '0%'],
-                duration: ($animeSpeed * 4),
-                delay: 500,
-                endDelay: 1000
-            })
-            .add({
-                opacity: [1, 0],
-                scale: [1, 0],
-                translateX: ['0%', '100%'],
-                duration: $animeSpeed,
-                update: function (anim) {
-                    $date.css('filter', 'blur(' + 10 * anim.progress / 100 + 'px)')
-                }
-            });
-    }
-
     function animateWeather() {
-        anime.timeline({
+        var elements = document.querySelectorAll('.day');
+
+        const $animeSpeed = 750,
+            $animeDelay = 50,
+            animation = anime.timeline({
                 autoplay: true,
                 loop: false,
                 easing: 'easeInOutQuad',
-                // easing: 'easeInOutSine',
                 duration: $animeSpeed,
             })
-            /* main content animation-in */
             .add({
                 targets: '.container',
+                duration: 1000,
                 opacity: [0, 1],
-                changeBegin: function (anim) {
-                    revealer();
-                }
-            }, '-=' + ($animeSpeed) + '')
+            }, 0)
             .add({
-                targets: '.header, .header .col *',
-                delay: anime.stagger($animeStagger, {
-                    direction: 'normal',
-                    start: $animeDelay
-                }),
-                translateY: ['-100%', '0%'],
+                targets: '.header',
+                translateY: [-500, 0],
                 opacity: [0, 1],
-            }, '-=' + ($animeDelay) + '')
+            }, 0)
             .add({
-                targets: '.forecast *',
-                delay: anime.stagger($animeStagger, {
-                    direction: 'normal',
-                    start: $animeDelay
-                }),
-                translateY: ['-10%', '0%'],
+                targets: '.header .wrap *',
+                translateY: [150, 0],
+                delay: anime.stagger($animeDelay),
                 opacity: [0, 1],
-                endDelay: $animeDuration
-            }, '-=' + ($animeSpeed) + '')
-        /* main content animation-out */
-        /*   .add({
-              targets: '.forecast *',
-              delay: anime.stagger($animeStagger, {
-                  direction: 'reverse',
-                  start: $animeDelay
-              }),
-              translateX: ['0%', '-50%'],
-              opacity: [1, 0],
-          }, '-=' + ($animeDelay) + '')
-          .add({
-              targets: '.header, .header .col *',
-              delay: anime.stagger($animeStagger, {
-                  direction: 'reverse',
-                  start: 0
-              }),
-              translateX: ['0%', '-100%'],
-              opacity: [1, 0],
-          }, '-=' + ($animeSpeed) + '')
-          .add({
-              targets: '.container',
-              opacity: 0,
-              changeBegin: function (anim) {
-                  revealer();
-              }
-          }, '-=' + ($animeSpeed * 1.5) + ''); */
+            }, 500)
+            .add({
+                targets: '.day *',
+                delay: anime.stagger($animeDelay),
+                translateY: [-200, 0],
+                opacity: [0, 1]
+            }, 500)
     }
 
-    function videoEventHandler(data) {
-        function handler(event) {
-            const eventItem = event.target;
-            const current = Math.round(eventItem.currentTime * 1000);
-            const total = Math.round(eventItem.duration * 1000);
-            if ((total - current) < 500) {
-                eventItem.removeEventListener("timeupdate", handler);
-                handleWeather(data);
-                animateWeather();
-                $bumper.parent().fadeOut(500, function () {
-                    $bumper.remove();
-                });
+    function onTemplateError(result) {
+        console.warn("could not get data")
+    }
+
+    function onTemplateSuccess(result) {
+
+
+        handleWeather(result);
+        animateWeather();
+    }
+
+    function getJsonData(onSuccess, onError, data) {
+        return $.ajax({
+            method: "GET",
+            url: data,
+            dataType: "json",
+            success: function (result) {
+                // console.log(result)
+                onSuccess(result)
+            },
+            error: function (result) {
+                // console.error(result);
+                onError(result)
             }
-        }
-        return handler;
+        });
     }
 
-    function videoEventListener(data) {
-        var handler = videoEventHandler(data);
-        $bumper[0].addEventListener("timeupdate", handler);
-    }
+    function getPlayerTagId(onSuccess, onError) {
+        var tag = window.parent.PlayerSDK.getTagByPrefix("Z.MPS.PNC.");
 
-    function setLayout() {
-        console.log("screen-config: " + screenConfig)
-        if (screenConfig == 1) {
-            $('section').addClass('single-screen')
-            $bumper.attr("src", "./video/PNC_Syn_Weather.mp4")
-        } else if (screenConfig == 2) {
-            $('section').addClass('dual-screen')
-            $bumper.attr("src", "./video/PNC_Syn_Weather.mp4")
-        };
+        return $.ajax({
+            method: "GET",
+            url: "https://photos-dev.adrenalineamp.com/public-api/mps/" + tag.Name + "/staff?a=e85711db-6395-4811-94c4-93ec1e83f4b3",
+            dataType: 'json',
+            success: function (result) {
+                console.log(result)
+                onSuccess(result);
+            },
+            error: function (result) {
+                console.error(result);
+                onError(result);
+            }
+        });
     }
 
     function init() {
-        getWeather(dataURI[0])
-            .done(function (response) {
-                if (response.status !== 400) {
-                    setLayout();
-                    animateIntro();
-                    videoEventListener(response);
-                    console.log("data source: local");
-                    console.log(response.Locations[0]);
-                } else {
-                    return getWeather(dataURI[1])
-                        .done(function (response) {
-                            setLayout();
-                            animateIntro();
-                            videoEventListener(response);
-                            console.log("data source: server");
-                            console.log(response.Locations[0]);
-                        });
-                }
-            });
+        getOS();
+        getJsonData(onTemplateSuccess, onTemplateError, dataURI.local); // get local data, located at c:\data
+        getJsonData(onTemplateSuccess, onTemplateError, dataURI.server); // get server data, via screenfeed.com
     }
-    
-    getOS();
-    init();
 
-})();
+    init();
+});
