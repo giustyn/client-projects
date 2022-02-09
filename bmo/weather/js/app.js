@@ -2,7 +2,7 @@ $(function () {
     var url = new ExtendedURL(window.location.href),
 
         videoEnabled = url.getSearchParam('bgvideo') || 1,
-        zipcode = url.getSearchParam('zipcode') || 'M5X 1A1'; // default: 68102
+        zipcode = url.getSearchParam('zipcode') || '60606'; // default: 60606
 
     const dataURI = {
         "local": "c:\\data\\weather\\weather.json",
