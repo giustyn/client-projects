@@ -8,7 +8,7 @@ $(function () {
   const dataURI = {
     local: "c:\\data\\social\\social.json",
     server:
-      "http://kitchen.screenfeed.com/social/data/463y2bb8p106e4vm6qc65j0bjb.json",
+      "https://kitchen.screenfeed.com/social/data/463y2bb8p106e4vm6qc65j0bjb.json",
   };
 
   let feeds = [],
