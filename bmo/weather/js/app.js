@@ -1,8 +1,5 @@
 $(function () {
   const url = new ExtendedURL(window.location.href),
-    $animeSpeed = 750,
-    revealerSpeed = parseInt($(":root").css("--revealer-speed")),
-    videoEnabled = url.getSearchParam("video") || true,
     zipcode = url.getSearchParam("zipcode") || "60606",
     dataURI = {
       local: "c:\\data\\weather\\weather.json",
@@ -11,7 +8,7 @@ $(function () {
         zipcode,
     };
 
-  function revealer() {
+  function revealer(speed) {
     const $transition = $(".revealer"),
       mode = [
         "revealer--left",
@@ -23,7 +20,7 @@ $(function () {
     $transition
       .addClass("revealer--animate")
       .addClass(shuffle)
-      .delay(revealerSpeed * 1.5)
+      .delay(speed * 1.5)
       .queue(function () {
         $(this).removeClass("revealer--animate").removeClass(shuffle).dequeue();
       });
@@ -33,6 +30,7 @@ $(function () {
     let location = data.Locations[0] || {};
     let current = location.WeatherItems[0] || {};
     let forecast = location.WeatherItems.slice(1, 6) || {};
+    let videoEnabled = url.getSearchParam("video") || 0;
 
     const cloneDayOfWeek = (el, num) => {
       var $elem = $(el);
@@ -60,29 +58,29 @@ $(function () {
             "poster",
             "./img/" + loadMedia(forecast[i].ConditionCode) + ".jpg"
           );
-        if (videoEnabled)
+        if (videoEnabled) {
           $el
             .find("video")
             .attr(
               "src",
               "./video/" + loadMedia(forecast[i].ConditionCode) + ".mp4"
             );
+        }
       });
     };
 
     const setCurrent = () => {
       $(".day:first-child .dayofweek").replaceWith(
-        '<span class="dayofweek">TODAY</span>'
+        '<span class="dayofweek">Today</span>'
       );
       $(".location").text(location.City);
       $(".temperature").text(current.CurrentTempF + "°");
       $(".description").text(current.Description);
       $(".wind").text("Wind: " + Number(current.WindSpeedMph) + "mph");
       $(".humidity").text("Humidity: " + Number(current.Humidity) + "%");
-      $(".header .icon").attr(
-        "src",
-        "./img/icons/" + getIcon(forecast[0].ConditionCode)
-      );
+      $(".header .icon").attr({
+        src: "./img/icons/" + getIcon(forecast[0].ConditionCode),
+      });
     };
 
     const mainBgVideo = () => {
@@ -104,30 +102,37 @@ $(function () {
   }
 
   function animateWeather() {
-    var header = document.querySelectorAll(".header, .header .wrap *");
-    var forecast = document.querySelectorAll(".forecast .day *");
+    let header = document.querySelectorAll(".header, .header .wrap *"),
+      forecast = document.querySelectorAll(".forecast .day *"),
+      $revealerSpeed = parseInt($(":root").css("--revealer-speed")) || 1500,
+      $animeSpeed = 750;
+
     let animation = anime
       .timeline({
         autoplay: true,
         loop: false,
         easing: "cubicBezier(0.645, 0.045, 0.355, 1.000)",
         duration: $animeSpeed,
-        begin: () => revealer(),
+      })
+      .add({
+        targets: ".container",
+        delay: $revealerSpeed / 2,
+        opacity: [0, 1],
+        begin: () => revealer($revealerSpeed),
       })
       .add({
         targets: header,
-        delay: anime.stagger(150),
+        delay: anime.stagger(100),
         translateY: [-100, 0],
         opacity: [0, 1],
-      },0)
-
+      })
       .add({
         targets: forecast,
-        delay: anime.stagger(20),
-        translateY: [100, 0],
-        // rotateX: [180, 0],
+        delay: anime.stagger(100),
+        translateY: [-200, 0],
+        rotateX: [90, 0],
         opacity: [0, 1],
-      },1000);
+      });
   }
 
   function onTemplateError(result) {
@@ -139,7 +144,7 @@ $(function () {
     animateWeather();
   }
 
-  function getJsonData(onSuccess, onError, data) {
+  function getData(onSuccess, onError, data) {
     return $.ajax({
       method: "GET",
       url: data,
@@ -178,8 +183,8 @@ $(function () {
 
   function init() {
     getOS();
-    // getJsonData(onTemplateSuccess, onTemplateError, dataURI.local); // get local data, located at c:\data
-    getJsonData(onTemplateSuccess, onTemplateError, dataURI.server); // get server data, via screenfeed.com
+    // getData(onTemplateSuccess, onTemplateError, dataURI.local); // get local data, located at c:\data
+    getData(onTemplateSuccess, onTemplateError, dataURI.server); // get server data, via screenfeed.com
   }
 
   init();
