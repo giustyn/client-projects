@@ -15,58 +15,67 @@ $(function () {
     current = 0;
 
   function revealer() {
-    const $transition = $(".revealer"),
-      mode = [
-        "revealer--left",
-        "revealer--right",
-        "revealer--top",
-        "revealer--bottom",
-      ],
-      shuffle = mode[(Math.random() * mode.length) | 0];
-    $transition
-      .addClass("revealer--animate")
-      .addClass(shuffle)
-      .delay(revealerSpeed * 1.5)
-      .queue(function () {
-        $(this).removeClass("revealer--animate").removeClass(shuffle).dequeue();
-      });
+    const revealerEnabled = true;
+    if (revealerEnabled) {
+      const $transition = $(".revealer"),
+        mode = [
+          "revealer--left",
+          "revealer--right",
+          "revealer--top",
+          "revealer--bottom",
+        ],
+        shuffle = mode[(Math.random() * mode.length) | 0];
+      $transition
+        .addClass("revealer--animate")
+        .addClass(mode[1])
+        .delay(revealerSpeed * 1.5)
+        .queue(function () {
+          $(this)
+            .removeClass("revealer--animate")
+            .removeClass(mode[1])
+            .dequeue();
+        });
+    }
   }
 
-  function animateItem($template) {
-    var item = $template[0];
-    var animateIn = anime
-      .timeline({
-        // easing: 'easeInOutQuad',
-        easing: "easeInOutExpo",
-        easing: "cubicBezier(0.645, 0.045, 0.355, 1.000)",
-        duration: animeDuration,
-        autoplay: true,
-        loop: false,
-      })
-      .add({
-        begin: function () {
-          revealer();
+  function animateItem(index) {
+    let article = document.getElementById(index),
+      content = article.querySelectorAll(".message"),
+      animation = anime
+        .timeline({
+          easing: "cubicBezier(0.645, 0.045, 0.355, 1.000)",
+          duration: animeDuration,
+          autoplay: true,
+          loop: false,
+        })
+        .add({
+          begin: () => revealer(),
+        })
+        .add({
+          begin: () => {
+            resizeText({
+              elements: content,
+            });
 
-          resizeText({
-            elements: document.querySelectorAll(".message"),
-          });
-
-          isolateTag({
-            element: document.querySelectorAll(".message"),
-          });
-        },
-      })
-      .add({
-        targets: item,
-        opacity: [0, 1],
-        // translateX: [100, 0],
-        endDelay: timerDuration - animeDuration * 2,
-      })
-      .add({
-        targets: item,
-        opacity: [1, 0],
-        // translateX: [0. - 100],
-      });
+            isolateTag({
+              element: content,
+            });
+          },
+        })
+        .add(
+          {
+            targets: article,
+            // opacity: [0, 1],
+            translateX: ["100%", "0%"],
+            endDelay: timerDuration - animeDuration,
+          },
+          "-=" + animeDuration
+        )
+        .add({
+          targets: article,
+          // opacity: [1, 0],
+          translateX: ["0%", "-100%"],
+        });
   }
 
   function animateTemplate($container, $template, data, current) {
@@ -74,23 +83,13 @@ $(function () {
 
     let ProfileImageUrl = data.User.ProfileImageUrl,
       ProfileUserName = data.User.Name,
-      MediaUrl = {
-        Url: "./img/default-icon.svg",
-      };
+      MediaUrl = {};
 
-    if (data.Images === undefined || data.Images.length == 0) {
-      // image array empty or does not exist
-      data.Images.push(MediaUrl);
-      $clone.find(".media video, .media img").attr("src", MediaUrl);
-    } else {
-      MediaUrl = data.Images[0].Url;
-      $clone.find(".media video, .media img").attr("src", MediaUrl);
-    }
+    if (data.Images.length == 0) MediaUrl = userIcon;
+    if (data.Images.length == 1) MediaUrl = data.Images[0].Url;
+    $clone.find(".media video, .media img").attr("src", MediaUrl);
 
-    if (
-      data.User.ProfileImageUrl === undefined ||
-      !data.User.ProfileImageUrl === true
-    ) {
+    if (!data.User.ProfileImageUrl) {
       // use default instagram image & username
       ProfileImageUrl = userIcon;
       ProfileUserName = userName;
@@ -105,7 +104,7 @@ $(function () {
     $clone.find(".published").text(data.DisplayTime);
     $container.append($clone);
 
-    animateItem($clone);
+    animateItem(current);
 
     setTimeout(function () {
       $clone.remove();
