@@ -13,7 +13,7 @@ $(document).ready(function () {
 
   let $date = $(".date").text(moment().format("dddd, MMMM Do")),
     folderName =
-      url.getSearchParam("category") || ["news", "sports", "celeb"][1],
+      url.getSearchParam("category") || ["news", "sports", "celeb"][0],
     loadedStories = [],
     currentStory = 0,
     dataURI = [
@@ -181,8 +181,7 @@ $(document).ready(function () {
         opacity: [0, 1],
         translateX: [100, 0],
         delay: anime.stagger(200),
-      })
-      ;
+      });
   }
 
   function cycleStories() {
