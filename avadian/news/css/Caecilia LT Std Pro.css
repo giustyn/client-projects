@@ -1,0 +1,80 @@
+@font-face {
+    font-family: 'Caecilia LT Std';
+    src: url('../fonts/CaeciliaLTStd-Light.woff2') format('woff2');
+    font-weight: 300;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Caecilia LT Std';
+    src: url('../fonts/CaeciliaLTStd-Roman.woff2') format('woff2');
+    font-weight: normal;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Caecilia LT Std';
+    src: url('../fonts/CaeciliaLTStd-Italic.woff2') format('woff2');
+    font-weight: normal;
+    font-style: italic;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Caecilia LT Std';
+    src: url('../fonts/CaeciliaLTStd-LightItalic.woff2') format('woff2');
+    font-weight: 300;
+    font-style: italic;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Caecilia LT Std';
+    src: url('../fonts/CaeciliaLTStd-Heavy.woff2') format('woff2');
+    font-weight: 900;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Caecilia LT Std';
+    src: url('../fonts/CaeciliaLTStd-HeavyItalic.woff2') format('woff2');
+    font-weight: 900;
+    font-style: italic;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Caecilia LT Std';
+    src: url('../fonts/CaeciliaLTStd-BoldItalic.woff2') format('woff2');
+    font-weight: bold;
+    font-style: italic;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Caecilia LT Std';
+    src: url('../fonts/CaeciliaLTStd-Bold.woff2') format('woff2');
+    font-weight: bold;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Caecilia LT Pro 55 Roman';
+    src: url('../fonts/CaeciliaLTPro-86HeavyItalic.woff2') format('woff2');
+    font-weight: 800;
+    font-style: italic;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Caecilia LT Pro 55 Roman';
+    src: url('../fonts/CaeciliaLTPro-85Heavy.woff2') format('woff2');
+    font-weight: 800;
+    font-style: normal;
+    font-display: swap;
+}
+
