@@ -115,7 +115,7 @@ $(function () {
   }
 
   function init() {
-    getArticles(dataURI.server, indexes)
+    getArticles(dataURI.local, indexes)
     .done((response) => {
       onTemplateSuccess(response);
     })

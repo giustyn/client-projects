@@ -184,7 +184,7 @@ $(function () {
     function init() {
         getOS();
         getJsonData(onTemplateSuccess, onTemplateError, dataURI.local); // get local data, located at c:\data
-        getJsonData(onTemplateSuccess, onTemplateError, dataURI.server); // get server data, via screenfeed.com
+        // getJsonData(onTemplateSuccess, onTemplateError, dataURI.server); // get server data, via screenfeed.com
     }
 
     init();
