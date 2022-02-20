@@ -47,11 +47,12 @@
           const filePath = file.path;
           const fileName = filePath.replace('.md', '').toLowerCase().replace(/-/g, '');
           const isNotIgnore = filePath !== '.gitignore';
+          const isNotSelf = filePath !== 'index.html';
           const isNotStyle = filePath !== 'style.css';
           const isNotWorker = filePath !== 'serviceworker.js';
           const isInFilter = filter.split(' ')
             .every((token) => fileName.indexOf(token.toLowerCase()) !== -1)
-          return isNotWorker && isNotStyle && isNotIgnore && isInFilter;
+          return isNotSelf && isNotWorker && isNotStyle && isNotIgnore && isInFilter;
         }
       }
       // Match by closest to start of word then earliest word
