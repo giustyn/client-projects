@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<root>
+  <id>58d24e7a-489b-4229-82a9-88ab532ff987</id>
+  <title>Checking Accounts</title>
+  <effective-date>2021-10-01 00:00:00 EDT</effective-date>
+  <products>
+    <id>47bbf0f6-214f-4d65-9329-f0abdbb8368f</id>
+    <name>Checking Plus</name>
+    <rates>
+      <label>Minimum Balance</label>
+      <value>None</value>
+    </rates>
+    <rates>
+      <label>Prospective Dividend Rate</label>
+      <value>0.05%</value>
+    </rates>
+    <rates>
+      <label>Annual Percentage Yield (APY)</label>
+      <value>0.05%</value>
+    </rates>
+  </products>
+  <products>
+    <id>b652c197-0757-43b0-8495-b3a293218ffc</id>
+    <name>Checking</name>
+    <rates>
+      <label>Minimum Balance</label>
+      <value>None</value>
+    </rates>
+    <rates>
+      <label>Prospective Dividend Rate</label>
+      <value>0.05%</value>
+    </rates>
+    <rates>
+      <label>Annual Percentage Yield (APY)</label>
+      <value>0.05%</value>
+    </rates>
+  </products>
+  <products>
+    <id>578656b2-99bd-48d0-ade0-5122cbcfaee5</id>
+    <name>Health Savings Account</name>
+    <rates>
+      <label>Minimum Balance</label>
+      <value>None</value>
+    </rates>
+    <rates>
+      <label>Prospective Dividend Rate</label>
+      <value>0.25%</value>
+    </rates>
+    <rates>
+      <label>Annual Percentage Yield (APY)</label>
+      <value>0.25%</value>
+    </rates>
+  </products>
+</root>
