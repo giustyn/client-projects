@@ -1,1 +1,4 @@
 .DS_Store
+node_modules/
+# hughes/
+# pnc/pnc-staff-template/
