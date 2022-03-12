@@ -1,15 +1,15 @@
 $(function () {
-  const revealerSpeed = parseInt($(":root").css("--revealer-speed")),
-    animeDuration = revealerSpeed / 2,
+  const $date = $(".date").text(moment().format("dddd, MMMM Do")),
+    $revealerSpeed = parseInt($(":root").css("--revealer-speed")),
+    $animeDuration = $revealerSpeed / 2,
     timerDuration = 10000,
     indexes = getRandomIndexes(10),
+    displayType = ["standard", "videowall"][0],
     category = ["news", "celeb", "sports"][0],
     dataURI = {
       local: "c:\\data\\" + category + "\\",
-      server:
-        "https://retail.adrenalineamp.com/rss/Hnews/" + category + "/1920/",
-    },
-    displayType = ["standard", "videowall"][0];
+      server: "https://retail.adrenalineamp.com/rss/Xnews/" + category + "/",
+    };
 
   let feeds = [],
     current = 0;
@@ -26,55 +26,50 @@ $(function () {
     $transition
       .addClass("revealer--animate")
       .addClass(mode[1])
-      .delay(revealerSpeed * 1.5)
+      .delay($revealerSpeed * 1.5)
       .queue(function () {
         $(this).removeClass("revealer--animate").removeClass(mode[1]).dequeue();
       });
   }
 
   function animateItem(index) {
-    let article = document.getElementById(index),
-      container = article.querySelectorAll(".story-container");
-    content = article.querySelectorAll(".message");
+    let container = document.querySelector("main"),
+      article = document.getElementById(index),
+      story = article.querySelectorAll(".story-container"),
+      headline = article.querySelectorAll(".headline");
 
     resizeText({
-      elements: content,
+      elements: headline,
       minSize: 2,
-      maxSize: 2,
+      maxSize: 2.4,
       step: 0.1,
       unit: "em",
     });
 
-    var animateIn = anime
+    var animation = anime
       .timeline({
+        begin: () => revealer(),
+        targets: article,
         autoplay: true,
         loop: false,
         easing: "cubicBezier(0.645, 0.045, 0.355, 1.000)",
-        duration: animeDuration,
+        duration: $animeDuration,
       })
       .add({
-        begin: () => revealer(),
-        delay: animeDuration,
-        targets: article.parentElement,
-      })
-      .add({
-        targets: article,
         opacity: [0, 1],
-        translateX: ["10%", "0%"],
-        duration: animeDuration,
+        delay: $animeDuration,
+        translateX: ["25%", "0%"],
       })
       .add({
-        targets: [container, content],
+        targets: [story, headline],
         opacity: [0, 1],
-        translateY: ["100%", "0%"],
-        delay: anime.stagger(animeDuration),
-        // endDelay: timerDuration - animeDuration * 2,
+        translateY: ["50%", "0%"],
+        delay: anime.stagger($animeDuration / 2),
       })
       .add({
-        targets: article,
-        delay: timerDuration/2, 
+        delay: timerDuration - $animeDuration * 3,
         opacity: [1, 0],
-        translateY: ["0%", "5%"],
+        translateX: ["0%", "-25%"],
       });
   }
 
@@ -86,30 +81,28 @@ $(function () {
       .removeClass("hidden")
       .addClass("active");
 
-    $clone.find(".media-container img").attr("src", data.image.src);
-    $clone.find(".message").text(data.story);
     if (!data.story) $clone.find(".story-container").addClass("hidden");
-
+    $clone.find(".media-container img").attr("src", data.image.src);
+    $clone.find(".headline").text(data.story);
     $container.append($clone);
-
     animateItem(current);
 
     setTimeout(function () {
       $clone.remove();
-    }, timerDuration + revealerSpeed);
+    }, timerDuration + $revealerSpeed);
   }
 
   function iterateAnimations() {
     const $template = $("article");
     const $container = $("main");
 
-    $container
-      .removeClass("hidden")
-      .addClass("fade")
-      .delay(revealerSpeed * 1.5)
-      .queue(function () {
-        $(this).removeClass("fade").dequeue();
-      });
+    anime({
+      begin: () => revealer(),
+      easing: "easeInExpo",
+      targets: $container[0],
+      opacity: [0, 1],
+      duration: $revealerSpeed
+    });
 
     animateTemplate($container, $template, feeds[current]);
     current++;
@@ -133,12 +126,13 @@ $(function () {
   }
 
   function init() {
-    getArticles(dataURI.server, indexes).done((response) => {
-      onTemplateSuccess(response);
-    });
-    // .fail((response) => {
-    //   onTemplateError(response);
-    // });
+    getArticles(dataURI.server, indexes)
+      .done((response) => {
+        onTemplateSuccess(response);
+      })
+      .fail((response) => {
+        onTemplateError(response);
+      });
   }
 
   init();
