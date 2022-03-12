@@ -33,7 +33,7 @@ $(function () {
     let location = data.Locations[0] || {};
     let current = location.WeatherItems[0] || {};
     let forecast = location.WeatherItems.slice(1, 6) || {};
-    let videoEnabled = url.getSearchParam("video") || 0;
+    let videoEnabled = url.getSearchParam("video") || 1;
 
     const cloneDayOfWeek = (el, num) => {
       var $elem = $(el);
@@ -122,21 +122,21 @@ $(function () {
         delay: $revealerSpeed / 2,
         opacity: [0, 1],
         begin: () => {
-          revealer($revealerSpeed);
+          // revealer($revealerSpeed);
           animateContent();
         },
       })
       .add({
         targets: header,
-        delay: anime.stagger(100),
+        delay: anime.stagger(50),
         translateY: [-100, 0],
         opacity: [0, 1],
       })
       .add({
         targets: forecast,
-        delay: anime.stagger(100),
-        translateY: [-200, 0],
-        rotateX: [90, 0],
+        delay: anime.stagger(20),
+        translateY: [-10, 0],
+        // rotateX: [90, 0],
         opacity: [0, 1],
       });
   }
