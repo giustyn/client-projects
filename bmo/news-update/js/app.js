@@ -3,18 +3,19 @@ $(function () {
     $revealerSpeed = parseInt($(":root").css("--revealer-speed")),
     $animeDuration = $revealerSpeed / 2,
     timerDuration = 10000,
-    indexes = getRandomIndexes(10),
-    displayType = ["standard", "videowall"][0],
-    category = ["news", "celeb", "sports"][0],
-    dataURI = {
-      local: "c:\\data\\" + category + "\\",
-      server: "https://retail.adrenalineamp.com/rss/Xnews/" + category + "/",
-    };
+    revealerEnabled = 1,
+    screenLayout = [{ config: "standard" }, { config: "videowall" }][0],
+    feedCategory = ["news", "celeb", "sports"][2],
+    devPath =
+      "https://retail.adrenalineamp.com/rss/Hnews/" + feedCategory + "/",
+    localPath = "c:\\data\\" + feedCategory + "\\";
 
-  let feeds = [],
-    current = 0;
+  let dataURI = localPath,
+    current = 0,
+    feeds = [];
 
   function revealer() {
+    if (!revealerEnabled) return;
     const $transition = $(".revealer"),
       mode = [
         "revealer--left",
@@ -26,50 +27,46 @@ $(function () {
     $transition
       .addClass("revealer--animate")
       .addClass(mode[1])
-      .delay($revealerSpeed * 1.5)
+      .delay($revealerSpeed + $animeDuration)
       .queue(function () {
         $(this).removeClass("revealer--animate").removeClass(mode[1]).dequeue();
       });
   }
 
   function animateItem(index) {
-    let container = document.querySelector("main"),
-      article = document.getElementById(index),
+    let article = document.getElementById(index),
+      media = article.querySelectorAll(".media-container"),
       story = article.querySelectorAll(".story-container"),
       headline = article.querySelectorAll(".headline");
 
     resizeText({
       elements: headline,
       minSize: 2,
-      maxSize: 2.4,
+      maxSize: 2.5,
       step: 0.1,
       unit: "em",
     });
 
     var animation = anime
       .timeline({
-        begin: () => revealer(),
-        targets: article,
         autoplay: true,
         loop: false,
         easing: "cubicBezier(0.645, 0.045, 0.355, 1.000)",
         duration: $animeDuration,
-      })
-      .add({
-        opacity: [0, 1],
         delay: $animeDuration,
-        translateX: ["25%", "0%"],
+        begin: () => revealer(),
+      })
+
+      .add({
+        targets: media,
+        opacity: [0, 1],
+        // translateY: ["25%", "0%"],
       })
       .add({
         targets: [story, headline],
         opacity: [0, 1],
-        translateY: ["50%", "0%"],
-        delay: anime.stagger($animeDuration / 2),
-      })
-      .add({
-        delay: timerDuration - $animeDuration * 3,
-        opacity: [1, 0],
-        translateX: ["0%", "-25%"],
+        translateY: ["25%", "0%"],
+        delay: anime.stagger($animeDuration / 2, { direction: "normal" }),
       });
   }
 
@@ -87,7 +84,7 @@ $(function () {
     $container.append($clone);
     animateItem(current);
 
-    setTimeout(function () {
+    setTimeout(() => {
       $clone.remove();
     }, timerDuration + $revealerSpeed);
   }
@@ -96,17 +93,19 @@ $(function () {
     const $template = $("article");
     const $container = $("main");
 
-    anime({
-      begin: () => revealer(),
-      easing: "easeInExpo",
+    $container.attr({ id: screenLayout.config });
+
+    let intro = anime({
       targets: $container[0],
-      opacity: [0, 1],
-      duration: $revealerSpeed
+      easing: "easeInExpo",
+      // delay: $animeDuration,
+      duration: $revealerSpeed,
+      opacity: 1,
     });
 
     animateTemplate($container, $template, feeds[current]);
     current++;
-    setInterval(function () {
+    setInterval(() => {
       animateTemplate($container, $template, feeds[current]);
       current = (current + 1) % feeds.length;
     }, timerDuration);
@@ -126,13 +125,13 @@ $(function () {
   }
 
   function init() {
-    getArticles(dataURI.server, indexes)
-      .done((response) => {
-        onTemplateSuccess(response);
-      })
-      .fail((response) => {
+    let indexes = getRandomIndexes(10);
+    getArticles(dataURI, indexes).done((response) => {
+      onTemplateSuccess(response);
+    });
+    /* .fail((response) => {
         onTemplateError(response);
-      });
+      }); */
   }
 
   init();
