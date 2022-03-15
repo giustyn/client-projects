@@ -98,7 +98,6 @@ $(function () {
     let intro = anime({
       targets: $container[0],
       easing: "easeInExpo",
-      // delay: $animeDuration,
       duration: $revealerSpeed,
       opacity: 1,
     });
