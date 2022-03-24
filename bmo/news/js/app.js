@@ -4,14 +4,14 @@ $(function () {
     $animeDuration = $revealerSpeed / 2,
     timerDuration = 10000,
     revealerEnabled = 1,
-    screenLayout = ["standard", "videowall"][1],
+    screenLayout = ["standard", "videowall"][0],
     feedCategory = ["news", "celeb", "sports"][0],
     devPath =
       "https://retail.adrenalineamp.com/rss/Xnews/" + feedCategory + "/",
     localPath = "c:\\data\\" + feedCategory + "\\";
 
-  // let dataURI = devPath,
-  let dataURI = localPath,
+  let dataURI = devPath,
+  // let dataURI = localPath,
     current = 0,
     feeds = [];
 
