@@ -1,17 +1,20 @@
 $(function () {
-  const $date = $(".date").text(moment().format("dddd, MMMM Do")),
-    $revealerSpeed = parseInt($(":root").css("--revealer-speed")),
+  const url = new ExtendedURL(window.location.href),
+    $date = $(".date").text(moment().format("dddd, MMMM Do")),
+    revealerEnabled = parseInt(url.getSearchParam("reveal")) || 1,
+    $revealerSpeed = parseInt($(":root").css("--revealer-speed")) || 1500,
     $animeDuration = $revealerSpeed / 2,
     timerDuration = 10000,
-    revealerEnabled = 1,
-    screenLayout = ["standard", "videowall"][0],
+    screenLayout = ["standard", "videowall"][
+      parseInt(url.getSearchParam("layout")) || 0
+    ],
     feedCategory = ["news", "celeb", "sports"][0],
     devPath =
       "https://retail.adrenalineamp.com/rss/Xnews/" + feedCategory + "/",
     localPath = "c:\\data\\" + feedCategory + "\\";
 
   let dataURI = devPath,
-  // let dataURI = localPath,
+    // let dataURI = localPath,
     current = 0,
     feeds = [];
 
