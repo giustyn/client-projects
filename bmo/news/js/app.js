@@ -10,7 +10,7 @@ $(function () {
     ],
     feedCategory = ["news", "celeb", "sports"][0],
     devPath =
-      "https://retail.adrenalineamp.com/rss/Xnews/" + feedCategory + "/",
+      "https://retail.adrenalineamp.com/rss/Hnews/" + feedCategory + "/",
     localPath = "c:\\data\\" + feedCategory + "\\";
 
   let dataURI = devPath,

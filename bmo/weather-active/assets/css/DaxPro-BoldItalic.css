@@ -1,0 +1,7 @@
+@font-face {
+	font-family: 'DaxPro-BoldItalic';
+	src: url(../../assets/fonts/DaxPro-BoldItalic.woff2) format('woff2'),
+	url(../../assets/fonts/DaxPro-BoldItalic.woff) format('woff');
+	font-weight: normal;
+	font-style: normal;
+}

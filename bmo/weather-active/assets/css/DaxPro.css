@@ -1,0 +1,7 @@
+@font-face {
+	font-family: 'DaxPro';
+	src: url(../../assets/fonts/DaxPro.woff2) format('woff2'),
+	url(../../assets/fonts/DaxPro.woff) format('woff');
+	font-weight: normal;
+	font-style: normal;
+}
