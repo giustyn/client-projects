@@ -120,12 +120,12 @@ function xmlRequest(path) {
   return dfd.promise();
 }
 
-function xmlFallbackRequest(basePath, items) {
+function xmlFallbackRequest(basePath, articleNums) {
   var dfd = $.Deferred();
   $.when
     .apply(
       $,
-      $.map(items, function (i) {
+      $.map(articleNums, function (i) {
         return xmlRequest(basePath + i + ".xml");
       })
     )
@@ -138,26 +138,26 @@ function xmlFallbackRequest(basePath, items) {
   return dfd.promise();
 }
 
-function item(xml, index, basePath) {
+function article(xml, index, basePath) {
   this.story = xml ? $(xml).find("story").text() : null;
   this.image = new Image();
   this.image.src = basePath + index + ".jpg";
   return this;
 }
 
-function getItems(basePath, items) {
+function getArticles(basePath, articleNums) {
   var Items = [];
   var dfd = $.Deferred();
-  xmlFallbackRequest(basePath, items).done(function (results) {
+  xmlFallbackRequest(basePath, articleNums).done(function (results) {
     if (!results) {
       return dfd.resolve({
-        items: items,
+        articleNums: articleNums,
       });
     }
     // console.log(results);
     Items = $.map(results, function (result, i) {
       // console.log(result)
-      return new item(result, items[i], basePath);
+      return new article(result, articleNums[i], basePath);
     });
     return dfd.resolve({
       Items: Items,
