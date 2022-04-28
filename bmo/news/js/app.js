@@ -9,7 +9,7 @@ $(function () {
       parseInt(url.getSearchParam("layout")) || 0
     ],
     embeddedStory = ["Hnews", "Xnews"][
-      parseInt(url.getSearchParam("embedded")) || 1
+      parseInt(url.getSearchParam("embedded")) || 0
     ],
     feedCategory = ["news", "celeb", "sports"][0],
     devPath =
@@ -144,19 +144,19 @@ $(function () {
     }, timerDuration);
   }
 
-  function onTemplateError(result) {
-    console.warn("loading server data..");
-    getItems(dataURI[0], indexes).done((response) => {
-      onTemplateSuccess(response);
-    });
-  }
-
   function onTemplateSuccess(result) {
     $.each(result.Items, (i) => {
       feeds.push(result.Items[i]);
     });
     iterateAnimations(feeds);
     // console.log(feeds);
+  }
+
+  function onTemplateError(result) {
+    console.warn("loading server data..");
+    getItems(dataURI[0], indexes).done((response) => {
+      onTemplateSuccess(response);
+    });
   }
 
   function init() {
