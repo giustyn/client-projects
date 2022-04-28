@@ -9,7 +9,7 @@ $(function () {
       parseInt(url.getSearchParam("layout")) || 0
     ],
     embeddedStory = ["Hnews", "Xnews"][
-      parseInt(url.getSearchParam("embedded")) || 0
+      parseInt(url.getSearchParam("embedded")) || 1
     ],
     feedCategory = ["news", "celeb", "sports"][0],
     devPath =
