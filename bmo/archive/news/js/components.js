@@ -26,14 +26,7 @@ function isOverflown({ clientHeight, scrollHeight }) {
   return scrollHeight > clientHeight;
 }
 
-function resizeText({
-  element,
-  elements,
-  minSize,
-  maxSize,
-  step,
-  unit
-}) {
+function resizeText({ element, elements, minSize, maxSize, step, unit }) {
   (elements || [element]).forEach((el) => {
     let i = minSize;
     let overflow = false;
@@ -95,16 +88,16 @@ function getWeather(basePath, zipcode) {
 function xmlRequest(path) {
   var dfd = $.Deferred();
   var xhttp = new XMLHttpRequest();
-  var regex = new RegExp(
+  /* var regex = new RegExp(
     /(?=&)(?:(?!&amp;|&lt;|&gt;|&quot;|&apos;|[a-zA-Z\d\s]).){1}/,
     "g"
-  );
+  ); */
   xhttp.onload = function () {
     // console.log(xhttp.responseText)
     var parser = new DOMParser();
     return dfd.resolve(
       parser.parseFromString(
-        xhttp.responseText.replace(regex, "&amp;"),
+        xhttp.responseText /* .replace(regex, "&amp;") */,
         "text/xml"
       )
     );

@@ -2,7 +2,7 @@ $(function () {
   const userName = "FNBO",
     userIcon = "./img/fnbo-logo.svg",
     animeDuration = 750,
-    timerDuration = 10000,
+    timerDuration = 10000 /2,
     revealerSpeed = parseInt($(":root").css("--revealer-speed"));
 
   const dataURI = {
@@ -115,14 +115,24 @@ $(function () {
     $template.remove();
   }
 
+  function preloadImages(images) {
+    $(images).each(function () {
+      $("<img/>")[0].src = this;
+    });
+    console.log(images)
+  }
+
   function onTemplateError(result) {
     console.warn("could not get data");
   }
 
   function onTemplateSuccess(result) {
+    let imgArr = [];
     $.each(result.Items, function (i) {
       feeds.push(result.Items[i]);
+      // imgArr.push(result.Items[i].Media[0].Url);
     });
+    // preloadImages(imgArr);
     iterateAnimations();
   }
 

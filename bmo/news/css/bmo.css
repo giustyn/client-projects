@@ -1,0 +1,122 @@
+:root {
+  --primary-brand: #0079c1;
+  --secondary-brand: #001928;
+  --tertiary-brand: #646464;
+  --quaternary-brand: #f5f5f5;
+  --quinary-brand: #9f9f9f;
+  --primary-accent: #ed1d24;
+  --white: #ffffff;
+  --bmo-primary-font: "DaxPro";
+  --ss-news-background: url(../img/BMO_SS_News.png);
+  --vw-news-background: url(../img/BMO_VW_News.png);
+  --ss-weather-background: url(../img/BMO_SS_Weather.png);
+  --vw-weather-background: url(../img/BMO_VW_Weather.png);
+}
+
+:root {
+  --clr-revealer-layer-1: var(--secondary-brand);
+  --clr-revealer-layer-2: var(--quaternary-brand);
+  --clr-revealer-layer-3: var(--primary-brand);
+  --revealer-opacity: 0.9;
+  --revealer-speed: 2000ms;
+}
+
+video {
+  z-index: -1;
+}
+
+body {
+  background-color: var(--primary-brand);
+  font-family: var(--bmo-primary-font);
+}
+
+#container {
+  transition: opacity var(--revealer-speed);
+  transition-delay: calc(var(--revealer-speed) / 2);
+  opacity: 0;
+}
+
+img.background {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  object-position: center;
+  object-fit: fill;
+}
+
+.news.landscape img.background {
+  opacity: 1;
+  content: var(--ss-news-background);
+}
+
+.news.videowall img.background {
+  opacity: 1;
+  content: var(--vw-news-background);
+}
+
+.weather.landscape img.background {
+  content: var(--ss-weather-background);
+}
+
+.weather.videowall img.background {
+  content: var(--vw-weather-background);
+}
+
+.videowall .feed {
+  transform: scaleX(calc(1 / 3));
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  margin: 0;
+  font-size: 1.5em;
+}
+
+.feed {
+  --size: 66.66%;
+  --gap: 1.5em;
+  position: absolute;
+  top: 0;
+  left: 0;
+  top: var(--gap);
+  left: var(--gap);
+  width: var(--size);
+  height: var(--size);
+}
+
+.story {
+  transition: opacity calc(var(--revealer-speed) / 2) linear;
+  transition-delay: calc(var(--revealer-speed) / 2);
+}
+
+.date {
+  position: absolute;
+  right: 9%;
+  bottom: 6%;
+  text-align: right;
+  font-size: 1.5em;
+  font-weight: 300;
+  line-height: 1.1;
+}
+
+.videowall .date {
+  display: none;
+}
+
+.weather.landscape .date {
+  right: 6%;
+}
+
+/*  Revealer layer styles  */
+
+.revealer__layer.top {
+  background: var(--clr-revealer-layer-1);
+}
+
+.revealer__layer.middle {
+  background: var(--clr-revealer-layer-2);
+}
+
+.revealer__layer.bottom {
+  background: var(--clr-revealer-layer-3);
+}

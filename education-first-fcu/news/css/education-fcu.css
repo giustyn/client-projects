@@ -1,0 +1,218 @@
+:root {
+  --primary-brand: #ff9e16;
+  --secondary-brand: #97005e;
+  --tertiary-brand: #5fa10e;
+  --quaternary-brand: #f5f5f5;
+  --quinary-brand: #9f9f9f;
+  --primary-font: "Roboto Condensed";
+  --secondary-font: "Crete Round";
+  --story-background: #97005de9;
+  --story-text-color: #ffffff;
+  --ss-news-background: url();
+  --vw-news-background: url();
+  --ss-weather-background: url();
+  --vw-weather-background: url();
+  --title-text-shadow: 0.05em 0.05em 0em rgba(0, 0, 0, 0.05);
+}
+
+:root {
+  --clr-revealer-layer-1: var(--secondary-brand);
+  --clr-revealer-layer-2: var(--tertiary-brand);
+  --clr-revealer-layer-3: var(--quaternary-brand);
+  --revealer-opacity: 0.9;
+  --revealer-speed: 1500ms;
+}
+
+body {
+  position: fixed;
+  background-color: var(--quaternary-brand);
+  font-family: var(--primary-font);
+}
+
+#container {
+  transition: opacity var(--revealer-speed);
+  /* transition-delay: calc(var(--revealer-speed) / 2); */
+  opacity: 0;
+}
+
+img.background {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  object-position: center;
+  object-fit: fill;
+}
+
+.news.landscape img.background {
+  opacity: 1;
+  content: var(--ss-news-background);
+}
+
+.news.videowall img.background {
+  opacity: 1;
+  content: var(--vw-news-background);
+}
+
+.weather.landscape img.background {
+  content: var(--ss-weather-background);
+}
+
+.weather.videowall img.background {
+  content: var(--vw-weather-background);
+}
+
+.videowall .feed {
+  transform: scaleX(calc(1 / 3));
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  margin: 0;
+  font-size: 1.5em;
+}
+
+.feed {
+  --size: 100%;
+  --gap: 0em;
+  position: absolute;
+  top: 0;
+  left: 0;
+  top: var(--gap);
+  left: var(--gap);
+  width: var(--size);
+  height: var(--size);
+  transition: opacity 1.5s;
+  transition-delay: calc(var(--revealer-speed) / 2);
+}
+
+.story {
+  transition: opacity calc(var(--revealer-speed) / 2) linear;
+  transition-delay: calc(var(--revealer-speed) / 2);
+}
+
+.videowall .story {
+  overflow: visible;
+}
+
+.videowall .text {
+  top: 0;
+  left: 100%;
+  display: flex;
+  align-items: center;
+  transform: none;
+}
+
+.text {
+  font-size: 2.4em;
+  font-weight: 500;
+}
+
+.date {
+  z-index: 10;
+  position: absolute;
+  top: 2%;
+  right: 2%;
+  text-align: right;
+  font-size: 1.5em;
+  font-weight: 300;
+  line-height: 1.1;
+  visibility: hidden;
+}
+
+.videowall .date {
+  display: none;
+}
+
+.weather.landscape .date {
+  right: 6%;
+}
+
+/*  Revealer layer styles  */
+
+.revealer__layer.top {
+  background: var(--clr-revealer-layer-1);
+}
+
+.revealer__layer.middle {
+  background: var(--clr-revealer-layer-2);
+}
+
+.revealer__layer.bottom {
+  background: var(--clr-revealer-layer-3);
+}
+
+#intro {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: var(--quarternary-brand);
+  z-index: 1000;
+}
+
+.videowall #intro {
+  transform: scaleX(calc(1 / 3));
+  top: 0;
+  left: -33.33%;
+  width: 100%;
+  height: 100%;
+  margin: 0;
+}
+
+#intro video {
+  /* mix-blend-mode: luminosity; */
+  opacity: 0.3;
+}
+
+/* .videowall #intro video {
+  left: -100%;
+  width: 300%;
+} */
+
+#intro .title {
+  position: absolute;
+  left: 10%;
+  top: 16%;
+  font-size: 11em;
+  font-family: var(--secondary-font);
+  color: var(--secondary-brand);
+  letter-spacing: -4pt;
+  text-transform: capitalize;
+  opacity: 0;
+  animation: animateTitle var(--revealer-speed) forwards;
+  animation-delay: calc(var(--revealer-speed) / 1.5);
+  /* text-shadow: var(--title-text-shadow); */
+}
+
+@keyframes animateTitle {
+  0% {
+    opacity: 0;
+    transform: translateY(5%) translateX(0%) scale(0.9);
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+#intro .logo {
+  position: absolute;
+  bottom: 18%;
+  right: 15%;
+  width: auto;
+  height: 8em;
+  opacity: 0;
+  animation: animateLogo var(--revealer-speed) forwards;
+  animation-delay: calc(var(--revealer-speed) * 1.1);
+  /* display: none; */
+}
+
+@keyframes animateLogo {
+  0% {
+    opacity: 0;
+    transform: translateY(10%) scale(0.9);
+  }
+  100% {
+    opacity: 1;
+  }
+}

@@ -9,19 +9,19 @@ $(function () {
     screenLayout = ["standard", "videowall"][
       parseInt(url.getSearchParam("layout")) || 0
     ],
-    feedCategory = ["weather"][0],
+    feedCategory = ["weather"][parseInt(url.getSearchParam("feed")) || 0],
     devPath =
       "https://retail.adrenalineamp.com/rss/" +
       feedCategory +
       "/1920/" +
       zipCode +
       ".jpg",
-    localPath = "c:\\data\\" + feedCategory + "\\" + "weather.jpg";
+    localPath = "c:\\data\\" + feedCategory + "\\weather.jpg";
 
-  // let dataURI = devPath,
-  let dataURI = localPath,
-    current = 0,
-    feeds = [];
+  let dataURI = [devPath, localPath],
+    indexes = getRandomIndexes(10),
+    feeds = [],
+    current = 0;
 
   function revealer() {
     if (!revealerEnabled) return;
@@ -44,7 +44,7 @@ $(function () {
 
   function animateItem(index) {
     let article = document.getElementById(index),
-      media = article.querySelectorAll(".media-container");
+      media = article.querySelectorAll(".media");
 
     /* resizeText({
       elements: headline,
@@ -81,8 +81,7 @@ $(function () {
       .css("z-index", current)
       .removeClass("hidden")
       .addClass("active");
-
-    $clone.find(".media-container img").attr("src", data);
+    // $clone.find(".media img").attr("src", data);
     $container.append($clone);
     animateItem(current);
 
@@ -91,7 +90,7 @@ $(function () {
     }, timerDuration + $animeDuration); */
   }
 
-  function iterateAnimations() {
+  function iterateAnimations(data) {
     const $template = $("article");
     const $container = $("main");
     $template.remove();
@@ -106,11 +105,12 @@ $(function () {
       opacity: 1,
     });
 
-    animateTemplate($container, $template, dataURI);
+    animateTemplate($container, $template, data);
   }
 
   function init() {
-    iterateAnimations();
+    let imgPath = dataURI[0];
+    iterateAnimations(imgPath);
   }
 
   init();

@@ -9,9 +9,11 @@ $(function () {
       parseInt(url.getSearchParam("layout")) || 0
     ],
     embeddedStory = ["Hnews", "Xnews"][
-      parseInt(url.getSearchParam("embedded")) || 1
+      parseInt(url.getSearchParam("embedded")) || 0
     ],
-    feedCategory = ["news", "celeb", "sports"][0],
+    feedCategory = ["news", "celeb", "sports"][
+      parseInt(url.getSearchParam("feed")) || 0
+    ],
     devPath =
       "https://retail.adrenalineamp.com/rss/" +
       embeddedStory +
@@ -153,20 +155,14 @@ $(function () {
   }
 
   function onTemplateError(result) {
-    console.warn("loading server data..");
-    getItems(dataURI[0], indexes).done((response) => {
-      onTemplateSuccess(response);
-    });
+    // getItems(dataURI[0], indexes).done((response) => {
+    //   onTemplateSuccess(response);
+    // });
   }
 
   function init() {
-    getItems(dataURI[1], indexes).done((response) => {
-      let items = response.Items;
-      if (!items) {
-        onTemplateError();
-      } else {
-        onTemplateSuccess(response);
-      }
+    getItems(dataURI[0], indexes).done((response) => {
+      onTemplateSuccess(response);
     });
   }
 
@@ -197,6 +193,6 @@ $(function () {
     console.log(feeds);
   }
 
-  // fetchStories(dataURI);
+  // fetchStories(dataURI[0]);
   // iterateAnimations(feeds)
 });
