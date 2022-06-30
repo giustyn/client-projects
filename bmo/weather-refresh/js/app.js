@@ -1,31 +1,32 @@
 $(function () {
   const url = new ExtendedURL(window.location.href),
+    $date = $(".date").text(moment().format("dddd, MMMM Do")),
+    $revealerSpeed = parseInt($(":root").css("--revealer-speed")),
+    revealerEnabled = 1,
     zipcode = url.getSearchParam("zipcode") || "60606",
+    videoEnabled = url.getSearchParam("video") || 0,
     dataURI = {
       local: "c:\\data\\weather\\weather.json",
       server:
         "https://kitchen.screenfeed.com/weather/v2/data/40778ps5v9ke2m2nf22wpqk0sj.json?current=true&interval=Daily&forecasts=5&location=" +
         zipcode,
-    },
-    $animeSpeed = parseInt($(":root").css("--anime-speed")),
-    $animeDelay = parseInt($(":root").css("--anime-delay")),
-    $revealerSpeed = parseInt($(":root").css("--revealer-speed"));
+    };
 
-  function revealer(speed) {
+  function revealer() {
+    if (!revealerEnabled) return;
     const $transition = $(".revealer"),
       mode = [
         "revealer--left",
         "revealer--right",
         "revealer--top",
         "revealer--bottom",
-      ],
-      shuffle = mode[(Math.random() * mode.length) | 0];
+      ].shuffle();
     $transition
       .addClass("revealer--animate")
-      .addClass(shuffle)
-      .delay(speed * 1.5)
+      .addClass(mode[1])
+      .delay($revealerSpeed * 2)
       .queue(function () {
-        $(this).removeClass("revealer--animate").removeClass(shuffle).dequeue();
+        $(this).removeClass("revealer--animate").removeClass(mode[1]).dequeue();
       });
   }
 
@@ -33,7 +34,6 @@ $(function () {
     let location = data.Locations[0] || {};
     let current = location.WeatherItems[0] || {};
     let forecast = location.WeatherItems.slice(1, 6) || {};
-    let videoEnabled = url.getSearchParam("video") || 1;
 
     const cloneDayOfWeek = (el, num) => {
       var $elem = $(el);
@@ -73,7 +73,6 @@ $(function () {
     };
 
     const setCurrent = () => {
-      $(".date").text(moment().format("dddd, MMMM Do"));
       $(".day:first-child .dayofweek").replaceWith(
         '<span class="dayofweek">Today</span>'
       );
@@ -100,87 +99,56 @@ $(function () {
     };
 
     cloneDayOfWeek("#template", forecast.length);
-    dayPartGreeting(".greeting");
     mainBgVideo();
     setForecast();
     setCurrent();
   }
 
   function animateWeather() {
-    const header = document.querySelectorAll(".header, .header .wrap *"),
-      forecast = document.querySelectorAll(".forecast .day *");
-
+    let container = document.querySelectorAll(".container")[0],
+      animeSpeed = $revealerSpeed / 2,
+      animeDelay = 50;
     let animation = anime
       .timeline({
         autoplay: true,
         loop: false,
         easing: "cubicBezier(0.645, 0.045, 0.355, 1.000)",
-        duration: $animeSpeed,
+        duration: animeSpeed,
       })
       .add({
-        // targets: ".container",
-        delay: $revealerSpeed / 2,
+        targets: container,
+        delay: animeSpeed,
         opacity: [0, 1],
-        begin: () => {
-          // revealer($revealerSpeed);
-          animateContent();
+        begin: () => revealer(),
+      })
+      .add({
+        targets: container.querySelectorAll(".header, .header .wrap *"),
+        delay: anime.stagger(animeDelay),
+        translateY: ["-100%", "0%"],
+        opacity: [0, 1],
+      })
+      .add(
+        {
+          targets: container.querySelectorAll(".forecast .day"),
+          delay: anime.stagger(animeDelay),
+          // translateX: ["-100%", "0%"],
+          scaleX: ["0%", "100%"],
+          opacity: [0, 1],
         },
-      })
-      .add({
-        targets: header,
-        delay: anime.stagger(50),
-        translateY: [-100, 0],
-        opacity: [0, 1],
-      })
-      .add({
-        targets: forecast,
-        delay: anime.stagger(20),
-        translateY: [-10, 0],
-        // rotateX: [90, 0],
-        opacity: [0, 1],
-      });
-  }
-
-  function animateContent() {
-    let animation = anime
-      .timeline({
-        autoplay: true,
-        loop: false,
-        duration: $animeSpeed * 1.5,
-        easing: "easeInOutQuad",
-      })
-      .add({
-        targets: ".stage",
-        opacity: [0, 1],
-        duration: $animeSpeed,
-        begin: () => revealer("revealer--bottom"),
-      })
-      .add({
-        targets: ".standard .footer-container, .anamorphic .footer-container",
-        opacity: [0, 1],
-        translateY: [20, 0],
-      })
-      .add({
-        targets: ".roundel .circle-container",
-        scale: [0.5, 1],
-        opacity: [0, 1],
-      })
-      .add({
-        targets: ".roundel .circle-white",
-        scale: [0, 2],
-        opacity: [1, 0],
-      })
-      .add({
-        targets: ".roundel .circle-inner",
-        scale: [0, 1],
-        opacity: [0, 1],
-      })
-      .add({
-        targets: ".roundel .text",
-        opacity: [0, 1],
-        translateX: [100, 0],
-        delay: anime.stagger(200),
-      });
+        "-=" + 0
+      )
+      .add(
+        {
+          targets: container.querySelectorAll(
+            ".dayofweek, .icon, .htemp, .ltemp"
+          ),
+          delay: anime.stagger(animeDelay),
+          translateY: ["50%", "0%"],
+          scale: ["50%", "100%"],
+          opacity: [0, 1],
+        },
+        "-=" + animeSpeed
+      );
   }
 
   function onTemplateError(result) {
@@ -188,11 +156,6 @@ $(function () {
   }
 
   function onTemplateSuccess(result) {
-    const config = $("body").addClass(screen.config),
-      brandLogo = $(".brand-logo").attr({
-        src: "./img/BMOHB_T2_White_Tagline.svg",
-      });
-
     handleWeather(result);
     animateWeather();
   }
@@ -203,7 +166,7 @@ $(function () {
       url: data,
       dataType: "json",
       success: function (result) {
-        console.log(result);
+        console.log(result, data);
         onSuccess(result);
       },
       error: function (result) {

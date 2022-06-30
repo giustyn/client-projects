@@ -1,10 +1,13 @@
 $(function () {
-  const devMode = false;
+  const devMode = true;
 
-  const $bumper = $("#bumper"),
+  const url = new ExtendedURL(window.location.href),
+    $bumper = $("#bumper"),
     dataURI = ["c:\\data\\", "https://retail.adrenalineamp.com/rss/Hnews/"],
-    folderName = ["news", "weather"][1],
-    screenLayout = ["landscape", "videowall"][1],
+    folderName = ["news", "weather"][0 || url.getSearchParam("news")],
+    screenLayout = ["landscape", "videowall"][
+      0 || url.getSearchParam("layout")
+    ],
     timerDuration = 10000,
     revealerEnabled = 1,
     revealerSpeed = parseInt($(":root").css("--revealer-speed"));
@@ -26,6 +29,14 @@ $(function () {
     return input;
   };
 
+  function ExtendedURL(href) {
+    this.url = new URL(href);
+    this.getSearchParam = function (param) {
+      return this.url.searchParams.get(param);
+    };
+    return this;
+  }
+
   function revealer() {
     if (!revealerEnabled) return;
     const $transition = $(".revealer"),
@@ -34,8 +45,7 @@ $(function () {
         "revealer--right",
         "revealer--top",
         "revealer--bottom",
-      ],
-      shuffle = mode[(Math.random() * mode.length) | 0];
+      ].shuffle();
     $transition
       .addClass("revealer--animate")
       .addClass(mode[1])

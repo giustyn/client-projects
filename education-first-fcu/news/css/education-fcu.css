@@ -3,7 +3,7 @@
   --secondary-brand: #97005e;
   --tertiary-brand: #5fa10e;
   --quaternary-brand: #f5f5f5;
-  --quinary-brand: #9f9f9f;
+  --white: #ffffff;
   --primary-font: "Roboto Condensed";
   --secondary-font: "Crete Round";
   --story-background: #97005de9;
@@ -25,7 +25,7 @@
 
 body {
   position: fixed;
-  background-color: var(--quaternary-brand);
+  background-color: var(--white);
   font-family: var(--primary-font);
 }
 
@@ -161,14 +161,9 @@ img.background {
 }
 
 #intro video {
-  /* mix-blend-mode: luminosity; */
+  mix-blend-mode: normal;
   opacity: 0.3;
 }
-
-/* .videowall #intro video {
-  left: -100%;
-  width: 300%;
-} */
 
 #intro .title {
   position: absolute;
@@ -181,7 +176,7 @@ img.background {
   text-transform: capitalize;
   opacity: 0;
   animation: animateTitle var(--revealer-speed) forwards;
-  animation-delay: calc(var(--revealer-speed) / 1.5);
+  animation-delay: calc(var(--revealer-speed) / 1.1);
   /* text-shadow: var(--title-text-shadow); */
 }
 
@@ -198,13 +193,12 @@ img.background {
 #intro .logo {
   position: absolute;
   bottom: 18%;
-  right: 15%;
+  right: 12%;
   width: auto;
-  height: 8em;
+  height: 9em;
   opacity: 0;
   animation: animateLogo var(--revealer-speed) forwards;
   animation-delay: calc(var(--revealer-speed) * 1.1);
-  /* display: none; */
 }
 
 @keyframes animateLogo {

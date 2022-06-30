@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<!-- Generator: Adobe Illustrator 16.0.0, SVG Export Plug-In . SVG Version: 6.00 Build 0)  -->
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="256px"
+	 height="256px" viewBox="0 0 256 256" style="enable-background:new 0 0 256 256;" xml:space="preserve">
+<g id="bg_light" style="display:none;">
+	<rect style="display:inline;fill:#0079C1;" width="256" height="256"/>
+</g>
+<g id="guides" style="display:none;">
+	<g style="display:inline;">
+		<g>
+			<g>
+				<line style="fill:none;stroke:#FFFFFF;stroke-width:0.25;stroke-miterlimit:10;" x1="40.5" y1="0" x2="40.5" y2="2"/>
+				
+					<line style="fill:none;stroke:#FFFFFF;stroke-width:0.25;stroke-miterlimit:10;stroke-dasharray:4,4;" x1="40.5" y1="6" x2="40.5" y2="252"/>
+				<line style="fill:none;stroke:#FFFFFF;stroke-width:0.25;stroke-miterlimit:10;" x1="40.5" y1="254" x2="40.5" y2="256"/>
+			</g>
+		</g>
+		<g>
+			<g>
+				<line style="fill:none;stroke:#FFFFFF;stroke-width:0.25;stroke-miterlimit:10;" x1="215.5" y1="0" x2="215.5" y2="2"/>
+				
+					<line style="fill:none;stroke:#FFFFFF;stroke-width:0.25;stroke-miterlimit:10;stroke-dasharray:4,4;" x1="215.5" y1="6" x2="215.5" y2="252"/>
+				<line style="fill:none;stroke:#FFFFFF;stroke-width:0.25;stroke-miterlimit:10;" x1="215.5" y1="254" x2="215.5" y2="256"/>
+			</g>
+		</g>
+		<g>
+			<g>
+				<line style="fill:none;stroke:#FFFFFF;stroke-width:0.25;stroke-miterlimit:10;" x1="256" y1="40.5" x2="254" y2="40.5"/>
+				
+					<line style="fill:none;stroke:#FFFFFF;stroke-width:0.25;stroke-miterlimit:10;stroke-dasharray:4,4;" x1="250" y1="40.5" x2="4" y2="40.5"/>
+				<line style="fill:none;stroke:#FFFFFF;stroke-width:0.25;stroke-miterlimit:10;" x1="2" y1="40.5" x2="0" y2="40.5"/>
+			</g>
+		</g>
+		<g>
+			<g>
+				<line style="fill:none;stroke:#FFFFFF;stroke-width:0.25;stroke-miterlimit:10;" x1="256" y1="215.5" x2="254" y2="215.5"/>
+				
+					<line style="fill:none;stroke:#FFFFFF;stroke-width:0.25;stroke-miterlimit:10;stroke-dasharray:4,4;" x1="250" y1="215.5" x2="4" y2="215.5"/>
+				<line style="fill:none;stroke:#FFFFFF;stroke-width:0.25;stroke-miterlimit:10;" x1="2" y1="215.5" x2="0" y2="215.5"/>
+			</g>
+		</g>
+	</g>
+</g>
+<g id="border">
+	<rect style="opacity:0;fill:none;stroke:#231F20;stroke-width:0.1;stroke-miterlimit:10;" width="256" height="256"/>
+</g>
+<g id="icons">
+	<g>
+		<g>
+			<path style="fill:#5AC8FA;" d="M141.075,201.576c-0.954,0-1.914-0.277-2.758-0.855c-2.226-1.527-2.791-4.566-1.266-6.791
+				l18.353-26.752c1.527-2.229,4.567-2.793,6.793-1.268c2.224,1.525,2.789,4.564,1.264,6.789l-18.354,26.754
+				C144.159,200.834,142.631,201.576,141.075,201.576z"/>
+		</g>
+		<g>
+			<path style="fill:#5AC8FA;" d="M118.29,192.75c-0.968,0-1.944-0.287-2.797-0.881c-2.21-1.547-2.747-4.594-1.2-6.803l14.016-19.93
+				c1.547-2.211,4.592-2.746,6.803-1.201c2.209,1.547,2.747,4.594,1.199,6.803l-14.016,19.928
+				C121.346,192.025,119.83,192.75,118.29,192.75z"/>
+		</g>
+		<g>
+			<path style="fill:#5AC8FA;" d="M85.563,202.717c-0.968,0-1.944-0.287-2.797-0.883c-2.21-1.547-2.747-4.594-1.2-6.803
+				l14.016-19.928c1.547-2.211,4.592-2.746,6.803-1.203c2.209,1.549,2.747,4.594,1.199,6.803l-14.016,19.93
+				C88.618,201.992,87.103,202.717,85.563,202.717z"/>
+		</g>
+		<g>
+			<path style="fill:#5AC8FA;" d="M172.282,197.834c-0.943,0-1.897-0.271-2.735-0.842c-2.233-1.514-2.816-4.553-1.303-6.783
+				l6.868-10.162c1.513-2.232,4.551-2.816,6.781-1.305c2.232,1.514,2.815,4.551,1.303,6.783l-6.866,10.164
+				C175.385,197.084,173.847,197.834,172.282,197.834z"/>
+		</g>
+		<g>
+			<path style="fill:#5AC8FA;" d="M69.279,186.697c-0.943,0-1.898-0.271-2.736-0.842c-2.232-1.514-2.816-4.553-1.303-6.783
+				l8.668-12.754c1.515-2.232,4.553-2.816,6.783-1.305c2.233,1.514,2.815,4.551,1.301,6.785l-8.666,12.756
+				C72.381,185.947,70.843,186.697,69.279,186.697z"/>
+		</g>
+		<g>
+			<path style="fill:#969AA4;" d="M76.242,92.066c-0.004-0.219-0.008-0.441-0.008-0.66c0-21.055,17.068-38.123,38.119-38.123
+				c18.145,0,33.328,12.676,37.18,29.656c3.59-2.012,7.728-3.164,12.138-3.164c13.754,0,24.903,11.152,24.903,24.908
+				c0,0.561-0.025,1.117-0.062,1.67c10.21,3.789,17.487,13.621,17.487,25.15c0,14.811-12.008,26.82-26.821,26.82H83.525
+				c-18.518,0-33.525-15.01-33.525-33.525C50,108.783,61.228,95.395,76.242,92.066L76.242,92.066z M76.242,92.066"/>
+		</g>
+	</g>
+</g>
+</svg>

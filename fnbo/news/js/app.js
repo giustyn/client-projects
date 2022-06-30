@@ -2,7 +2,7 @@ $(function () {
   const userName = "FNBO",
     userIcon = "./img/fnbo-logo.svg",
     animeDuration = 750,
-    timerDuration = 10000 /2,
+    timerDuration = 10000,
     revealerSpeed = parseInt($(":root").css("--revealer-speed"));
 
   const dataURI = {

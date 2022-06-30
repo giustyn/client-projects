@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=9; IE=8; IE=7; IE=EDGE"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="BMO Feeds">
+    <meta name="format-detection" content="telephone=no">
+    <title>BMO Feeds</title>
+    <link rel="stylesheet" href="css/normalize.css">
+    <link rel="stylesheet" href="css/style.css">
+    <script type="text/javascript" src="file:///C:/dmedia/weather/weather.json"></script>
+    <script src="js/weatherUpdate.js"></script>
+</head>
+
+<body class="noselect">
+
+<!-- BACKGROUND VIDEO -->
+
+<video autoplay poster="img/0079c1.png" id="bgvid" class="fade-in" loop preload>
+    <source src="img/bg_weather_std.mp4" type="video/mp4">
+</video>
+
+<!-- CONTINGENCY -->
+<div id="" class="clear container hidden">
+    <div class="section"></div> <!-- DISPLAY ONE -->
+    <div class="section fade-in two">
+			<span class="scalefix">
+				<div id="logo-bmo-en" class=" logo-bmo-alt center valign"></div>
+			</span>
+    </div>
+    <div class="section"></div> <!-- DISPLAY THREE -->
+</div>
+
+<div class="container">
+	<!-- FEED ZONE -->
+    <section id="display-1">
+        <div class="scalefix fade-in one">
+            <div class="header">
+                <span class="top">Top</span>
+                <span class="title">Business Stories</span>
+            </div>
+            <div class="feed-data">
+                <ul>
+                    <li>Superior Plus to sell unit for $325 million</li>
+                    <li>China, Brexit worries send Treasury yields to record low</li>
+                    <li>TSX falls as energy stocks weigh as oil prices slide</li>
+                    <li>Credit Suisse merges fixed income with equities in Asia Pacific</li>
+                    <li>Canada trade deficit hits near record despite energy export jump</li>
+                </ul>
+            </div>
+            <div class="wrapper">
+                <div class="logo logo-bmo-en"></div>
+                <div class="logo logo-news-en"></div>
+            </div>
+        </div>
+    </section>
+	<!-- WEATHER ZONE -->
+    <section id="display-2">
+        <div class="scalefix fade-in two">
+            <div class="header">
+                <span class="top">Today in</span>
+                <span class="title"><span id="place"></span>, <span id="prov"></span></span>
+            </div>
+            <div class="feed-data feed-columns group">
+                <div class="col">
+                    <div class="weather-icon" id="currentIcon"></div>
+                </div>
+                <div class="col">
+                    <div class="weather-current"><span id="currentTemp"></span>&deg;</div>
+                </div>
+                <div class="col">
+                    <div class="divider weather-conditions">
+                        <div>High <span id="currentHigh"></span>&deg; / Low <span id="currentLow"></span>&deg;</div>
+                        <div>Feels Like <span id="currentFeelsLike"></span>&deg;</div>
+                        <div>Wind <span id="currentWindDir"></span> <span id="currentWindSpeed"></span> km/h</div>
+                        <div>Humidity <span id="currentHumid"></span>%</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+	<!-- 5 DAY FORECAST ZONE -->
+    <section id="display-3"> 
+        <div class="scalefix fade-in three">
+            <div class="top">
+                <span class="title">5 Day</span>
+                <span class="category">Forecast</span>
+            </div>
+            <div class="feed-data feed-columns group" id="forecast">
+                <div class="col">
+                    <div class="forecast-day"></div>
+                    <p>
+                    <div class="weather-icon-sm"></div>
+                    </p>
+                    <div class="forecast-temp"></div>
+                </div>
+                <div class="col divider">
+                    <div class="forecast-day"></div>
+                    <p>
+                    <div class="weather-icon-sm"></div>
+                    </p>
+                    <div class="forecast-temp"></div>
+                </div>
+                <div class="col divider">
+                    <div class="forecast-day"></div>
+                    <p>
+                    <div class="weather-icon-sm"></div>
+                    </p>
+                    <div class="forecast-temp"></div>
+                </div>
+                <div class="col divider">
+                    <div class="forecast-day"></div>
+                    <p>
+                    <div class="weather-icon-sm"></div>
+                    </p>
+                    <div class="forecast-temp"></div>
+                </div>
+                <div class="col divider">
+                    <div class="forecast-day"></div>
+                    <p>
+                    <div class="weather-icon-sm"></div>
+                    </p>
+                    <div class="forecast-temp"></div>
+                </div>
+            </div>
+            <div id="logo-twn-en" class="logo logo-weather right"></div>
+        </div>
+    </section>
+
+</div>
+
+<script type="text/javascript">
+    /* 'TWN Icon' : 'Artill Font' */
+    		var ICONS = {
+    			'a' : 'L',
+    			'an' : 'l',
+    			'b' : 'A',
+    			'bn' : 'a',
+    			'c' : '1',
+    			'cn' : '6',
+    			'd' : 'D',
+    			'dn' : 'd',
+    			'e' : 'D',
+    			'f' : 'C',
+    			'fn' : 'c',
+    			'g' : 'T',
+    			'gn' : 'u',
+    			'h' : 'A',
+    			'hn' : 'a',
+    			'i' : 'O',
+    			'in' : 'o',
+    			'j' : 'A',
+    			'jn' : 'a',
+    			'k' : 'A',
+    			'kn' : 'a',
+    			'l' : 'G',
+    			'ln' : 'g',
+    			'm' : 'T',
+    			'mn' : 't',
+    			'n' : 'H',
+    			'nn' : 'h',
+    			'o' : '3',
+    			'on' : '3',
+    			'p' : 'L',
+    			'pn' : 'l',
+    			'q' : 'S',
+    			'qn' : 's',
+    			'r' : 'K',
+    			'rn' : 'k',
+    			's' : 'A',
+    			'sn' : 'a',
+    			't' : 'R',
+    			'tn' : 'r',
+    			'u' : 'A',
+    			'un' : 'a',
+    			'unknown' : '',
+    			'v' : 'I',
+    			'vn' : 'i',
+    			'w' : 'M',
+    			'wn' : 'm',
+    			'x' : '',
+    			'y' : 'M',
+    			'yn' : 'm',
+    			'z' : 'U',
+    			'zn' : 'u',
+    		};
+
+    // Converts Artill weather icons to match TWN character mapping
+    function convertIcon() {
+        var dom_icon = document.querySelector('.weather-icon');
+        dom_icon.innerHTML = ICONS[dom_icon.innerHTML];
+        dom_icon = document.querySelectorAll('.weather-icon-sm');
+        Array.prototype.slice.call(dom_icon).forEach(function (elem) {
+            elem.innerHTML = ICONS[elem.innerHTML];
+        });
+    }
+    convertIcon();
+</script>
+</body>
+
+</html>

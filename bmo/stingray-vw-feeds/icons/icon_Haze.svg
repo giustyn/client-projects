@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<!-- Generator: Adobe Illustrator 16.0.0, SVG Export Plug-In . SVG Version: 6.00 Build 0)  -->
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="256px"
+	 height="256px" viewBox="0 0 256 256" style="enable-background:new 0 0 256 256;" xml:space="preserve">
+<g id="bg_light" style="display:none;">
+	<rect style="display:inline;fill:#0079C1;" width="256" height="256"/>
+</g>
+<g id="guides" style="display:none;">
+	<g style="display:inline;">
+		<g>
+			<g>
+				<line style="fill:none;stroke:#FFFFFF;stroke-width:0.25;stroke-miterlimit:10;" x1="40.5" y1="0" x2="40.5" y2="2"/>
+				
+					<line style="fill:none;stroke:#FFFFFF;stroke-width:0.25;stroke-miterlimit:10;stroke-dasharray:4,4;" x1="40.5" y1="6" x2="40.5" y2="252"/>
+				<line style="fill:none;stroke:#FFFFFF;stroke-width:0.25;stroke-miterlimit:10;" x1="40.5" y1="254" x2="40.5" y2="256"/>
+			</g>
+		</g>
+		<g>
+			<g>
+				<line style="fill:none;stroke:#FFFFFF;stroke-width:0.25;stroke-miterlimit:10;" x1="215.5" y1="0" x2="215.5" y2="2"/>
+				
+					<line style="fill:none;stroke:#FFFFFF;stroke-width:0.25;stroke-miterlimit:10;stroke-dasharray:4,4;" x1="215.5" y1="6" x2="215.5" y2="252"/>
+				<line style="fill:none;stroke:#FFFFFF;stroke-width:0.25;stroke-miterlimit:10;" x1="215.5" y1="254" x2="215.5" y2="256"/>
+			</g>
+		</g>
+		<g>
+			<g>
+				<line style="fill:none;stroke:#FFFFFF;stroke-width:0.25;stroke-miterlimit:10;" x1="256" y1="40.5" x2="254" y2="40.5"/>
+				
+					<line style="fill:none;stroke:#FFFFFF;stroke-width:0.25;stroke-miterlimit:10;stroke-dasharray:4,4;" x1="250" y1="40.5" x2="4" y2="40.5"/>
+				<line style="fill:none;stroke:#FFFFFF;stroke-width:0.25;stroke-miterlimit:10;" x1="2" y1="40.5" x2="0" y2="40.5"/>
+			</g>
+		</g>
+		<g>
+			<g>
+				<line style="fill:none;stroke:#FFFFFF;stroke-width:0.25;stroke-miterlimit:10;" x1="256" y1="215.5" x2="254" y2="215.5"/>
+				
+					<line style="fill:none;stroke:#FFFFFF;stroke-width:0.25;stroke-miterlimit:10;stroke-dasharray:4,4;" x1="250" y1="215.5" x2="4" y2="215.5"/>
+				<line style="fill:none;stroke:#FFFFFF;stroke-width:0.25;stroke-miterlimit:10;" x1="2" y1="215.5" x2="0" y2="215.5"/>
+			</g>
+		</g>
+	</g>
+</g>
+<g id="border">
+	<rect style="opacity:0;fill:none;stroke:#231F20;stroke-width:0.1;stroke-miterlimit:10;" width="256" height="256"/>
+</g>
+<g id="icons">
+	<g>
+		<path style="fill:#F0C419;" d="M128,70.689c-1.078,0-1.956,0.879-1.956,1.959v11.725c0,1.076,0.878,1.941,1.956,1.941
+			s1.956-0.865,1.956-1.941V72.648C129.956,71.568,129.078,70.689,128,70.689L128,70.689z M128,70.689"/>
+		<path style="fill:#F0C419;" d="M184.662,127.352h-11.726c-1.079,0-1.946,0.881-1.946,1.957c0,1.078,0.868,1.959,1.946,1.959
+			h11.726c1.078,0,1.956-0.881,1.956-1.959C186.618,128.232,185.74,127.352,184.662,127.352L184.662,127.352z M184.662,127.352"/>
+		<path style="fill:#F0C419;" d="M83.063,127.352H71.338c-1.078,0-1.956,0.881-1.956,1.957c0,1.078,0.877,1.959,1.956,1.959h11.726
+			c1.079,0,1.946-0.881,1.946-1.959C85.01,128.232,84.142,127.352,83.063,127.352L83.063,127.352z M83.063,127.352"/>
+		<path style="fill:#F0C419;" d="M172.364,84.943c-0.763-0.766-1.995-0.766-2.757,0l-11.21,11.203c-0.763,0.762-0.763,2.002,0,2.768
+			c0.382,0.379,0.878,0.568,1.383,0.568c0.496,0,1.002-0.189,1.384-0.568l11.201-11.209
+			C173.128,86.938,173.128,85.705,172.364,84.943L172.364,84.943z M172.364,84.943"/>
+		<path style="fill:#F0C419;" d="M86.393,84.943c-0.763-0.766-1.994-0.766-2.757,0c-0.764,0.762-0.764,1.994,0,2.762l11.201,11.209
+			c0.382,0.379,0.888,0.568,1.384,0.568c0.505,0,1.001-0.189,1.383-0.568c0.763-0.766,0.763-2.006,0-2.768L86.393,84.943z
+			 M86.393,84.943"/>
+		<path style="fill:#F0C419;" d="M176.562,108.693c-0.419-0.996-1.574-1.451-2.557-1.029l-5.4,2.287
+			c-0.991,0.418-1.459,1.566-1.04,2.557c0.325,0.746,1.04,1.191,1.804,1.191c0.258,0,0.515-0.045,0.763-0.148l5.4-2.293
+			C176.524,110.834,176.981,109.686,176.562,108.693L176.562,108.693z M176.562,108.693"/>
+		<path style="fill:#F0C419;" d="M87.061,110.666l-5.438-2.201c-0.992-0.4-2.137,0.082-2.538,1.084
+			c-0.41,1.002,0.076,2.137,1.078,2.539l5.438,2.195c0.239,0.105,0.487,0.141,0.726,0.141c0.782,0,1.507-0.455,1.812-1.221
+			C88.549,112.203,88.063,111.064,87.061,110.666L87.061,110.666z M87.061,110.666"/>
+		<path style="fill:#F0C419;" d="M109.949,81.775c-0.42-0.988-1.575-1.459-2.567-1.029c-0.992,0.42-1.45,1.566-1.03,2.557l2.29,5.4
+			c0.315,0.748,1.04,1.193,1.793,1.193c0.258,0,0.515-0.047,0.763-0.15c0.992-0.434,1.46-1.578,1.041-2.57L109.949,81.775z
+			 M109.949,81.775"/>
+		<path style="fill:#F0C419;" d="M147.759,80.396c-0.993-0.402-2.137,0.076-2.538,1.074l-2.194,5.439
+			c-0.411,1.004,0.076,2.139,1.078,2.541c0.238,0.104,0.486,0.139,0.725,0.139c0.773,0,1.507-0.455,1.813-1.221l2.204-5.436
+			C149.247,81.936,148.76,80.797,147.759,80.396L147.759,80.396z M147.759,80.396"/>
+		<path style="fill:#F0C419;" d="M163.806,144.934c2.089-4.789,3.273-10.063,3.273-15.625c0-21.582-17.498-39.08-39.079-39.08
+			s-39.079,17.498-39.079,39.08c0,5.563,1.184,10.836,3.273,15.625H163.806z M163.806,144.934"/>
+		<path style="fill:#FFE001;" d="M152.758,144.934c2.869-4.518,4.551-9.875,4.551-15.625c0-16.191-13.119-29.311-29.309-29.311
+			c-16.191,0-29.309,13.119-29.309,29.311c0,5.75,1.679,11.107,4.551,15.625H152.758z M152.758,144.934"/>
+		
+			<line style="fill:none;stroke:#FFFFFF;stroke-width:9;stroke-linecap:round;stroke-miterlimit:10;" x1="183.017" y1="148.211" x2="206" y2="148.211"/>
+		
+			<line style="fill:none;stroke:#FFFFFF;stroke-width:9;stroke-linecap:round;stroke-miterlimit:10;" x1="50" y1="166.76" x2="79.253" y2="166.76"/>
+		
+			<line style="fill:none;stroke:#FFFFFF;stroke-width:9;stroke-linecap:round;stroke-miterlimit:10;" x1="176.658" y1="166.76" x2="206" y2="166.76"/>
+		
+			<line style="fill:none;stroke:#F1DA73;stroke-width:9;stroke-linecap:round;stroke-miterlimit:10;" x1="85.01" y1="148.211" x2="170.99" y2="148.211"/>
+		
+			<line style="fill:none;stroke:#F1DA73;stroke-width:9;stroke-linecap:round;stroke-miterlimit:10;" x1="91.981" y1="166.76" x2="164.019" y2="166.76"/>
+		
+			<line style="fill:none;stroke:#FFFFFF;stroke-width:9;stroke-linecap:round;stroke-miterlimit:10;" x1="50" y1="148.211" x2="73.166" y2="148.211"/>
+		
+			<line style="fill:none;stroke:#FFFFFF;stroke-width:9;stroke-linecap:round;stroke-miterlimit:10;" x1="50" y1="185.311" x2="206" y2="185.311"/>
+	</g>
+</g>
+</svg>

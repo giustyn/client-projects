@@ -2,6 +2,19 @@
  *  Helper Functions
  */
 
+ Array.prototype.shuffle = function () {
+  const input = this;
+
+  for (let i = input.length - 1; i >= 0; i--) {
+    const randomIndex = Math.floor(Math.random() * (i + 1));
+    const itemAtIndex = input[randomIndex];
+
+    input[randomIndex] = input[i];
+    input[i] = itemAtIndex;
+  }
+  return input;
+};
+
 function getOS() {
   var parser = new UAParser();
   var ua = navigator.userAgent;

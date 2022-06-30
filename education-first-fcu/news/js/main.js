@@ -168,10 +168,7 @@ $(function () {
         } else if (folderName == "weather") {
           $feed.removeClass("hidden");
         }
-        $intro.fadeOut(500);
-        $($bumper).fadeOut(500, function () {
-          $($bumper).remove();
-        });
+        if (screenLayout !== "videowall") $intro.fadeOut(500);
       }
     } /* else {
       eventItem.removeEventListener("timeupdate", videoTimeUpdate);

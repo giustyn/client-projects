@@ -10,29 +10,27 @@
 }
 
 .revealer--top {
-  width: 100vw;
-  height: 100vh;
-  transform: rotate3d(0, 0, 1, 180deg);
+    width: 100vw;
+    height: 100vh;
+    transform: rotate3d(0, 0, 1, 180deg);
 }
 
 .revealer--left {
-  width: 100vh;
-  height: 100vw;
-  transform: translate3d(-50%, -50%, 0px) rotate3d(0, 0, 1, 90deg)
-    translate3d(0px, 100%, 0px);
+    width: 100vh;
+    height: 100vw;
+    transform: translate3d(-50%, -50%, 0px) rotate3d(0, 0, 1, 90deg) translate3d(0px, 100%, 0px);
 }
 
 .revealer--bottom {
-  width: 100vw;
-  height: 100vh;
-  transform: none;
+    width: 100vw;
+    height: 100vh;
+    transform: none;
 }
 
 .revealer--right {
-  width: 100vh;
-  height: 100vw;
-  transform: translate3d(-50%, -50%, 0px) rotate3d(0, 0, 1, -90deg)
-    translate3d(0px, 100%, 0px);
+    width: 100vh;
+    height: 100vw;
+    transform: translate3d(-50%, -50%, 0px) rotate3d(0, 0, 1, -90deg) translate3d(0px, 100%, 0px);
 }
 
 .revealer--cornertopleft,
@@ -77,18 +75,16 @@
 /* One layer effect (effect-1) */
 
 .anim--effect-1 .page:first-child {
-  background: #605bd4;
+  background: #605BD4;
 }
 
 .anim--effect-1 .page:nth-child(2) {
-  background: #ff6eae;
+  background: #FF6EAE;
 }
 
 .anim--effect-1 .revealer--animate .revealer__layer {
-  -webkit-animation: anim-effect-1 var(--revealer-speed)
-    cubic-bezier(0.2, 1, 0.3, 1) forwards;
-  animation: anim-effect-1 var(--revealer-speed) cubic-bezier(0.2, 1, 0.3, 1)
-    forwards;
+  -webkit-animation: anim-effect-1 var(--revealer-speed) cubic-bezier(0.2, 1, 0.3, 1) forwards;
+  animation: anim-effect-1 var(--revealer-speed) cubic-bezier(0.2, 1, 0.3, 1) forwards;
 }
 
 @keyframes anim-effect-1 {
@@ -116,14 +112,12 @@
 }
 
 .anim--effect-2 .page:nth-child(2) {
-  background: #f9c969;
+  background: #F9C969;
 }
 
 .anim--effect-2 .revealer--animate .revealer__layer {
-  -webkit-animation: anim-effect-2-1 var(--revealer-speed)
-    cubic-bezier(0.7, 0, 0.3, 1) forwards;
-  animation: anim-effect-2-1 var(--revealer-speed) cubic-bezier(0.7, 0, 0.3, 1)
-    forwards;
+  -webkit-animation: anim-effect-2-1 var(--revealer-speed) cubic-bezier(0.7, 0, 0.3, 1) forwards;
+  animation: anim-effect-2-1 var(--revealer-speed) cubic-bezier(0.7, 0, 0.3, 1) forwards;
 }
 
 .anim--effect-2 .revealer--animate .revealer__layer:nth-child(2) {
@@ -152,6 +146,7 @@
 }
 
 @keyframes anim-effect-2-2 {
+
   0%,
   14.5% {
     -webkit-transform: translate3d(0, 0, 0);
@@ -176,14 +171,12 @@
 /* Three layer effect (effect-3) */
 
 .anim--effect-3 .page:nth-child(2) {
-  background: #ecf3a3;
+  background: #ECF3A3;
 }
 
 .anim--effect-3 .revealer--animate .revealer__layer {
-  -webkit-animation: anim-effect-3-1 var(--revealer-speed)
-    cubic-bezier(0.55, 0.055, 0.675, 0.19) forwards;
-  animation: anim-effect-3-1 var(--revealer-speed)
-    cubic-bezier(0.55, 0.055, 0.675, 0.19) forwards;
+  -webkit-animation: anim-effect-3-1 var(--revealer-speed) cubic-bezier(0.550, 0.055, 0.675, 0.190) forwards;
+  animation: anim-effect-3-1 var(--revealer-speed) cubic-bezier(0.550, 0.055, 0.675, 0.190) forwards;
 }
 
 .anim--effect-3 .revealer--animate .revealer__layer:nth-child(2) {
@@ -206,8 +199,8 @@
   75% {
     -webkit-transform: translate3d(0, -100%, 0);
     transform: translate3d(0, -100%, 0);
-    -webkit-animation-timing-function: cubic-bezier(0.215, 0.61, 0.355, 1);
-    animation-timing-function: cubic-bezier(0.215, 0.61, 0.355, 1);
+    -webkit-animation-timing-function: cubic-bezier(0.215, 0.610, 0.355, 1.000);
+    animation-timing-function: cubic-bezier(0.215, 0.610, 0.355, 1.000);
   }
 
   100% {
@@ -217,6 +210,7 @@
 }
 
 @keyframes anim-effect-3-2 {
+
   0%,
   12.5% {
     -webkit-transform: translate3d(0, 0, 0);
@@ -227,8 +221,8 @@
   62.5% {
     -webkit-transform: translate3d(0, -100%, 0);
     transform: translate3d(0, -100%, 0);
-    -webkit-animation-timing-function: cubic-bezier(0.215, 0.61, 0.355, 1);
-    animation-timing-function: cubic-bezier(0.215, 0.61, 0.355, 1);
+    -webkit-animation-timing-function: cubic-bezier(0.215, 0.610, 0.355, 1.000);
+    animation-timing-function: cubic-bezier(0.215, 0.610, 0.355, 1.000);
   }
 
   87.5%,
@@ -239,12 +233,13 @@
 }
 
 @keyframes anim-effect-3-3 {
+
   0%,
   25% {
     -webkit-transform: translate3d(0, 0, 0);
     transform: translate3d(0, 0, 0);
-    -webkit-animation-timing-function: cubic-bezier(0.645, 0.045, 0.355, 1);
-    animation-timing-function: cubic-bezier(0.645, 0.045, 0.355, 1);
+    -webkit-animation-timing-function: cubic-bezier(0.645, 0.045, 0.355, 1.000);
+    animation-timing-function: cubic-bezier(0.645, 0.045, 0.355, 1.000);
   }
 
   75%,
@@ -257,11 +252,11 @@
 /* Forth effect */
 
 .anim--effect-4 .page:first-child {
-  background: #28282d;
+  background: #28282D;
 }
 
 .anim--effect-4 .page:nth-child(2) {
-  background: #f15c5c;
+  background: #F15C5C;
 }
 
 .anim--effect-4 .page--animate-top .quote {
@@ -270,6 +265,7 @@
 }
 
 @keyframes moveQuoteTop {
+
   0%,
   65% {
     -webkit-transform: translate3d(0, -75px, 0);
@@ -288,6 +284,7 @@
 }
 
 @keyframes moveQuoteBottom {
+
   0%,
   65% {
     -webkit-transform: translate3d(0, 75px, 0);
@@ -306,6 +303,7 @@
 }
 
 @keyframes moveQuoteLeft {
+
   0%,
   65% {
     -webkit-transform: translate3d(-75px, 0, 0);
@@ -324,6 +322,7 @@
 }
 
 @keyframes moveQuoteRight {
+
   0%,
   65% {
     -webkit-transform: translate3d(75px, 0, 0);
@@ -342,6 +341,7 @@
 }
 
 @keyframes moveQuoteCornerTopRight {
+
   0%,
   65% {
     -webkit-transform: translate3d(50px, -50px, 0);
@@ -360,6 +360,7 @@
 }
 
 @keyframes moveQuoteCornerTopLeft {
+
   0%,
   65% {
     -webkit-transform: translate3d(-50px, -50px, 0);
@@ -378,6 +379,7 @@
 }
 
 @keyframes moveQuoteCornerBottomRight {
+
   0%,
   65% {
     -webkit-transform: translate3d(50px, 50px, 0);
@@ -396,6 +398,7 @@
 }
 
 @keyframes moveQuoteCornerBottomLeft {
+
   0%,
   65% {
     -webkit-transform: translate3d(-50px, 50px, 0);
@@ -409,24 +412,22 @@
 }
 
 .anim--effect-4 .revealer--animate .revealer__layer {
-  -webkit-animation: anim-effect-4-1 var(--revealer-speed)
-    cubic-bezier(0.55, 0.055, 0.675, 0.19) forwards;
-  animation: anim-effect-4-1 var(--revealer-speed)
-    cubic-bezier(0.55, 0.055, 0.675, 0.19) forwards;
+  -webkit-animation: anim-effect-4-1 var(--revealer-speed) cubic-bezier(0.550, 0.055, 0.675, 0.190) forwards;
+  animation: anim-effect-4-1 var(--revealer-speed) cubic-bezier(0.550, 0.055, 0.675, 0.190) forwards;
 }
 
 .anim--effect-4 .revealer--animate .revealer__layer:nth-child(2) {
   -webkit-animation-name: anim-effect-4-2;
   animation-name: anim-effect-4-2;
-  -webkit-animation-timing-function: cubic-bezier(0.895, 0.03, 0.685, 0.22);
-  animation-timing-function: cubic-bezier(0.895, 0.03, 0.685, 0.22);
+  -webkit-animation-timing-function: cubic-bezier(0.895, 0.030, 0.685, 0.220);
+  animation-timing-function: cubic-bezier(0.895, 0.030, 0.685, 0.220);
 }
 
 .anim--effect-4 .revealer--animate .revealer__layer:nth-child(3) {
   -webkit-animation-name: anim-effect-4-3;
   animation-name: anim-effect-4-3;
-  -webkit-animation-timing-function: cubic-bezier(0.755, 0.05, 0.855, 0.06);
-  animation-timing-function: cubic-bezier(0.755, 0.05, 0.855, 0.06);
+  -webkit-animation-timing-function: cubic-bezier(0.755, 0.050, 0.855, 0.060);
+  animation-timing-function: cubic-bezier(0.755, 0.050, 0.855, 0.060);
 }
 
 @keyframes anim-effect-4-1 {
@@ -439,8 +440,8 @@
   65% {
     -webkit-transform: translate3d(0, -100%, 0);
     transform: translate3d(0, -100%, 0);
-    -webkit-animation-timing-function: cubic-bezier(0.215, 0.61, 0.355, 1);
-    animation-timing-function: cubic-bezier(0.215, 0.61, 0.355, 1);
+    -webkit-animation-timing-function: cubic-bezier(0.215, 0.610, 0.355, 1.000);
+    animation-timing-function: cubic-bezier(0.215, 0.610, 0.355, 1.000);
   }
 
   100% {
@@ -459,8 +460,8 @@
   55% {
     -webkit-transform: translate3d(0, -100%, 0);
     transform: translate3d(0, -100%, 0);
-    -webkit-animation-timing-function: cubic-bezier(0.165, 0.84, 0.44, 1);
-    animation-timing-function: cubic-bezier(0.165, 0.84, 0.44, 1);
+    -webkit-animation-timing-function: cubic-bezier(0.165, 0.840, 0.440, 1.000);
+    animation-timing-function: cubic-bezier(0.165, 0.840, 0.440, 1.000);
   }
 
   100% {
@@ -479,8 +480,8 @@
   55% {
     -webkit-transform: translate3d(0, -100%, 0);
     transform: translate3d(0, -100%, 0);
-    -webkit-animation-timing-function: cubic-bezier(0.23, 1, 0.32, 1);
-    animation-timing-function: cubic-bezier(0.23, 1, 0.32, 1);
+    -webkit-animation-timing-function: cubic-bezier(0.230, 1.000, 0.320, 1.000);
+    animation-timing-function: cubic-bezier(0.230, 1.000, 0.320, 1.000);
   }
 
   100% {

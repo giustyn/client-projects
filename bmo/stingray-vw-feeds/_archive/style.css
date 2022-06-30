@@ -1,0 +1,280 @@
+@font-face {
+    font-family: 'Weather-Icons';
+    src: url('fonts/artill_clean_icons-webfont.eot'),	
+		 url('fonts/artill_clean_icons-webfont.woff');
+}
+@font-face {
+	font-family: 'Dax-Light';
+	src: url('fonts/Dax-Light.otf');
+}
+@font-face {
+	font-family: 'Dax-Bold';
+	src: url('fonts/Dax-Bold.otf');
+}
+@font-face {
+	font-family: 'Dax-Regular';
+	src: url('fonts/Dax-Regular.otf');
+}
+@font-face {
+	font-family: 'Dax-Medium';
+	src: url('fonts/Dax-Medium.otf');
+}
+
+html {
+	background: #0079C1; 
+	width: 100%;
+	height: 100%;
+}
+body {
+	padding: 0;
+	margin: 0;	
+}
+video { 
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    min-width: 100%;
+    min-height: 100%;
+    width: auto;
+    height: auto;
+    z-index: -100;
+    -webkit-transform: translateX(-50%) translateY(-50%);
+	transform: translateX(-50%) translateY(-50%);
+	background: url('img/0079C1.png') no-repeat;
+	background-size: cover;
+	-webkit-transition: 1s opacity;
+	transition: 1s opacity;
+}
+
+
+/* CSS ANIMATIONS */
+
+/* make keyframes that tell the start state and the end state of our object */
+@-webkit-keyframes fadeIn { from { opacity:0; } to { opacity:1; } }
+@-moz-keyframes fadeIn { from { opacity:0; } to { opacity:1; } }
+@keyframes fadeIn { from { opacity:0; } to { opacity:1; } }
+
+.fade-in {
+	opacity:0;  /* make things invisible upon start */
+	-webkit-animation:fadeIn ease-in 1;  /* call our keyframe named fadeIn, use animattion ease-in and repeat it only 1 time */
+	-moz-animation:fadeIn ease-in 1;
+	animation:fadeIn ease-in 1;
+
+	-webkit-animation-fill-mode:forwards;  /* this makes sure that after animation is done we remain at the last keyframe value (opacity: 1)*/
+	-moz-animation-fill-mode:forwards;
+	animation-fill-mode:forwards;
+
+	-webkit-animation-duration:1.5s;
+	-moz-animation-duration:1.5s;
+	animation-duration:1.5s;
+}
+.fade-in.one {
+	-webkit-animation-delay: 0.7s;
+	-moz-animation-delay: 0.7s;
+	animation-delay: 0.7s;
+}
+.fade-in.two {
+	-webkit-animation-delay: 1.2s;
+	-moz-animation-delay:1.2s;
+	animation-delay: 1.2s;
+}
+.fade-in.three {
+	-webkit-animation-delay: 1.6s;
+	-moz-animation-delay: 1.6s;
+	animation-delay: 1.6s;
+}
+
+/* HAPPY LITTLE CSS TRICKS */
+.scalefix { 	transform: scaleY(1.3); } /* Scales the content to counteract 4:3 ratio screens */
+.clearfix { overflow: auto; zoom: 1; }
+.hidden { display: none; }
+.clear { clear: both; }
+.space { height: 1rem; }
+.left { background-position: left; float: left; }
+.right { background-position: right; float: right; }
+.center { background-position: center; }
+.noselect {
+  -webkit-touch-callout: none; /* iOS Safari */
+  -webkit-user-select: none;   /* Chrome/Safari/Opera */
+  -khtml-user-select: none;    /* Konqueror */
+  -moz-user-select: none;      /* Firefox */
+  -ms-user-select: none;       /* Internet Explorer/Edge */
+  user-select: none;           /* Non-prefixed version, currently
+                                  not supported by any browser */
+}
+.valign {
+  position: relative;
+  top: 50%;
+  transform: translate(0,-50%);
+}
+ul { margin-top: auto; padding: 0.5em; overflow: none; list-style-type: disc; }
+li { white-space: nowrap; font-size: 2.1rem; line-height: 1.4em; }
+
+/* RESPONSIVE 3 COLUMN LAYOUT */
+.container:after { /*clear float*/
+    content: "";
+    display: table;
+    clear: both;
+}
+.container > div {
+    float: left;
+    width: 33.33%;
+    border: 1px solid red;
+    box-sizing: border-box;
+}
+@media (max-width: 1024px) { /*breakpoint*/
+    .container > div {
+        float: none;
+        width: 100%;
+    }
+}
+.section {
+	font-size: 2em;
+    color: white;
+	min-width: 1024px;
+	max-width: 1024px;
+	/* max-width: 1360px; */
+	height: 768px;
+	padding: 2em;
+}
+/* NESTED COLUMN LAYOUT */
+.group:after {
+	visibility: hidden;
+	display: block;
+	font-size: 0;
+	content: " ";
+	clear: both;
+	height: 0;
+ }
+.group { 
+	display: inline-block;
+	width: 100%;
+	padding: 0;	
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	flex-direction: row;
+}
+.feed-columns .col {
+	width: 33%;	
+	float: left;
+	padding: 0;
+}
+/* BRAND LOGOS */
+#logo-bmo-en {
+	background-image: url("img/logo-bmo-en.svg");
+}
+#logo-bmo-fr {
+	background-image: url("img/logo-bmo-fr.svg");
+}
+#logo-reuters {
+	background-image: url("img/logo-reuters.svg");
+}
+#logo-tcp-en {
+	background-image: url("img/logo-tcp-en.svg");
+}
+#logo-tcp-fr {
+	background-image: url("img/logo-tcp-fr.svg");
+}
+#logo-twn-en {
+	background-image: url("img/logo-twn-en.svg");
+}
+#logo-twn-fr {
+	background-image: url("img/logo-twn-fr.svg");
+}
+.logo {
+	background-repeat: no-repeat;
+	background-size: contain;	
+	width: 50%;
+	max-height: 2em;
+}
+.logo-bmo {	
+	margin-top: 0rem;
+	height: 1.8em;
+}
+.logo-news {	
+	margin-top: 0.8rem;
+	height: 1.1em;	
+}
+.logo-weather {	
+	margin-top: 2rem;
+	height: 1.5rem;
+}
+.logo-bmo-alt {	
+	background-repeat: no-repeat;
+	background-size: contain;	
+	height: 5em;
+	padding: 1rem;
+	margin-top: -4rem;
+}
+
+/* SECTION HEADER TITLE */
+.top, .title {
+    font-family: Dax-Light;
+	font-size: 1.2em;
+	margin-left: 0;
+	padding-top: 2em;
+	padding-bottom: 1.0em;
+	letter-spacing: 0rem;
+}
+.category {
+	font-family: Dax-Medium;
+	font-size: 1.3em;
+}
+.feed-data {
+	background: rgba(255,255,255,0.0);
+	font-family: Dax-Light;
+}
+.weather-icon {
+	font-family: Weather-Icons;
+	font-size: 9em;	
+	text-align: center;
+	margin-left: -2rem;
+}
+.weather-icon-sm {
+	font-family: Weather-Icons;
+	font-size: 6em;	
+	margin: -2rem 0 -2rem 0;
+    text-align: center;
+}
+.weather-current {
+	font-size: 6em;
+	letter-spacing: -1.1rem;
+	text-align: center;
+	margin-left: -3rem;	
+}
+.weather-conditions {
+	font-size: 1.9rem;	
+	line-height: 1.6em;	
+	padding-left: 10%;
+	margin: auto;
+}
+.forecast-day {
+    font-family: Dax-Medium;
+    font-size: 2rem;
+    text-align: center;
+    margin: 0.5rem;
+}
+.forecast-temp {
+    font-family: Dax-Light;
+    font-size: 1.8em;
+    text-align: right;
+    letter-spacing: -0.2rem;
+    margin: 0 1rem;
+}
+.divider {
+    border-left: 1px solid rgba(255,255,255,1.0);
+	margin: auto;
+
+}
+
+/*
+@media screen and (max-width: 500px) {
+	div{width:70%;} 
+}
+
+@media screen and (max-device-width: 800px) {
+	html { background: #0079C1; }
+	#bgvid { display: none; }
+}
+*/
