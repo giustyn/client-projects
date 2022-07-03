@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
+    <title>United Bank - Feeds</title>
+    <link rel="stylesheet" href="assets/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="assets/css/Univers%20LT%20Std%2057%20Cn.css">
+    <link rel="stylesheet" href="assets/css/aos.css">
+    <link rel="stylesheet" href="assets/css/markets.css">
+    <link rel="stylesheet" href="assets/css/revealer.css">
+    <link rel="stylesheet" href="assets/css/styles.css">
+    <link rel="stylesheet" href="assets/css/weather.css">
+</head>
+
+<body>
+    <header id="intro"><video id="bumper" autoplay="" muted="" preload="auto"></video></header>
+    <div class="container-fluid" data-aos="fade" id="feed">
+        <section data-aos="fade-right" data-aos-delay="500" id="storyBlank" class="stage">
+            <div class="feature-imgcontainer">
+                <div data-aos="fade" class="feature-imgbg"></div>
+                <div data-aos="fade" class="feature-img"></div>
+                <div class="overlay"></div>
+            </div>
+            <div class="story-description">
+                <h2 class="story"></h2>
+            </div>
+        </section>
+    </div>
+    <div class="container-fluid" data-aos="fade" id="weather">
+        <section class="stage">
+            <header data-aos="fade" data-aos-duration="1500" data-aos-delay="500" data-aos-once="true" class="video-bg"><video id="weather-bg" autoplay="" muted="" loop=""></video>
+                <div class="weather-overlay"></div>
+            </header>
+            <div class="container-fluid h-100">
+                <div class="row" data-aos="fade-down" id="location">
+                    <div class="col h-100">
+                        <div class="row h-50">
+                            <div class="col d-flex justify-content-start align-items-end">
+                                <h1 class="text-capitalize" id="current-location">---</h1>
+                            </div>
+                        </div>
+                        <div class="row h-50">
+                            <div class="col d-flex justify-content-start align-items-center">
+                                <h1 class="text-capitalize" id="date">Monday, 1 January</h1>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col">
+                        <div class="row h-50">
+                            <div class="col d-flex justify-content-end align-items-end">
+                                <h1 class="text-uppercase" id="time">12:00 AM</h1>
+                            </div>
+                        </div>
+                        <div class="row h-50">
+                            <div class="col" id="logo-container"><img class="logo" src="assets/img/UB_HorizontalLogo_2C_Light.svg"></div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row" data-aos="zoom-out" id="todaywrap">
+                    <div class="col day" id="today">
+                        <div class="row daywrap">
+                            <div class="col d-flex justify-content-end align-items-center iconwrap"><img id="current-icon" class="icon" src="assets/img/icons-flat/skc_fair.svg"></div>
+                            <div class="col tempwrap">
+                                <h1 id="current-temp" class="forecast-temp">--</h1>
+                                <h1 class="degree">°</h1>
+                            </div>
+                        </div>
+                        <div class="row weekday">
+                            <div class="col d-flex justify-content-center align-items-start">
+                                <h2 id="current-condition" class="description">n/a</h2>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row" data-aos="fade-right" id="forecastwrap">
+                    <div class="col day vertical-line">
+                        <div class="row daywrap">
+                            <div class="col-6 d-flex justify-content-end align-items-center iconwrap"><img class="icon" src="assets/img/icons-flat/skc_fair.svg"></div>
+                            <div class="col-6 tempwrap">
+                                <h1 class="forecast-temp">--</h1>
+                                <h1 class="degree">°</h1>
+                            </div>
+                        </div>
+                        <div class="row weekday">
+                            <div class="col d-flex justify-content-center align-items-center">
+                                <h2 class="forecast-day">---</h2>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col day vertical-line">
+                        <div class="row daywrap">
+                            <div class="col-6 d-flex justify-content-end align-items-center iconwrap"><img class="icon" src="assets/img/icons-flat/skc_fair.svg"></div>
+                            <div class="col-6 tempwrap">
+                                <h1 class="forecast-temp">--</h1>
+                                <h1 class="degree">°</h1>
+                            </div>
+                        </div>
+                        <div class="row weekday">
+                            <div class="col d-flex justify-content-center align-items-center">
+                                <h2 class="forecast-day">---</h2>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col day vertical-line">
+                        <div class="row daywrap">
+                            <div class="col-6 d-flex justify-content-end align-items-center iconwrap"><img class="icon" src="assets/img/icons-flat/skc_fair.svg"></div>
+                            <div class="col-6 tempwrap">
+                                <h1 class="forecast-temp">--</h1>
+                                <h1 class="degree">°</h1>
+                            </div>
+                        </div>
+                        <div class="row weekday">
+                            <div class="col d-flex justify-content-center align-items-center">
+                                <h2 class="forecast-day">---</h2>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col day">
+                        <div class="row daywrap">
+                            <div class="col-6 d-flex justify-content-end align-items-center iconwrap"><img class="icon" src="assets/img/icons-flat/skc_fair.svg"></div>
+                            <div class="col-6 tempwrap">
+                                <h1 class="forecast-temp">--</h1>
+                                <h1 class="degree">°</h1>
+                            </div>
+                        </div>
+                        <div class="row weekday">
+                            <div class="col d-flex justify-content-center align-items-center">
+                                <h2 class="forecast-day">---</h2>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+    <div class="container-fluid" data-aos="fade" id="markets">
+        <section id="stage">
+            <div id="intro"><video autoplay="" muted="" loop="">
+                    <source src="https://retail.adrenalineamp.com/navori/assets/markets/video/markets.webm" type="video/webm">
+                </video>
+                <div class="video-overlay"></div>
+            </div>
+            <div id="marketHeader">
+                <div class="row d-flex justify-content-center align-items-center" id="container">
+                    <div class="col" data-aos="slide-up" data-aos-delay="750"><span id="date">&nbsp;</span></div>
+                    <div class="col-auto text-right" data-aos="slide-up" data-aos-delay="1000"><span id="time">&nbsp;</span></div>
+                </div>
+                <div class="row d-flex" data-aos="fade" id="container" style="margin-top: -2%;">
+                    <div class="col" id="wrapper">
+                        <div data-aos="slide-right" data-aos-delay="700" id="separator"></div>
+                    </div>
+                </div>
+            </div>
+            <div data-aos="fade-down" data-aos-delay="1200" id="marketData">
+                <div class="row" data-aos="fade-down" id="individualStock" style="text-shadow: 2px 2px 3px rgba(0,0,0,0.2);">
+                    <div class="col-4" id="stock"><span class="d-block" id="stockName">&nbsp;</span><span class="d-inline-flex" id="lastPrice">&nbsp;</span></div>
+                    <div class="col-1" id="change">
+                        <div id="changeValue"></div>
+                    </div>
+                    <div class="col" id="value"><span id="changeValueNum">&nbsp;</span></div>
+                    <div class="col" id="difference"><span id="percentchangeValue">&nbsp; &nbsp;</span></div>
+                </div>
+            </div>
+        </section>
+    </div>
+    <div id="revealer" class="anim--effect-4">
+        <div class="revealer revealer--left">
+            <div class="revealer__layer" style="background: rgba(0,0,0,0.50);"></div>
+            <div class="revealer__layer" style="background: rgba(255,255,255,0.9);"></div>
+            <div class="revealer__layer" style="background: rgba(3,166,95,0.9);"></div>
+        </div>
+    </div>
+    <script src="assets/js/jquery.min.js"></script>
+    <script src="assets/bootstrap/js/bootstrap.min.js"></script>
+    <script src="assets/js/bs-init.js"></script>
+    <script src="assets/js/aos.js"></script>
+    <script src="assets/js/moment.js"></script>
+    <script src="assets/js/app.js"></script>
+</body>
+
+</html>

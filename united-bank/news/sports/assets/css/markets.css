@@ -1,0 +1,172 @@
+:root {
+  font-family: 'Open Sans';
+}
+
+#wrapper {
+  overflow: hidden;
+  margin: 1vw;
+  padding: 0;
+}
+
+#container {
+  overflow: hidden;
+  margin: 3%;
+  padding: 0;
+}
+
+.video-overlay {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0,121,193,0.7);
+  background-blend-mode: multiply;
+  /*backdrop-filter: blur(20px) saturate(150%) opacity(0.7);*/
+}
+
+#date {
+  font-size: 3vw;
+  font-weight: 600;
+  color: #fff;
+  text-transform: uppercase;
+}
+
+#time {
+  font-size: 3vw;
+  font-weight: 400;
+  color: #fff;
+}
+
+#stockName {
+  font-size: 5vw;
+  font-weight: 500;
+  color: #fff;
+  line-height: 1.0;
+  margin-top: 0vw;
+}
+
+#lastPrice {
+  font-size: 4vw;
+  font-weight: 300;
+  color: #fff;
+  line-height: 1.0;
+  /*margin-top: 0vw;*/
+}
+
+#changeValueNum {
+  font-size: 5vw;
+  font-weight: 500;
+  color: #fff;
+}
+
+#percentchangeValue {
+  font-size: 5vw;
+  font-weight: 500;
+  color: #2f2d2f;
+}
+
+.changeZero {
+  margin: 0 2vh;
+  width: 5vw;
+  height: 1vh;
+  background: rgba(68,68,68,0.5);
+}
+
+.changeUp {
+  width: 0;
+  height: 0;
+  margin-bottom: 0.5vw;
+  border-left: 2.5vw solid transparent;
+  border-right: 2.5vw solid transparent;
+  border-bottom: 4.25vw solid green;
+}
+
+.changeDown {
+  width: 0;
+  height: 0;
+  margin-top: 0.5vw;
+  border-left: 2.5vw solid transparent;
+  border-right: 2.5vw solid transparent;
+  border-top: 4.25vw solid red;
+}
+
+#individualStock {
+  margin: 0;
+  padding-left: 6%;
+  padding-right: 6%;
+  padding-bottom: 6vh;
+  overflow: hidden;
+}
+
+#marketHeader {
+  position: relative;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+}
+
+#stock {
+  /*margin-right: 1vw;*/
+  /*padding-right: 0vw;*/
+  padding-bottom: 0.5vw;
+  text-align: right;
+}
+
+#change {
+  background: #2f2d2f;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+  min-width: 10%;
+  max-width: 10%;
+}
+
+#value {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  border: 0.35vh solid rgb(255,255,255);
+  padding-bottom: 0.5vw;
+  padding-right: 2vw;
+  /*min-width: 40vh;*/
+  /*max-width: 40vh;*/
+  overflow: hidden;
+}
+
+#difference {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  background: #fff;
+  padding-bottom: 0.5vw;
+  padding-right: 2vw;
+  margin-left: 1vw;
+  /*min-width: 40vh;*/
+  /*max-width: 40vh;*/
+  overflow: hidden;
+}
+
+#marketData {
+  position: relative;
+  margin: 1% 3%;
+  overflow: hidden;
+}
+
+#markets {
+  position: absolute;
+  width: 100vw;
+  height: 100vh;
+  margin: 0;
+  padding: 0;
+  visibility: visible;
+  transition: visibility 0s, opacity 0.5s linear;
+}
+
+#separator {
+  border-top: 0.25vw solid rgb(255,255,255);
+}
+
+#current-location {
+  font-size: 3vw;
+}
+
