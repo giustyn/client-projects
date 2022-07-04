@@ -15,24 +15,23 @@ $(function () {
         zipcode,
     };
 
-  function revealer() {
-    if (!revealerEnabled) return;
-    const $transition = $(".revealer"),
-      mode = [
-        "revealer--left",
-        "revealer--right",
-        "revealer--top",
-        "revealer--bottom",
-      ].shuffle();
-    $transition
-      .addClass("revealer--animate")
-      .addClass(mode[1])
-      .delay($revealerSpeed * 2)
-      .queue(function () {
-        $(this).removeClass("revealer--animate").removeClass(mode[1]).dequeue();
+
+    function revealer() {
+      const $revealerSpeed = parseInt($(':root').css('--revealer-speed')),
+          $revealerStyle = $('body').addClass('anim-effect-2'),
+          $transition = $('.revealer'),
+          mode = [
+              'revealer--left',
+              'revealer--right',
+              'revealer--top',
+              'revealer--bottom'
+          ],
+          shuffle = mode[(Math.random() * mode.length) | 0];
+      $transition.addClass('revealer--animate').addClass(mode[2]).delay($revealerSpeed * 1.5).queue(function () {
+          $(this).removeClass('revealer--animate').removeClass(mode[2]).dequeue();
       });
   }
-
+  
   function newsHandler(data) {
     let stories = [];
     $.each(data.Items, function (i) {
@@ -60,58 +59,50 @@ $(function () {
     };
 
     const setForecast = () => {
+      cloneDayOfWeek("#template", forecast.length);
       $(".day").each(function (i, el) {
         var $el = $(el);
         $el
           .find(".icon")
           .attr("src", "./img/icons/" + getIcon(forecast[i].ConditionCode));
-        $el.find(".dayofweek").text(moment(forecast[i].DateTime).format("ddd"));
-        $el.find(".description").text(forecast[i].ShortDescription);
-        $el.find(".htemp").text(forecast[i].HighTempF + "°");
-        $el.find(".ltemp").text(forecast[i].LowTempF + "°");
         $el
-          .find("video")
-          .attr(
-            "poster",
-            "./img/" + loadMedia(forecast[i].ConditionCode) + ".jpg"
-          );
-        if (videoEnabled) {
-          $el
-            .find("video")
-            .attr(
-              "src",
-              "./video/" + loadMedia(forecast[i].ConditionCode) + ".mp4"
-            );
-        }
+          .find(".dayofweek")
+          .text(moment(forecast[i].DateTime).format("dddd"));
+        $el.find(".description").text(forecast[i].ShortDescription);
+        $el.find(".high").text(forecast[i].HighTempF + "°");
+        $el.find(".low").text(forecast[i].LowTempF + "°");
       });
     };
 
     const setCurrent = () => {
-      $(".location").text(location.City);
-      $(".current-temp").text(current.CurrentTempF + "°");
-      $(".description").text(current.Description);
-      $(".low").text("Low: " + current.LowTempF + "°");
-      $(".high").text("High:  " + current.HighTempF + "°");
-      $(".feels").text("Feels like: " + current.FeelsLikeF + "°");
-      $(".wind").text("Wind: " + Number(current.WindSpeedMph) + " mph");
-      $(".humidity").text("Humidity: " + Number(current.Humidity) + "%");
-      $(".icon img").attr({
-        src: "./img/icons/" + getIcon(forecast[0].ConditionCode),
-      });
-      $("video").attr({
+      $("main .background video").attr({
         poster: "./img/" + loadMedia(forecast[0].ConditionCode) + ".jpg",
         src: "./video/" + loadMedia(forecast[0].ConditionCode) + ".mp4",
       });
+      $(".location").text(location.City);
+      $(".current .temp").text(current.CurrentTempF + "°");
+      $(".current .description").text(current.Description);
+      $(".current .high").text("High:  " + current.HighTempF + "°");
+      $(".current .low").text("Low: " + current.LowTempF + "°");
+      $(".current .feels").text("Feels like: " + current.FeelsLikeF + "°");
+      $(".current .wind").text(
+        "Wind: " + Number(current.WindSpeedMph) + " mph"
+      );
+      $(".current .humidity").text(
+        "Humidity: " + Number(current.Humidity) + "%"
+      );
+      $(".current .icon img").attr({
+        src: "./img/icons/" + getIcon(forecast[0].ConditionCode),
+      });
     };
 
-    // cloneDayOfWeek("#template", forecast.length);
-    // setForecast();
     setCurrent();
+    setForecast();
   }
 
   function animate() {
     let container = $(".container"),
-      animeSpeed = $revealerSpeed / 1,
+      animeSpeed = $revealerSpeed / 2,
       animeDelay = 100;
     let animation = anime
       .timeline({
@@ -124,7 +115,7 @@ $(function () {
         targets: container[0],
         // delay: animeSpeed,
         opacity: [0, 1],
-        // begin: () => revealer(),
+        begin: () => revealer(),
       })
       .add(
         {

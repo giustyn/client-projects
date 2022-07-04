@@ -19,7 +19,7 @@
   <body>
     <main class="container">
       <div class="background">
-        <video muted autoplay loop></video>
+        <video autoplay muted loop playsinline></video>
         <div class="bmo-logo"></div>
         <div class="overlay"></div>
       </div>
@@ -28,10 +28,10 @@
         <div class="heading">
           <span class="location"></span>
         </div>
-        <div class="wrapper">
+        <div class="current">
           <div class="icon"><img alt="" /></div>
-          <div class="current-temp"></div>
-          <div class="v-line"></div>
+          <div class="temp"></div>
+          <div class="stanchion"></div>
           <div class="conditions">
             <div>
               <span class="high"></span>
@@ -40,6 +40,14 @@
             <div class="feels"></div>
             <div class="wind"></div>
             <div class="humidity"></div>
+          </div>
+        </div>
+        <div class="forecast">
+          <div id="template" class="day">
+            <span class="dayofweek"></span>
+            <img alt="" class="icon" />
+            <span class="high"></span>
+            <span class="low"></span>
           </div>
         </div>
       </section>
@@ -57,5 +65,10 @@
         </div>
       </section>
     </main>
+    <div class="revealer">
+      <div class="revealer__layer top"></div>
+      <div class="revealer__layer middle"></div>
+      <div class="revealer__layer bottom"></div>
+    </div>
   </body>
 </html>
