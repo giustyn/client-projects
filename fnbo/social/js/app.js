@@ -85,6 +85,8 @@ $(function () {
       ProfileUserName = data.User.Name,
       MediaUrl = {};
 
+    // console.log(data);
+
     if (data.Images.length == 0) MediaUrl = userIcon;
     if (data.Images.length == 1) MediaUrl = data.Images[0].Url;
     $clone.find(".media video, .media img").attr("src", MediaUrl);

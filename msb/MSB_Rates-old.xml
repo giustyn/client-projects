@@ -1,0 +1,135 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<MSB-Current-Rates>
+  <Rate>
+    <Rate-Set>
+      <ID>L19</ID>
+      <Division>Consumer</Division>
+      <Product>Middlesex Portfolio 20 Year Fixed Mortgage</Product>
+      <Tier />
+      <Rate>3.500%</Rate>
+      <Points>0</Points>
+      <Apr>3.676%</Apr>
+      <Pmt>$5.80</Pmt>
+    </Rate-Set>
+    <Rate-Set>
+      <ID>L20</ID>
+      <Division>Consumer</Division>
+      <Product>Middlesex Portfolio 15 Year Fixed Mortgage</Product>
+      <Tier />
+      <Rate>3.000%</Rate>
+      <Points>0</Points>
+      <Apr>3.224%</Apr>
+      <Pmt>$6.91</Pmt>
+    </Rate-Set>
+    <Rate-Set>
+      <ID>L26</ID>
+      <Division>Consumer</Division>
+      <Product>Middlesex Portfolio 5/3 ARM</Product>
+      <Tier />
+      <Rate>3.000%</Rate>
+      <Points>0</Points>
+      <Apr>3.122%</Apr>
+      <Pmt>varies</Pmt>
+    </Rate-Set>
+    <Rate-Set>
+      <ID>L27</ID>
+      <Division>Consumer</Division>
+      <Product>Middlesex Portfolio 7/3 ARM</Product>
+      <Tier />
+      <Rate>3.250%</Rate>
+      <Points>0</Points>
+      <Apr>3.238%</Apr>
+      <Pmt>varies</Pmt>
+    </Rate-Set>
+    <Rate-Set>
+      <ID>L37</ID>
+      <Division>Consumer</Division>
+      <Product>Middlesex Portfolio 30 Year Fixed Mortgage</Product>
+      <Tier />
+      <Rate>3.500%</Rate>
+      <Points>0</Points>
+      <Apr>3.626%</Apr>
+      <Pmt>$4.49</Pmt>
+    </Rate-Set>
+    <Rate-Set>
+      <ID>L38</ID>
+      <Division>Consumer</Division>
+      <Product>Middlesex Portfolio 10/3 ARM</Product>
+      <Tier />
+      <Rate>3.500%</Rate>
+      <Points>0</Points>
+      <Apr>3.430%</Apr>
+      <Pmt>varies</Pmt>
+    </Rate-Set>
+    <Rate-Set>
+      <ID>L01</ID>
+      <Division>Consumer</Division>
+      <Product>Home Equity 5 Year Loan</Product>
+      <Tier>5 Year Term</Tier>
+      <Rate>3.500%</Rate>
+      <Points />
+      <Apr>3.500%</Apr>
+      <Pmt>$18.19</Pmt>
+    </Rate-Set>
+    <Rate-Set>
+      <ID>L02</ID>
+      <Division>Consumer</Division>
+      <Product>Home Equity 10 Year Loan</Product>
+      <Tier>10 Year Term</Tier>
+      <Rate>3.750%</Rate>
+      <Points />
+      <Apr>3.750%</Apr>
+      <Pmt>$10.01</Pmt>
+    </Rate-Set>
+    <Rate-Set>
+      <ID>L03</ID>
+      <Division>Consumer</Division>
+      <Product>Home Equity 15 Year Loan</Product>
+      <Tier>15 Year Term</Tier>
+      <Rate>4.000%</Rate>
+      <Points />
+      <Apr>4.000%</Apr>
+      <Pmt>$7.40</Pmt>
+    </Rate-Set>
+    <Rate-Set>
+      <ID>L04</ID>
+      <Division>Consumer</Division>
+      <Product>Home Equity 20 Year Loan</Product>
+      <Tier>20 Year Term</Tier>
+      <Rate>4.250%</Rate>
+      <Points />
+      <Apr>4.250%</Apr>
+      <Pmt>$6.19</Pmt>
+    </Rate-Set>
+    <Rate-Set>
+      <ID>L06</ID>
+      <Division>Consumer</Division>
+      <Product>Home Equity 30 Year Loan</Product>
+      <Tier>30 Year Term</Tier>
+      <Rate>4.500%</Rate>
+      <Points />
+      <Apr>4.500%</Apr>
+      <Pmt>$5.07</Pmt>
+    </Rate-Set>
+    <Rate-Set>
+      <ID>D18</ID>
+      <Division>Consumer</Division>
+      <Product>12 - 23 Month Certificate</Product>
+      <Tier />
+      <Rate>0.40%</Rate>
+      <Points />
+      <Apr>0.40%</Apr>
+      <Pmt />
+    </Rate-Set>
+    <Rate-Set>
+      <ID>D19</ID>
+      <Division>Consumer</Division>
+      <Product>24 - 35 Month Certificate</Product>
+      <Tier />
+      <Rate>0.40%</Rate>
+      <Points />
+      <Apr>0.40%</Apr>
+      <Pmt />
+    </Rate-Set>
+  </Rate>
+</MSB-Current-Rates>
