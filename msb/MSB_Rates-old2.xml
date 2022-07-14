@@ -1,0 +1,82 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<MSB-Current-Rates>
+  <Rate>
+    <Rate-Set>
+      <ID>D16</ID>
+      <Division>Consumer</Division>
+      <Product>3 - 5 Month Certificate</Product>
+      <Tier />
+      <Rate>0.55%</Rate>
+      <Apy>0.55%</Apy>
+      <OpenBal>$250.00</OpenBal>
+      <MinBal>$10.00</MinBal>
+      <Date>Rates updated as of: 7/14/2022</Date>
+    </Rate-Set>
+    <Rate-Set>
+      <ID>D17</ID>
+      <Division>Consumer</Division>
+      <Product>6 - 11 Month Certificate</Product>
+      <Tier />
+      <Rate>0.70%</Rate>
+      <Apy>0.70%</Apy>
+      <OpenBal>$250.00</OpenBal>
+      <MinBal>$10.00</MinBal>
+      <Date>Rates updated as of: 7/14/2022</Date>
+    </Rate-Set>
+    <Rate-Set>
+      <ID>D18</ID>
+      <Division>Consumer</Division>
+      <Product>12 - 23 Month Certificate</Product>
+      <Tier />
+      <Rate>1.00%</Rate>
+      <Apy>1.00%</Apy>
+      <OpenBal>$250.00</OpenBal>
+      <MinBal>$10.00</MinBal>
+      <Date>Rates updated as of: 7/14/2022</Date>
+    </Rate-Set>
+    <Rate-Set>
+      <ID>D19</ID>
+      <Division>Consumer</Division>
+      <Product>24 - 35 Month Certificate</Product>
+      <Tier />
+      <Rate>1.00%</Rate>
+      <Apy>1.00%</Apy>
+      <OpenBal>$250.00</OpenBal>
+      <MinBal>$10.00</MinBal>
+      <Date>Rates updated as of: 7/14/2022</Date>
+    </Rate-Set>
+    <Rate-Set>
+      <ID>D20</ID>
+      <Division>Consumer</Division>
+      <Product>36 - 47 Month Certificate</Product>
+      <Tier />
+      <Rate>1.00%</Rate>
+      <Apy>1.00%</Apy>
+      <OpenBal>$250.00</OpenBal>
+      <MinBal>$10.00</MinBal>
+      <Date>Rates updated as of: 7/14/2022</Date>
+    </Rate-Set>
+    <Rate-Set>
+      <ID>D21</ID>
+      <Division>Consumer</Division>
+      <Product>48 - 59 Month Certificate</Product>
+      <Tier />
+      <Rate>1.00%</Rate>
+      <Apy>1.00%</Apy>
+      <OpenBal>$250.00</OpenBal>
+      <MinBal>$10.00</MinBal>
+      <Date>Rates updated as of: 7/14/2022</Date>
+    </Rate-Set>
+    <Rate-Set>
+      <ID>D22</ID>
+      <Division>Consumer</Division>
+      <Product>60 - 71 Month Certificate</Product>
+      <Tier />
+      <Rate>1.00%</Rate>
+      <Apy>1.00%</Apy>
+      <OpenBal>$250.00</OpenBal>
+      <MinBal>$10.00</MinBal>
+      <Date>Rates updated as of: 7/14/2022</Date>
+    </Rate-Set>
+  </Rate>
+</MSB-Current-Rates>

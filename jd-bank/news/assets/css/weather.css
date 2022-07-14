@@ -1,0 +1,191 @@
+#weather {
+  color: rgb(255,255,255);
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  height: 100%;
+}
+
+#weather img {
+  min-width: 80%;
+  height: 100%;
+}
+
+#weather #bg-video {
+  z-index: -1;
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+}
+
+#location {
+  overflow: hidden;
+  height: 20%;
+  padding: 1.5em;
+}
+
+#forecast {
+  overflow: hidden;
+  height: 35%;
+}
+
+#weather .forecast-temp {
+  font-size: 4em;
+  font-weight: 600;
+  margin: 0;
+}
+
+.iconwrap {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  height: 70%;
+  padding: 0;
+}
+
+.daywrap {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  align-items: center;
+  width: 100%;
+  height: 100%;
+  margin: 0;
+  padding: 1.5em;
+}
+
+.tempwrap {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  height: 70%;
+  padding: 0;
+}
+
+#today {
+  height: 45%;
+}
+
+@media (max-width: 1024px) {
+  #today .daywrap {
+    display: flex;
+    padding: 1em;
+  }
+}
+
+#today .daywrap {
+  padding: 1em;
+}
+
+#today #conditions {
+  align-items: flex-start;
+  width: 100%;
+}
+
+#today .forecast-temp {
+  font-size: 7em;
+}
+
+.forecast-day {
+  font-size: 1.5em;
+  font-weight: 600;
+  text-transform: uppercase;
+  margin: 0;
+  padding: 0;
+}
+
+#weather #bg-video .overlay {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+}
+
+#weather .logo {
+  position: absolute;
+  height: 100%;
+  margin-right: -1vh;
+}
+
+.divide {
+  border-width: 0px 1px 0px 0px;
+  border-style: solid;
+  border-image: linear-gradient(to top, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 0.4) 50%, rgba(0, 0, 0, 0) 100%) 1 100% / 1 / 0 stretch;
+}
+
+#weather #current-location, #weather #time {
+  font-size: 2em;
+  font-weight: 600;
+  margin: 0;
+}
+
+#weather #salutation, #weather #date {
+  font-size: 1.25em;
+  font-weight: 400;
+  margin: 0;
+}
+
+#weather > #wrapper {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+}
+
+#weather .day {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 100%;
+  padding: 0;
+}
+
+.description {
+  display: flex;
+  justify-content: center;
+  align-items: flex-start !important;
+  height: 25%;
+  margin: 0;
+  padding: 0;
+}
+
+#weather #static {
+  position: absolute;
+  height: 100%;
+  margin: 0;
+  padding: 0;
+}
+
+#current-condition {
+  font-size: 2em;
+  font-weight: 600;
+  text-transform: uppercase;
+  line-height: 1;
+  text-align: center;
+}
+
+@media only screen and (orientation: portrait) {
+  .weather-photo, .weather-photo-bg {
+    top: 33%;
+    width: 100%;
+    height: 33% !important;
+    animation-play-state: paused !important;
+  }
+}
+
+.weather-photo {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+}
+
+.weather-photo.bg-effect {
+  transform: scale(5);
+  filter: blur(20px) brightness(80%) contrast(80%) saturate(180%);
+}
+
