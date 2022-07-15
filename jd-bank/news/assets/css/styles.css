@@ -9,7 +9,7 @@
   --clr-secondary: rgba(255,40,11,0.9);
   --background: var(--clr-primary);
   --aos-duration: 1500ms;
-  --aos-delay: 300ms;
+  --aos-delay: 0ms;
   --revealer-speed: 1500ms;
   --revealer-enabled: 1;
   --intro-video: 1;
