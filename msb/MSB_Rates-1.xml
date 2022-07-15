@@ -6,7 +6,7 @@
       <ID>D16</ID>
       <Division>Consumer</Division>
       <Product>3 - 5 Month Certificate</Product>
-      <Tier><Tier />
+      <Tier />
       <Rate>0.55%</Rate>
       <Apy>0.55%</Apy>
       <OpenBal>$250.00</OpenBal>
@@ -17,7 +17,7 @@
       <ID>D17</ID>
       <Division>Consumer</Division>
       <Product>6 - 11 Month Certificate</Product>
-      <Tier><Tier />
+      <Tier />
       <Rate>0.70%</Rate>
       <Apy>0.70%</Apy>
       <OpenBal>$250.00</OpenBal>
@@ -28,7 +28,7 @@
       <ID>D18</ID>
       <Division>Consumer</Division>
       <Product>12 - 23 Month Certificate</Product>
-      <Tier><Tier />
+      <Tier />
       <Rate>1.00%</Rate>
       <Apy>1.00%</Apy>
       <OpenBal>$250.00</OpenBal>
@@ -39,7 +39,7 @@
       <ID>D19</ID>
       <Division>Consumer</Division>
       <Product>24 - 35 Month Certificate</Product>
-      <Tier><Tier />
+      <Tier />
       <Rate>1.00%</Rate>
       <Apy>1.00%</Apy>
       <OpenBal>$250.00</OpenBal>
@@ -50,7 +50,7 @@
       <ID>D20</ID>
       <Division>Consumer</Division>
       <Product>36 - 47 Month Certificate</Product>
-      <Tier><Tier />
+      <Tier />
       <Rate>1.00%</Rate>
       <Apy>1.00%</Apy>
       <OpenBal>$250.00</OpenBal>
@@ -61,7 +61,7 @@
       <ID>D21</ID>
       <Division>Consumer</Division>
       <Product>48 - 59 Month Certificate</Product>
-      <Tier><Tier />
+      <Tier />
       <Rate>1.00%</Rate>
       <Apy>1.00%</Apy>
       <OpenBal>$250.00</OpenBal>
@@ -72,7 +72,7 @@
       <ID>D22</ID>
       <Division>Consumer</Division>
       <Product>60 - 71 Month Certificate</Product>
-      <Tier><Tier />
+      <Tier />
       <Rate>1.00%</Rate>
       <Apy>1.00%</Apy>
       <OpenBal>$250.00</OpenBal>
