@@ -51,7 +51,7 @@ section#weather .heading {
 }
 section#news {
   grid-area: news;
-  background-color: rgba(var(--bmo-blue), 0.7);
+  background-color: rgba(var(--bmo-blue), 0.8);
   border-top: 5px solid white;
 }
 section#weather .location,
@@ -70,12 +70,18 @@ section#news .category::after {
   content: "News Stories";
 }
 section#news .heading {
-  font-size: 3.3em;
-  padding-bottom: 0.1em;
+  font-size: 3em;
+  padding-bottom: 0.2em;
+}
+section#news .headlines > *::before {
+  content: "\2022";
+  margin-left: -1em;
+  padding-right: .5em;
 }
 section#news .headlines {
   font-size: 1.5em;
   font-weight: 400;
+  letter-spacing: 1.4;
   line-height: 1.5;
   margin-left: -0.5em;
   padding-left: 0.85em;

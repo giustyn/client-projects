@@ -9,36 +9,39 @@ $(function () {
       weather_local: "c:\\data\\weather\\weather.json",
       news_local: "c:\\data\\news\\news.json",
       news_api:
-        "http://kitchen.screenfeed.com/feed/7s51fskbkrzabmbzhqdtdydjj1.json",
+        "https://kitchen.screenfeed.com/feed/7s51fskbkrzabmbzhqdtdydjj1.json",
       weather_api:
         "https://kitchen.screenfeed.com/weather/v2/data/40778ps5v9ke2m2nf22wpqk0sj.json?current=true&interval=Daily&forecasts=5&location=" +
         zipcode,
     };
 
-
-    function revealer() {
-      const $revealerSpeed = parseInt($(':root').css('--revealer-speed')),
-          $revealerStyle = $('body').addClass('anim-effect-2'),
-          $transition = $('.revealer'),
-          mode = [
-              'revealer--left',
-              'revealer--right',
-              'revealer--top',
-              'revealer--bottom'
-          ],
-          shuffle = mode[(Math.random() * mode.length) | 0];
-      $transition.addClass('revealer--animate').addClass(mode[2]).delay($revealerSpeed * 1.5).queue(function () {
-          $(this).removeClass('revealer--animate').removeClass(mode[2]).dequeue();
+  function revealer() {
+    const $revealerSpeed = parseInt($(":root").css("--revealer-speed")),
+      $revealerStyle = $("body").addClass("anim-effect-2"),
+      $transition = $(".revealer"),
+      mode = [
+        "revealer--left",
+        "revealer--right",
+        "revealer--top",
+        "revealer--bottom",
+      ],
+      shuffle = mode[(Math.random() * mode.length) | 0];
+    $transition
+      .addClass("revealer--animate")
+      .addClass(mode[2])
+      .delay($revealerSpeed * 1.5)
+      .queue(function () {
+        $(this).removeClass("revealer--animate").removeClass(mode[2]).dequeue();
       });
   }
-  
+
   function newsHandler(data) {
     let stories = [];
     $.each(data.Items, function (i) {
       stories.push(data.Items[i]);
     });
     stories.sort(() => 0.5 - Math.random());
-    $.each($("li"), function (i) {
+    $.each($(".headlines div"), function (i) {
       $(".story" + (i + 1)).text(stories[i].Title);
     });
   }
@@ -117,9 +120,18 @@ $(function () {
         opacity: [0, 1],
         begin: () => revealer(),
       })
+      .add({
+        targets: container[0].querySelectorAll("#weather .heading"),
+        translateY: ["10%", "0%"],
+        // delay: animeSpeed,
+        opacity: [0, 1],
+        begin: () => revealer(),
+      })
       .add(
         {
-          targets: container[0].querySelectorAll("#weather *, #news *"),
+          targets: container[0].querySelectorAll(
+            "#weather .current *, #news *"
+          ),
           delay: anime.stagger(animeDelay),
           translateY: ["10%", "0%"],
           opacity: [0, 1],
