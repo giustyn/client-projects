@@ -9,7 +9,7 @@ $(function () {
       weather_local: "c:\\data\\weather\\weather.json",
       news_local: "c:\\data\\news\\news.json",
       news_api:
-        "https://kitchen.screenfeed.com/feed/7s51fskbkrzabmbzhqdtdydjj1.json",
+        "http://kitchen.screenfeed.com/feed/7s51fskbkrzabmbzhqdtdydjj1.json",
       weather_api:
         "https://kitchen.screenfeed.com/weather/v2/data/40778ps5v9ke2m2nf22wpqk0sj.json?current=true&interval=Daily&forecasts=5&location=" +
         zipcode,
@@ -41,7 +41,7 @@ $(function () {
       stories.push(data.Items[i]);
     });
     stories.sort(() => 0.5 - Math.random());
-    $.each($(".headlines div"), function (i) {
+    $.each($("li"), function (i) {
       $(".story" + (i + 1)).text(stories[i].Title);
     });
   }
@@ -120,18 +120,9 @@ $(function () {
         opacity: [0, 1],
         begin: () => revealer(),
       })
-      .add({
-        targets: container[0].querySelectorAll("#weather .heading"),
-        translateY: ["10%", "0%"],
-        // delay: animeSpeed,
-        opacity: [0, 1],
-        begin: () => revealer(),
-      })
       .add(
         {
-          targets: container[0].querySelectorAll(
-            "#weather .current *, #news *"
-          ),
+          targets: container[0].querySelectorAll("#weather *, #news *"),
           delay: anime.stagger(animeDelay),
           translateY: ["10%", "0%"],
           opacity: [0, 1],
@@ -195,7 +186,32 @@ $(function () {
   function init() {
     getOS();
     // getData(onTemplateSuccess, onTemplateError, dataURI.local); // get local data, located at c:\data
-    getData(onTemplateSuccess, onTemplateError, dataURI.weather_api); // get server data, via screenfeed.com
+
+    window.parent.PlayerSDK = {
+      getTagsPlayer: function () {
+        return [{ Id: 2, Name: "ZIP-63366" }];
+      },
+    };
+    var intervalId = setInterval(function () {
+      if (window.parent.PlayerSDK) {
+        clearInterval(intervalId);
+
+        try {
+          var tags = window.parent.PlayerSDK.getTagsPlayer();
+          var tag = tags.find((tag) => tag.Name && tag.Name.startsWith("ZIP-"));
+          var code = tag && tag.Name && tag.Name.match(/\d{5}/);
+
+          var zipcode = code || url.getSearchParam("zipcode") || "60606";
+          var weather_api =
+            "https://kitchen.screenfeed.com/weather/v2/data/40778ps5v9ke2m2nf22wpqk0sj.json?current=true&interval=Daily&forecasts=5&location=" +
+            zipcode;
+
+          getData(onTemplateSuccess, onTemplateError, weather_api); // get server data, via screenfeed.com
+        } catch (error) {
+          document.getElementById("error").innerHTML = error;
+        }
+      }
+    }, 100);
   }
 
   init();

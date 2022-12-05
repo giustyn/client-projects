@@ -157,10 +157,11 @@ $(function () {
     const current = Math.round(eventItem.currentTime * 1000);
     const total = Math.round(eventItem.duration * 1000);
     if (videoIntro === true) {
-      if (total - current < 500) {
+      if (total - current > 0) {
         revealer();
         eventItem.removeEventListener("timeupdate", videoTimeUpdate);
         if (folderName == "news") {
+          if (screenLayout == "videowall") $intro.addClass("visible");
           $feed.removeClass("hidden");
           loadedStories[0].classList.add("active");
           setInterval(showNextStory, timerDuration);
@@ -168,7 +169,7 @@ $(function () {
         } else if (folderName == "weather") {
           $feed.removeClass("hidden");
         }
-        if (screenLayout !== "videowall") $intro.fadeOut(500);
+        // if (screenLayout !== "videowall") $intro.fadeOut(500);
       }
     } /* else {
       eventItem.removeEventListener("timeupdate", videoTimeUpdate);

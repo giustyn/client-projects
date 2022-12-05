@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>BMO | Weather</title>
+    <link rel="stylesheet" href="./css/DaxPro.css" />
+    <link rel="stylesheet" href="./css/revealer.css" />
+    <link rel="stylesheet" href="./css/styles.css" />
+    <script src="./js/jquery.min.js" defer></script>
+    <script src="./js/ua-parser.min.js" defer></script>
+    <script src="./js/anime.min.js" defer></script>
+    <script src="./js/utils_api.js" defer></script>
+    <script src="./js/moment.js" defer></script>
+    <script src="./js/app.js" defer></script>
+    <!-- <script src="./js/sdk.js" defer></script> -->
+  </head>
+  <body>
+    <main class="container">
+      <div class="background">
+        <video autoplay muted loop playsinline></video>
+        <div class="bmo-logo"></div>
+        <div class="overlay"></div>
+      </div>
+      <!-- Weather -->
+      <section id="weather">
+        <div class="heading">
+          <span class="location"></span>
+        </div>
+        <div class="current">
+          <div class="icon"><img alt="" /></div>
+          <div class="temperature"></div>
+          <div class="stanchion"></div>
+          <div class="conditions">
+            <div>
+              <span class="high"></span>
+              <span class="low"></span>
+            </div>
+            <div class="feels"></div>
+            <div class="wind"></div>
+            <div class="humidity"></div>
+          </div>
+        </div>
+        <div class="forecast hidden">
+          <div id="template" class="day">
+            <span class="dayofweek"></span>
+            <img alt="" class="icon" />
+            <span class="high"></span>
+            <span class="low"></span>
+          </div>
+        </div>
+      </section>
+      <!-- News -->
+      <section id="news">
+        <div class="heading">
+          <span class="category"></span>
+        </div>
+        <div class="wrapper">
+          <div class="headlines">
+            <div class="story1"></div>
+            <div class="story2"></div>
+            <div class="story3"></div>
+          </div>
+        </div>
+      </section>
+    </main>
+    <div class="revealer">
+      <div class="revealer__layer top"></div>
+      <div class="revealer__layer middle"></div>
+      <div class="revealer__layer bottom"></div>
+    </div>
+  </body>
+</html>

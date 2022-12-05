@@ -17,10 +17,12 @@
     <!-- <script src="./js/sdk.js" defer></script> -->
   </head>
   <body>
+    <!-- Error -->
+    <div id="error"></div>
     <main class="container">
       <div class="background">
         <video autoplay muted loop playsinline></video>
-        <div class="bmo-logo"></div>
+        <!-- <div class="bmo-logo"></div> -->
         <div class="overlay"></div>
       </div>
       <!-- Weather -->
@@ -41,7 +43,24 @@
             <div class="wind"></div>
             <div class="humidity"></div>
           </div>
+          <div class="sm-conditions">
+            <div>
+              <div>
+                <span class="high"></span>
+                <span class="low"></span>
+              </div>
+              <div class="feels"></div>
+            </div>
+            <div>
+              <div class="wind"></div>
+              <div class="humidity"></div>
+            </div>
+          </div>
         </div>
+      </section>
+      <!-- Forecast -->
+      <section id="forecast">
+        <div class="heading">5 day <span class="">Forecast</span></div>
         <div class="forecast">
           <div id="template" class="day">
             <span class="dayofweek"></span>
@@ -57,17 +76,13 @@
           <span class="category"></span>
         </div>
         <div class="wrapper">
-          <div class="headlines">
-            <div class="story1"></div>
-            <div class="story2"></div>
-            <div class="story3"></div>
-          </div>
-          <!-- <ul class="headlines">
+          <ul class="headlines">
             <li class="story1"></li>
             <li class="story2"></li>
             <li class="story3"></li>
-          </ul> -->
+          </ul>
         </div>
+        <div class="bmo-logo"></div>
       </section>
     </main>
     <div class="revealer">
