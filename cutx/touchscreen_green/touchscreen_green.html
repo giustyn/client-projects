@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+
+    <link rel="stylesheet" href="css/reset.css" />
+    <link rel="stylesheet" href="css/main.css" />
+  </head>
+
+  <body>
+    <div class="container">
+      <div id="vid-container">
+        <video
+          id="myVideo"
+          src="video/CUTX_1080x1920_Green.mp4"
+          muted
+          autoplay
+          loop
+        ></video>
+      </div>
+
+      <div id="cutxtouch" style="display: none">
+        <iframe
+          class="touch"
+          style="border-style: none; width: 100%; height: 1920px"
+          src="https://request.cutx.org/kiosk/kiosk_home42.html"
+          title="CUTX Touchscreen"
+        ></iframe>
+      </div>
+    </div>
+
+    <script src="js/video.js"></script>
+  </body>
+</html>

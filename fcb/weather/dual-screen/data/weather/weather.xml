@@ -1,0 +1,177 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Weather language="en-us">
+  <Location ID="71111">
+    <Current>
+      <Timestamp>2021-08-21T10:53:00.0000000-05:00</Timestamp>
+      <Temp>87</Temp>
+      <Description>Sunny</Description>
+      <ShortDescription>Clear</ShortDescription>
+      <ChanceOfPrecip>0</ChanceOfPrecip>
+      <Humidity>70</Humidity>
+      <DewPoint>76</DewPoint>
+      <FeelsLike>98</FeelsLike>
+      <WindChill>87</WindChill>
+      <HeatIndex>98</HeatIndex>
+      <WindSpeed>9</WindSpeed>
+      <WindSpeedKnots>8</WindSpeedKnots>
+      <WindGust>--</WindGust>
+      <WindGustKnots>--</WindGustKnots>
+      <WindDirection>WSW</WindDirection>
+      <WindDirectionDegrees>240</WindDirectionDegrees>
+      <Pressure>29.97</Pressure>
+      <SkyCover>5</SkyCover>
+      <SnowAmount>0</SnowAmount>
+      <PrecipAmount>0</PrecipAmount>
+      <Visibility>10</Visibility>
+      <Sunrise>6:43 AM</Sunrise>
+      <Sunset>7:52 PM</Sunset>
+      <ConditionCode>sunny</ConditionCode>
+      <IconFilename>32.png</IconFilename>
+      <IconURL>http://fridge.knife.screenfeed.com/content/weather-icons/basic/128/32.png</IconURL>
+      <IconURL128>http://fridge.knife.screenfeed.com/content/weather-icons/basic/128/32.png</IconURL128>
+      <IconURL220>http://fridge.knife.screenfeed.com/content/weather-icons/basic/220/32.png</IconURL220>
+      <IconURL300>http://fridge.knife.screenfeed.com/content/weather-icons/basic/300/32.png</IconURL300>
+      <DayOfWeek abbreviated="Sat">Saturday</DayOfWeek>
+    </Current>
+    <Forecast day="Saturday" dayshort="SAT" dayshorter="Sa">
+      <Timestamp>2021-08-21T07:00:00.0000000-05:00</Timestamp>
+      <HighTemp>97</HighTemp>
+      <LowTemp>77</LowTemp>
+      <Description>Sunny</Description>
+      <ShortDescription>Clear</ShortDescription>
+      <ChanceOfPrecip>0</ChanceOfPrecip>
+      <Humidity>88</Humidity>
+      <DewPoint>72</DewPoint>
+      <FeelsLike>76</FeelsLike>
+      <WindSpeed>4</WindSpeed>
+      <WindSpeedKnots>3</WindSpeedKnots>
+      <WindGust>10</WindGust>
+      <WindGustKnots>9</WindGustKnots>
+      <WindDirection>SSW</WindDirection>
+      <WindDirectionDegrees>210</WindDirectionDegrees>
+      <Pressure>29.92</Pressure>
+      <SkyCover>5</SkyCover>
+      <SnowAmount>0</SnowAmount>
+      <PrecipAmount>0</PrecipAmount>
+      <ConditionCode>sunny</ConditionCode>
+      <IconFilename>32.png</IconFilename>
+      <IconURL>http://fridge.knife.screenfeed.com/content/weather-icons/basic/128/32.png</IconURL>
+      <IconURL128>http://fridge.knife.screenfeed.com/content/weather-icons/basic/128/32.png</IconURL128>
+      <IconURL220>http://fridge.knife.screenfeed.com/content/weather-icons/basic/220/32.png</IconURL220>
+      <IconURL300>http://fridge.knife.screenfeed.com/content/weather-icons/basic/300/32.png</IconURL300>
+      <DayOfWeek abbreviated="Sat">Saturday</DayOfWeek>
+    </Forecast>
+    <Forecast day="Sunday" dayshort="SUN" dayshorter="Su">
+      <Timestamp>2021-08-22T07:00:00.0000000-05:00</Timestamp>
+      <HighTemp>98</HighTemp>
+      <LowTemp>77</LowTemp>
+      <Description>Mostly Sunny</Description>
+      <ShortDescription>Fair</ShortDescription>
+      <ChanceOfPrecip>0</ChanceOfPrecip>
+      <Humidity>87</Humidity>
+      <DewPoint>73</DewPoint>
+      <FeelsLike>77</FeelsLike>
+      <WindSpeed>3</WindSpeed>
+      <WindSpeedKnots>3</WindSpeedKnots>
+      <WindGust>9</WindGust>
+      <WindGustKnots>8</WindGustKnots>
+      <WindDirection>WSW</WindDirection>
+      <WindDirectionDegrees>243</WindDirectionDegrees>
+      <Pressure>29.96</Pressure>
+      <SkyCover>9</SkyCover>
+      <SnowAmount>0</SnowAmount>
+      <PrecipAmount>0</PrecipAmount>
+      <ConditionCode>fair</ConditionCode>
+      <IconFilename>34.png</IconFilename>
+      <IconURL>http://fridge.knife.screenfeed.com/content/weather-icons/basic/128/34.png</IconURL>
+      <IconURL128>http://fridge.knife.screenfeed.com/content/weather-icons/basic/128/34.png</IconURL128>
+      <IconURL220>http://fridge.knife.screenfeed.com/content/weather-icons/basic/220/34.png</IconURL220>
+      <IconURL300>http://fridge.knife.screenfeed.com/content/weather-icons/basic/300/34.png</IconURL300>
+      <DayOfWeek abbreviated="Sun">Sunday</DayOfWeek>
+    </Forecast>
+    <Forecast day="Monday" dayshort="MON" dayshorter="M">
+      <Timestamp>2021-08-23T07:00:00.0000000-05:00</Timestamp>
+      <HighTemp>99</HighTemp>
+      <LowTemp>78</LowTemp>
+      <Description>Sunny</Description>
+      <ShortDescription>Clear</ShortDescription>
+      <ChanceOfPrecip>0</ChanceOfPrecip>
+      <Humidity>79</Humidity>
+      <DewPoint>71</DewPoint>
+      <FeelsLike>78</FeelsLike>
+      <WindSpeed>2</WindSpeed>
+      <WindSpeedKnots>2</WindSpeedKnots>
+      <WindGust>8</WindGust>
+      <WindGustKnots>7</WindGustKnots>
+      <WindDirection>WSW</WindDirection>
+      <WindDirectionDegrees>248</WindDirectionDegrees>
+      <Pressure>29.96</Pressure>
+      <SkyCover>4</SkyCover>
+      <SnowAmount>0</SnowAmount>
+      <PrecipAmount>0</PrecipAmount>
+      <ConditionCode>sunny</ConditionCode>
+      <IconFilename>32.png</IconFilename>
+      <IconURL>http://fridge.knife.screenfeed.com/content/weather-icons/basic/128/32.png</IconURL>
+      <IconURL128>http://fridge.knife.screenfeed.com/content/weather-icons/basic/128/32.png</IconURL128>
+      <IconURL220>http://fridge.knife.screenfeed.com/content/weather-icons/basic/220/32.png</IconURL220>
+      <IconURL300>http://fridge.knife.screenfeed.com/content/weather-icons/basic/300/32.png</IconURL300>
+      <DayOfWeek abbreviated="Mon">Monday</DayOfWeek>
+    </Forecast>
+    <Forecast day="Tuesday" dayshort="TUE" dayshorter="Tu">
+      <Timestamp>2021-08-24T07:00:00.0000000-05:00</Timestamp>
+      <HighTemp>100</HighTemp>
+      <LowTemp>78</LowTemp>
+      <Description>Mostly Sunny</Description>
+      <ShortDescription>Fair</ShortDescription>
+      <ChanceOfPrecip>0</ChanceOfPrecip>
+      <Humidity>77</Humidity>
+      <DewPoint>71</DewPoint>
+      <FeelsLike>79</FeelsLike>
+      <WindSpeed>2</WindSpeed>
+      <WindSpeedKnots>2</WindSpeedKnots>
+      <WindGust>8</WindGust>
+      <WindGustKnots>7</WindGustKnots>
+      <WindDirection>SW</WindDirection>
+      <WindDirectionDegrees>230</WindDirectionDegrees>
+      <Pressure>29.92</Pressure>
+      <SkyCover>7</SkyCover>
+      <SnowAmount>0</SnowAmount>
+      <PrecipAmount>0</PrecipAmount>
+      <ConditionCode>fair</ConditionCode>
+      <IconFilename>34.png</IconFilename>
+      <IconURL>http://fridge.knife.screenfeed.com/content/weather-icons/basic/128/34.png</IconURL>
+      <IconURL128>http://fridge.knife.screenfeed.com/content/weather-icons/basic/128/34.png</IconURL128>
+      <IconURL220>http://fridge.knife.screenfeed.com/content/weather-icons/basic/220/34.png</IconURL220>
+      <IconURL300>http://fridge.knife.screenfeed.com/content/weather-icons/basic/300/34.png</IconURL300>
+      <DayOfWeek abbreviated="Tue">Tuesday</DayOfWeek>
+    </Forecast>
+    <Forecast day="Wednesday" dayshort="WED" dayshorter="W">
+      <Timestamp>2021-08-25T07:00:00.0000000-05:00</Timestamp>
+      <HighTemp>99</HighTemp>
+      <LowTemp>77</LowTemp>
+      <Description>Mostly Sunny</Description>
+      <ShortDescription>Fair</ShortDescription>
+      <ChanceOfPrecip>0</ChanceOfPrecip>
+      <Humidity>80</Humidity>
+      <DewPoint>72</DewPoint>
+      <FeelsLike>80</FeelsLike>
+      <WindSpeed>2</WindSpeed>
+      <WindSpeedKnots>2</WindSpeedKnots>
+      <WindGust>12</WindGust>
+      <WindGustKnots>10</WindGustKnots>
+      <WindDirection>S</WindDirection>
+      <WindDirectionDegrees>170</WindDirectionDegrees>
+      <Pressure>29.91</Pressure>
+      <SkyCover>15</SkyCover>
+      <SnowAmount>0</SnowAmount>
+      <PrecipAmount>0</PrecipAmount>
+      <ConditionCode>fair</ConditionCode>
+      <IconFilename>34.png</IconFilename>
+      <IconURL>http://fridge.knife.screenfeed.com/content/weather-icons/basic/128/34.png</IconURL>
+      <IconURL128>http://fridge.knife.screenfeed.com/content/weather-icons/basic/128/34.png</IconURL128>
+      <IconURL220>http://fridge.knife.screenfeed.com/content/weather-icons/basic/220/34.png</IconURL220>
+      <IconURL300>http://fridge.knife.screenfeed.com/content/weather-icons/basic/300/34.png</IconURL300>
+      <DayOfWeek abbreviated="Wed">Wednesday</DayOfWeek>
+    </Forecast>
+  </Location>
+</Weather>

@@ -21,8 +21,8 @@ $(document).ready(function () {
     // Local variables
     var introVideo = "/video/bumper.webm";
     
-    var localBasePath = "c:/data";
-    // var localBasePath = "./data";
+    // var localBasePath = "c:/data";
+    var localBasePath = "./data";
     
     var localFeeds = {
         news: localBasePath + "/news/",

@@ -85,11 +85,13 @@ $(function () {
       ProfileUserName = data.User.Name,
       MediaUrl = {};
 
-    // console.log(data);
+    // console.log(data, current);
 
-    if (data.Images.length == 0) MediaUrl = userIcon;
-    if (data.Images.length == 1) MediaUrl = data.Images[0].Url;
-    $clone.find(".media video, .media img").attr("src", MediaUrl);
+    if (!Array.isArray(data.Images) || !data.Images.length) {
+      MediaUrl = userIcon;
+    } else {
+      MediaUrl = data.Images[0].Url;
+    }
 
     if (!data.User.ProfileImageUrl) {
       // use default instagram image & username
@@ -98,6 +100,7 @@ $(function () {
     }
 
     $clone.attr("id", current).css("z-index", current).removeClass("hidden");
+    $clone.find(".media video, .media img").attr("src", MediaUrl);
     $clone.find(".socialicon img").attr("src", data.ProviderIcon);
     $clone.find(".username").text(ProfileUserName);
     $clone.find(".useraccount").text(data.User.Username);

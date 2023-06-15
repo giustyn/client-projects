@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FinancialData>
+  <Quote>
+    <company_name>NYSE Composite</company_name>
+    <ticker>$NYA</ticker>
+    <logo_small />
+    <logo_large />
+    <last>14397.20</last>
+    <previous>14951.84</previous>
+    <change>-554.64</change>
+    <change_percent>-3.71%</change_percent>
+    <change_icon>http://fridge.knife.screenfeed.com/content/financial/icons/standard/down.png</change_icon>
+    <time_last>1/30/2021 9:43 PM</time_last>
+    <day_open>14669.52</day_open>
+    <day_high>14669.52</day_high>
+    <day_low>14328.46</day_low>
+    <volume>0</volume>
+  </Quote>
+  <Quote>
+    <company_name>NASDAQ Composite</company_name>
+    <ticker>$NASX</ticker>
+    <logo_small />
+    <logo_large />
+    <last>13070.69</last>
+    <previous>13337.16</previous>
+    <change>-266.47</change>
+    <change_percent>-2.00%</change_percent>
+    <change_icon>http://fridge.knife.screenfeed.com/content/financial/icons/standard/down.png</change_icon>
+    <time_last>1/30/2021 9:43 PM</time_last>
+    <day_open>13282.94</day_open>
+    <day_high>13322.00</day_high>
+    <day_low>12985.05</day_low>
+    <volume>0</volume>
+  </Quote>
+  <Quote>
+    <company_name>S&amp;P 500</company_name>
+    <ticker>$SPX</ticker>
+    <logo_small />
+    <logo_large />
+    <last>3714.24</last>
+    <previous>3787.38</previous>
+    <change>-73.14</change>
+    <change_percent>-1.93%</change_percent>
+    <change_icon>http://fridge.knife.screenfeed.com/content/financial/icons/standard/down.png</change_icon>
+    <time_last>1/30/2021 9:43 PM</time_last>
+    <day_open>3778.05</day_open>
+    <day_high>3778.05</day_high>
+    <day_low>3694.12</day_low>
+    <volume>0</volume>
+  </Quote>
+</FinancialData>

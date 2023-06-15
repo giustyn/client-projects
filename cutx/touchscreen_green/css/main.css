@@ -1,0 +1,88 @@
+* {
+    box-sizing: border-box;
+}
+
+@font-face {
+    font-family: 'open_sanssemibold';
+    src: url('../fonts/opensans-semibold-webfont.woff2') format('woff2'),
+         url('../fonts/opensans-semibold-webfont.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+
+}
+
+@font-face {
+    font-family: 'OpenSansBold';
+    src: url('../fonts/OpenSansBold.eot');
+    src: url('../fonts/OpenSansBold.eot') format('embedded-opentype'),
+         url('../fonts/OpenSansBold.woff2') format('woff2'),
+         url('../fonts/OpenSansBold.woff') format('woff'),
+         url('../fonts/OpenSansBold.ttf') format('truetype'),
+         url('../fonts/OpenSansBold.svg#OpenSansBold') format('svg');
+}
+
+input[type=number]::-webkit-outer-spin-button,
+input[type=number]::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+
+input[type=number] {
+    -moz-appearance:textfield;
+}
+
+input:invalid {
+    box-shadow:none;
+}
+
+*:focus {
+    outline: none;
+}
+
+body {
+    margin: 0;
+    padding: 0;
+    background-image: url(../img/backgroundTZ.jpg);
+    background-repeat: no-repeat;
+    height: 1400px;
+    width: 100%;
+}
+
+p{
+    font-family: 'OpenSansBold';
+    font-size: 15px;
+    color: white;
+
+}
+
+
+
+#vid-container{
+    width: 1080px;
+    height: 1920px;
+    position:absolute;
+    z-index: 22;
+    overflow: hidden;
+
+}
+
+.cutxtouch{
+  width: 1080;
+  height: 1920;
+  overflow: hidden;
+}
+
+#touch{
+  width: 1080;
+  height: 1920;
+  overflow: hidden;
+
+}
+
+
+
+.container {
+    width: 1080px;
+    height: 1920px;
+    overflow: hidden;
+}

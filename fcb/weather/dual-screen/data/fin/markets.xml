@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FinancialData>
+  <Quote>
+    <company_name>NYSE Composite</company_name>
+    <ticker>$NYA</ticker>
+    <logo_small />
+    <logo_large />
+    <last>16516.68</last>
+    <previous>16868.11</previous>
+    <change>-351.43</change>
+    <change_percent>-2.08%</change_percent>
+    <change_icon>http://cdnimgd.screenfeed.com/financial/icons/standard/down.png</change_icon>
+    <time_last>8/21/2021 3:31 PM</time_last>
+    <day_open>16429.14</day_open>
+    <day_high>16535.18</day_high>
+    <day_low>16399.61</day_low>
+    <volume>0</volume>
+  </Quote>
+  <Quote>
+    <company_name>NASDAQ Composite</company_name>
+    <ticker>$NASX</ticker>
+    <logo_small />
+    <logo_large />
+    <last>14714.66</last>
+    <previous>14541.79</previous>
+    <change>+172.87</change>
+    <change_percent>+1.19%</change_percent>
+    <change_icon>http://cdnimgd.screenfeed.com/financial/icons/standard/up.png</change_icon>
+    <time_last>8/21/2021 3:31 PM</time_last>
+    <day_open>14576.01</day_open>
+    <day_high>14722.16</day_high>
+    <day_low>14571.53</day_low>
+    <volume>0</volume>
+  </Quote>
+  <Quote>
+    <company_name>S&amp;P 500</company_name>
+    <ticker>$SPX</ticker>
+    <logo_small />
+    <logo_large />
+    <last>4441.67</last>
+    <previous>4405.80</previous>
+    <change>+35.87</change>
+    <change_percent>+0.81%</change_percent>
+    <change_icon>http://cdnimgd.screenfeed.com/financial/icons/standard/up.png</change_icon>
+    <time_last>8/21/2021 3:31 PM</time_last>
+    <day_open>4410.56</day_open>
+    <day_high>4444.35</day_high>
+    <day_low>4406.80</day_low>
+    <volume>0</volume>
+  </Quote>
+</FinancialData>
