@@ -3,17 +3,16 @@ $(function () {
     $date = $(".date").text(moment().format("dddd, MMMM Do")),
     $revealerSpeed = parseInt($(":root").css("--revealer-speed")),
     revealerEnabled = 1,
-    zipcode = url.getSearchParam("zipcode") || "60606",
     videoEnabled = url.getSearchParam("video") || 1,
     dataURI = {
-      weather_local: "c:\\data\\weather\\weather.json",
       news_local: "c:\\data\\news\\news.json",
+      weather_local: "c:\\data\\weather\\weather.json",
       news_api:
         "https://kitchen.screenfeed.com/feed/7s51fskbkrzabmbzhqdtdydjj1.json",
       weather_api:
-        "https://kitchen.screenfeed.com/weather/v2/data/40778ps5v9ke2m2nf22wpqk0sj.json?current=true&interval=Daily&forecasts=5&location=" +
-        zipcode,
-    };
+        "https://kitchen.screenfeed.com/weather/v2/data/40778ps5v9ke2m2nf22wpqk0sj.json?current=true&interval=Daily&forecasts=5&location=",
+    },
+    defaultZipCode = 32030;
 
   function revealer() {
     const $revealerSpeed = parseInt($(":root").css("--revealer-speed")),
@@ -78,7 +77,7 @@ $(function () {
     };
 
     const setCurrent = () => {
-      $("main .background video").attr({
+      $(".background video").attr({
         poster: "./img/" + loadMedia(forecast[0].ConditionCode) + ".jpg",
         src: "./video/" + loadMedia(forecast[0].ConditionCode) + ".mp4",
       });
@@ -106,28 +105,37 @@ $(function () {
   function animate() {
     let container = $(".container"),
       animeSpeed = $revealerSpeed / 2,
-      animeDelay = 100;
+      animeDelay = 80;
+
     let animation = anime
       .timeline({
         autoplay: true,
         loop: false,
         easing: "cubicBezier(0.645, 0.045, 0.355, 1.000)",
+        delay: animeSpeed,
         duration: animeSpeed,
       })
       .add({
-        targets: container[0],
-        // delay: animeSpeed,
+        targets: ".background, .container",
         opacity: [0, 1],
-        begin: () => revealer(),
       })
       .add(
         {
-          targets: container[0].querySelectorAll("#weather *, #news *"),
+          targets: container[0].querySelectorAll("#weather, #weather *"),
           delay: anime.stagger(animeDelay),
           translateY: ["10%", "0%"],
           opacity: [0, 1],
         },
         "-=" + animeSpeed
+      )
+      .add(
+        {
+          targets: container[0].querySelectorAll("#news, #news *"),
+          delay: anime.stagger(animeDelay),
+          // translateY: ["10%", "0%"],
+          opacity: [0, 1],
+        },
+        "-=" + $revealerSpeed
       );
   }
 
@@ -146,73 +154,71 @@ $(function () {
   }
 
   function getData(onSuccess, onError, data) {
+    //attempt to get data from localStorage
+    if (localStorage.getItem(data)) {
+      var expiry = JSON.parse(localStorage.getItem(data + "expiry"));
+
+      if (new Date().getTime() <= expiry) {
+        var result = JSON.parse(localStorage.getItem(data));
+        onSuccess(result);
+        console.log(result);
+        return;
+      }
+    }
     return $.ajax({
       method: "GET",
       url: data,
       dataType: "json",
       success: function (result) {
-        console.log(result, data);
+        localStorage.setItem(data, JSON.stringify(result));
+        localStorage.setItem(
+          data + "expiry",
+          JSON.stringify(new Date().getTime() + 1000 * 60 * 10 /*10 minutes*/)
+        );
         onSuccess(result);
-      },
-      error: function (result) {
-        // console.error(result);
-        onError(result);
-      },
-    });
-  }
-
-  function getPlayerTagId(onSuccess, onError) {
-    // Navori player API call
-    var tag = window.parent.PlayerSDK.getTagByPrefix("Z.MPS.PNC.");
-
-    return $.ajax({
-      method: "GET",
-      url:
-        "https://photos-dev.adrenalineamp.com/public-api/mps/" +
-        tag.Name +
-        "/staff?a=e85711db-6395-4811-94c4-93ec1e83f4b3",
-      dataType: "json",
-      success: function (result) {
         console.log(result);
-        onSuccess(result);
       },
       error: function (result) {
-        console.error(result);
         onError(result);
       },
     });
   }
 
   function init() {
-    getOS();
-    getData(onTemplateSuccess, onTemplateError, dataURI.weather_api); // get local data, located at c:\data
+    // getOS();
 
-    // window.parent.PlayerSDK = {
-    //   getTagsPlayer: function () {
-    //     return [{ Id: 2, Name: "ZIP-63366" }];
-    //   },
-    // };
+    // setTimeout(() => {
+    //   let testZipCode = 90210;
+    //   window.parent.PlayerSDK = {
+    //     getTagsPlayer: function () {
+    //       return [{ Id: 0, Name: "ZIP-" + testZipCode + "" }];
+    //     },
+    //   };
+    // }, 500);
+
     var intervalId = setInterval(function () {
       if (window.parent.PlayerSDK) {
         clearInterval(intervalId);
 
-        try {
-          var tags = window.parent.PlayerSDK.getTagsPlayer();
-          var tag = tags.find((tag) => tag.Name && tag.Name.startsWith("ZIP-"));
-          var code = tag && tag.Name && tag.Name.match(/\d{5}/);
+        var tags = window.parent.PlayerSDK.getTagsPlayer();
+        var tag = tags.find(
+          (tag) => tag.Name && tag.Name.toLowerCase().startsWith("zip-")
+        );
+        var code = tag && tag.Name && tag.Name.match(/\d{5}/);
+        var zipcode = code || url.getSearchParam("zipcode") || defaultZipCode;
+        var weather_api = dataURI.weather_api + zipcode;
 
-          var zipcode = code || url.getSearchParam("zipcode") || "60606";
-          var weather_api =
-            "https://kitchen.screenfeed.com/weather/v2/data/40778ps5v9ke2m2nf22wpqk0sj.json?current=true&interval=Daily&forecasts=5&location=" +
-            zipcode;
-
-          getData(onTemplateSuccess, onTemplateError, weather_api); // get server data, via screenfeed.com
-        } catch (error) {
-          document.getElementById("error").innerHTML = error;
-        }
+        getData(onTemplateSuccess, onTemplateError, weather_api);
+      } else {
+        // console.log('fail')
+        clearInterval(intervalId);
+        localStorage.clear();
+        return;
       }
-    }, 100);
+    }, 1000);
   }
 
   init();
 });
+
+// localStorage.clear();

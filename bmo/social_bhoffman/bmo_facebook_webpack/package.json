@@ -1,0 +1,55 @@
+{
+  "name": "navori-boilerplate",
+  "version": "1.0.0",
+  "description": "navori boilerplate generator",
+  "main": "index.js",
+  "scripts": {
+    "start": "env NODE_ENV=development webpack serve",
+    "build": "env NODE_ENV=production webpack"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/rhoffman103/navori-boilerplate.git"
+  },
+  "author": "Bobby H",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/rhoffman103/navori-boilerplate/issues"
+  },
+  "homepage": "https://github.com/rhoffman103/navori-boilerplate#readme",
+  "engines": {
+    "node": ">=14.8.3"
+  },
+  "dependencies": {
+    "jquery": "^3.7.0"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.16.10",
+    "@babel/preset-env": "^7.16.11",
+    "@types/jquery": "^3.5.16",
+    "@types/node": "^20.4.4",
+    "@typescript-eslint/eslint-plugin": "^5.62.0",
+    "babel-loader": "^8.2.3",
+    "copy-webpack-plugin": "^10.2.1",
+    "css-loader": "^6.5.1",
+    "css-minimizer-webpack-plugin": "^3.4.1",
+    "eslint": "8.22.0",
+    "eslint-config-standard-with-typescript": "^37.0.0",
+    "eslint-plugin-import": "^2.27.5",
+    "eslint-plugin-n": "^16.0.1",
+    "eslint-plugin-promise": "^6.1.1",
+    "fork-ts-checker-notifier-webpack-plugin": "^7.0.0",
+    "fork-ts-checker-webpack-plugin": "^8.0.0",
+    "html-webpack-plugin": "^5.5.0",
+    "mini-css-extract-plugin": "^2.5.2",
+    "style-loader": "^3.3.1",
+    "stylelint": "^14.3.0",
+    "stylelint-config-standard-scss": "^3.0.0",
+    "stylelint-config-twbs-bootstrap": "^3.0.1",
+    "ts-loader": "^9.2.6",
+    "typescript": "^5.1.6",
+    "webpack": "^5.66.0",
+    "webpack-cli": "^4.9.1",
+    "webpack-dev-server": "^4.7.3"
+  }
+}

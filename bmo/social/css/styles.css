@@ -50,6 +50,7 @@ article {
   left: 0;
   width: 100%;
   height: 100%;
+  opacity: 0;
   will-change: transform, opacity;
 }
 
@@ -99,29 +100,14 @@ article {
 
 .content {
   position: absolute;
-  text-rendering: optimizelegibility;
-  width: 43.75%;
-  height: 100%;
   top: 0;
   right: 0;
-  background-image: linear-gradient(
-    to right top,
-    #f2f2f2,
-    #f4f4f4,
-    #f7f7f7,
-    #f9f9f9,
-    #fcfcfc,
-    #fdfdfd,
-    #fefefe,
-    #ffffff,
-    #ffffff,
-    #fefefe,
-    #fefefe,
-    #fdfdfd
-  );
-  background-repeat: no-repeat;
-  background-size: cover;
+  width: 43.75%;
+  height: 100%;
+  padding: 3em;
+  background-color: #fafafa;
   overflow: hidden;
+  /* text-rendering: optimizelegibility; */
 }
 
 .post {
@@ -131,18 +117,17 @@ article {
   justify-content: space-between;
   width: 100%;
   height: 100%;
-  padding: 3em;
   /* background-image: url("../img/l-media-light.png"); */
-  background-repeat: no-repeat;
-  background-size: cover;
+  /* background-repeat: no-repeat; */
+  /* background-size: cover; */
 }
 
 .post .wrap {
   display: flex;
   flex-direction: column;
   justify-content: center;
-  height: 56.25%;
   height: 60%;
+  /* height: 100%; */
 }
 
 .post .socialicon img {
@@ -156,7 +141,6 @@ article {
   font-size: 1em;
   white-space: pre-wrap;
   color: var(--primary-color);
-  margin-top: 1em;
 }
 
 .post .message .hashtag {
@@ -166,7 +150,7 @@ article {
 .post .published {
   font-size: 0.8em;
   color: var(--primary-color);
-  padding-top: 1em;
+  margin-top: 1em;
 }
 
 .post .account {
@@ -199,8 +183,8 @@ article {
   color: var(--secondary-color);
 }
 
-.post .useraccount::before {
-  content: "@";
+.post .username::before {
+  /* content: "@"; */
 }
 
 .post .usericon .icon {
