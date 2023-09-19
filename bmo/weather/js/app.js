@@ -2,17 +2,17 @@ $(function () {
   const url = new ExtendedURL(window.location.href),
     $date = $(".date").text(moment().format("dddd, MMMM Do")),
     $revealerSpeed = parseInt($(":root").css("--revealer-speed")),
-    revealerEnabled = 1,
-    videoEnabled = url.getSearchParam("video") || 1,
+    zipcode = url.getSearchParam("zipcode"),
     dataURI = {
-      news_local: "c:\\data\\news\\news.json",
       weather_local: "c:\\data\\weather\\weather.json",
+      news_local: "c:\\data\\news\\news.json",
       news_api:
         "https://kitchen.screenfeed.com/feed/7s51fskbkrzabmbzhqdtdydjj1.json",
       weather_api:
-        "https://kitchen.screenfeed.com/weather/v2/data/40778ps5v9ke2m2nf22wpqk0sj.json?current=true&interval=Daily&forecasts=5&location=",
-    },
-    defaultZipCode = 32030;
+        "https://kitchen.screenfeed.com/weather/v2/data/40778ps5v9ke2m2nf22wpqk0sj.json?current=true&interval=Daily&forecasts=5&location=" +
+        zipcode,
+    };
+  let videoEnabled = url.getSearchParam("video") || 1;
 
   function revealer() {
     const $revealerSpeed = parseInt($(":root").css("--revealer-speed")),
@@ -77,9 +77,9 @@ $(function () {
     };
 
     const setCurrent = () => {
-      $(".background video").attr({
-        poster: "./img/" + loadMedia(forecast[0].ConditionCode) + ".jpg",
-        src: "./video/" + loadMedia(forecast[0].ConditionCode) + ".mp4",
+      $("main .background video").attr({
+        poster: "./img/" + loadMedia(current.ConditionCode) + ".jpg",
+        src: "./video/" + loadMedia(current.ConditionCode) + ".mp4",
       });
       $(".location").text(location.City);
       $(".current .temp").text(current.CurrentTempF + "°");
@@ -94,10 +94,9 @@ $(function () {
         "Humidity: " + Number(current.Humidity) + "%"
       );
       $(".current .icon img").attr({
-        src: "./img/icons/" + getIcon(forecast[0].ConditionCode),
+        src: "./img/icons/" + getIcon(current.ConditionCode),
       });
     };
-
     setCurrent();
     setForecast();
   }
@@ -105,38 +104,26 @@ $(function () {
   function animate() {
     let container = $(".container"),
       animeSpeed = $revealerSpeed / 2,
-      animeDelay = 80;
-
+      animeDelay = 100;
     let animation = anime
       .timeline({
         autoplay: true,
         loop: false,
         easing: "cubicBezier(0.645, 0.045, 0.355, 1.000)",
-        delay: animeSpeed,
         duration: animeSpeed,
       })
       .add({
-        targets: ".background, .container",
+        targets: container[0],
+        delay: $revealerSpeed,
         opacity: [0, 1],
+        // begin: () => revealer(),
       })
-      .add(
-        {
-          targets: container[0].querySelectorAll("#weather, #weather *"),
-          delay: anime.stagger(animeDelay),
-          translateY: ["10%", "0%"],
-          opacity: [0, 1],
-        },
-        "-=" + animeSpeed
-      )
-      .add(
-        {
-          targets: container[0].querySelectorAll("#news, #news *"),
-          delay: anime.stagger(animeDelay),
-          // translateY: ["10%", "0%"],
-          opacity: [0, 1],
-        },
-        "-=" + $revealerSpeed
-      );
+      .add({
+        targets: container[0].querySelectorAll("#weather *, #news *"),
+        delay: anime.stagger(animeDelay),
+        translateY: ["10%", "0%"],
+        opacity: [0, 1],
+      });
   }
 
   function getStories(a, b) {
@@ -144,7 +131,11 @@ $(function () {
   }
 
   function onTemplateError(result) {
-    console.warn("could not get data");
+    let img = "./img/bmo-logo.svg";
+    $(".container").remove();
+    $("#bmo-logo").attr({ src: img }).css({ opacity: 1 });
+    $("#error").css({ visibility: "visible" });
+    console.warn("could not load data");
   }
 
   function onTemplateSuccess(result) {
@@ -154,71 +145,65 @@ $(function () {
   }
 
   function getData(onSuccess, onError, data) {
-    //attempt to get data from localStorage
-    if (localStorage.getItem(data)) {
-      var expiry = JSON.parse(localStorage.getItem(data + "expiry"));
-
-      if (new Date().getTime() <= expiry) {
-        var result = JSON.parse(localStorage.getItem(data));
-        onSuccess(result);
-        console.log(result);
-        return;
-      }
-    }
     return $.ajax({
       method: "GET",
       url: data,
       dataType: "json",
       success: function (result) {
-        localStorage.setItem(data, JSON.stringify(result));
-        localStorage.setItem(
-          data + "expiry",
-          JSON.stringify(new Date().getTime() + 1000 * 60 * 10 /*10 minutes*/)
-        );
+        // console.log(result, data);
         onSuccess(result);
-        console.log(result);
       },
       error: function (result) {
+        // console.error(result);
         onError(result);
       },
     });
   }
 
+  function getOS() {
+    var parser = new UAParser();
+    var ua = navigator.userAgent;
+    var result = parser.getResult();
+    var os = result.os.name;
+    if (os != "Windows" && os != "Mac OS") {
+      videoEnabled = 0;
+    }
+    console.log(ua);
+    return ua;
+  }
+
   function init() {
-    // getOS();
-
-    // setTimeout(() => {
-    //   let testZipCode = 90210;
-    //   window.parent.PlayerSDK = {
-    //     getTagsPlayer: function () {
-    //       return [{ Id: 0, Name: "ZIP-" + testZipCode + "" }];
-    //     },
-    //   };
-    // }, 500);
-
+    window.parent.PlayerSDK = {
+      getTagsPlayer: function () {
+        return [{ Id: 2, Name: "ZIP-84003" }];
+      },
+    };
     var intervalId = setInterval(function () {
       if (window.parent.PlayerSDK) {
         clearInterval(intervalId);
 
-        var tags = window.parent.PlayerSDK.getTagsPlayer();
-        var tag = tags.find(
-          (tag) => tag.Name && tag.Name.toLowerCase().startsWith("zip-")
-        );
-        var code = tag && tag.Name && tag.Name.match(/\d{5}/);
-        var zipcode = code || url.getSearchParam("zipcode") || defaultZipCode;
-        var weather_api = dataURI.weather_api + zipcode;
+        try {
+          var tags = window.parent.PlayerSDK.getTagsPlayer();
+          var tag = tags.find(
+            (tag) => tag.Name && tag.Name.toLowerCase().startsWith("zip-")
+          );
+          var code = tag && tag.Name && tag.Name.match(/\d{5}/);
+          var zipcode = code || url.getSearchParam("zipcode");
+          var weather_api =
+            "https://kitchen.screenfeed.com/weather/v2/data/40778ps5v9ke2m2nf22wpqk0sj.json?current=true&interval=Daily&forecasts=5&location=" +
+            zipcode;
 
-        getData(onTemplateSuccess, onTemplateError, weather_api);
+          getData(onTemplateSuccess, onTemplateError, weather_api); // get server data, via screenfeed.com
+        } catch (error) {
+          document.getElementById("error").innerHTML = error;
+        }
       } else {
-        // console.log('fail')
         clearInterval(intervalId);
-        localStorage.clear();
-        return;
+        onTemplateError();
+        // document.getElementById("error").innerHTML = getOS();
       }
-    }, 1000);
+    }, 100);
   }
-
+  
   init();
 });
-
-// localStorage.clear();

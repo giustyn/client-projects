@@ -1,0 +1,212 @@
+{
+  "Project": {
+    "Name": "BMO Trivia",
+    "Type": "General Financial Literacy Questions"
+  },
+  "Items": [
+    {
+      "Question": "A 401k helps you save for what important milestone?",
+      "A": "College",
+      "B": "Marriage",
+      "C": "Retirement",
+      "D": "Family Trip",
+      "Answer": "C",
+      "Tip": "Saving for retirement provides financial stability for the future and peace of mind now.",
+      "CTA": "Speak with a banker today or visit BMO.com to learn more.",
+      "isUS": true,
+      "isCA": false
+    },
+    {
+      "Question": "A Canadian RRSP helps you save for what important milestone?",
+      "A": "College",
+      "B": "Marriage",
+      "C": "Retirement",
+      "D": "Family Trip",
+      "Answer": "C",
+      "Tip": "Saving for retirement provides financial stability for the future and peace of mind now.",
+      "CTA": "Speak with a banker today or visit BMO.com to learn more.",
+      "isUS": false,
+      "isCA": true
+    },
+    {
+      "Question": "What is a long-term, low-risk investment that makes a great gift for new parents?",
+      "A": "Savings Bond",
+      "B": "Stock",
+      "C": "Loan",
+      "D": "Annuities",
+      "Answer": "A",
+      "Tip": "Gifts like savings bonds and stocks can help you get an early start on securing your child's future.",
+      "CTA": "Speak with a banker today or visit BMO.com to learn more.",
+      "isUS": true,
+      "isCA": true
+    },
+    {
+      "Question": "Which of these will help you save on college expenses?",
+      "A": "Taking college-credit classes in high school",
+      "B": "Using the car insurance company your parents have",
+      "C": "Applying to in-state schools",
+      "D": "Buying new textbooks",
+      "Answer": "A, C",
+      "Tip": "Attending a school within your state of residence can save you in tuition and housing.",
+      "CTA": "Speak with a banker today or visit BMO.com to learn more.",
+      "isUS": true,
+      "isCA": true
+    },
+    {
+      "Question": "Appreciating assets grow in value and therefore help build wealth. Which of these do not generally appreciate?",
+      "A": "Cars",
+      "B": "Gold, Silver and Gemstones",
+      "C": "Real estate",
+      "D": "Fine art",
+      "Answer": "A",
+      "Tip": "You can enjoy appreciating assets now and use them to help build your nest egg for retirement.",
+      "CTA": "Speak with a banker today or visit BMO.com to learn more.",
+      "isUS": true,
+      "isCA": true
+    },
+    {
+      "Question": "Having a strong credit score is important for which of these life events?",
+      "A": "Buying a home",
+      "B": "Purchasing a new car",
+      "C": "Landing a job",
+      "D": "All of the above",
+      "Answer": "D",
+      "Tip": "You can improve your credit score by paying bills on time and applying for new credit only when necessary.",
+      "CTA": "Speak with a banker today or visit BMO.com to learn more.",
+      "isUS": true,
+      "isCA": true
+    },
+    {
+      "Question": "Mortgage rates can change daily. What are the benefits of refinancing a mortgage loan?",
+      "A": "Lowering your interest rate",
+      "B": "Freeing up money for home renovations",
+      "C": "Lowering your monthly payment",
+      "D": "All of the above",
+      "Answer": "D",
+      "Tip": "Refinancing mortgage loans can help you build equity faster and ultimately own more of your home.",
+      "CTA": "Speak with a banker today or visit BMO.com to learn more.",
+      "isUS": true,
+      "isCA": true
+    },
+    {
+      "Question": "Purchasing your first home? Which of these items is typically not included in your monthly mortgage payments?",
+      "A": "Insurance",
+      "B": "Taxes",
+      "C": "Homeowner's Association fees",
+      "D": "Interest",
+      "Answer": "C",
+      "Tip": "If your home requires an HOA fee, it's important to plan for those payments separate from your mortgage.",
+      "CTA": "Speak with a banker today or visit BMO.com to learn more.",
+      "isUS": true,
+      "isCA": true
+    },
+    {
+      "Question": "We can all take measures to protect our personal financial data. Which of these is not recommended?",
+      "A": "Sign up for banking alerts",
+      "B": "Use different passwords for each account",
+      "C": "Include your birthday in your password",
+      "D": "Use a credit monitoring service",
+      "Answer": "C",
+      "Tip": "Never use personal details in your passwords. This information is often publicly available and easy for hackers to guess.",
+      "CTA": "Speak with a banker today or visit BMO.com to learn more.",
+      "isUS": true,
+      "isCA": true
+    },
+    {
+      "Question": "When the moment comes to upgrade your vehicle, which of these could help determine what you can afford?",
+      "A": "Down payment",
+      "B": "Anticipated maintenance costs",
+      "C": "Credit score",
+      "D": "All of the above",
+      "Answer": "D",
+      "Tip": "Looking beyond the price tag, at future expenses and your credit history, is wise when shopping for a car.",
+      "CTA": "Speak with a banker today or visit BMO.com to learn more.",
+      "isUS": true,
+      "isCA": true
+    },
+    {
+      "Question": "Are wedding bells in your future? Which of these is not likely to save you money on the big day?",
+      "A": "Using a wedding website vs paper invitations",
+      "B": "Putting away money per paycheck",
+      "C": "Shopping for a dress at a sample sale",
+      "D": "Getting married on a Saturday",
+      "Answer": "D",
+      "Tip": "Choosing a day other than Saturday is often cheaper and just as much fun.",
+      "CTA": "Speak with a banker today or visit BMO.com to learn more.",
+      "isUS": true,
+      "isCA": true
+    },
+    {
+      "Question": "Older adults are often targeted by scammers. What's an easy way to protect yourself or a loved one from scams?",
+      "A": "Freeze your credit",
+      "B": "Use cash exclusively",
+      "C": "Stop all mail",
+      "D": "Contact your bank if you receive a suspicious transfer request",
+      "Answer": "D",
+      "Tip": "Taking protective measures, like blocking spam calls and opting out of junk mail, are helpful ways to avoid scams.",
+      "CTA": "Speak with a banker today or visit BMO.com to learn more.",
+      "isUS": true,
+      "isCA": true
+    },
+    {
+      "Question": "When planning a well-earned vacation, what does travel insurance help cover?",
+      "A": "Medical emergencies",
+      "B": "Emergency transportation",
+      "C": "Lost baggage",
+      "D": "All of the above and more",
+      "Answer": "D",
+      "Tip": "Travel insurance is a great way to prepare for the unexpected when planning your trip.",
+      "CTA": "Speak with a banker today or visit BMO.com to learn more.",
+      "isUS": true,
+      "isCA": true
+    },
+    {
+      "Question": "Time is money. What are some time-saving benefits of Digital Banking?",
+      "A": "Depositing checks from your mobile device",
+      "B": "Scheduling payments in advance",
+      "C": "Checking your credit score in real time",
+      "D": "All of the above",
+      "Answer": "D",
+      "Tip": "Digital Banking is a convenient, secure, and easy way to bank anywhere, anytime.",
+      "CTA": "Speak with a banker today or visit BMO.com to learn more.",
+      "isUS": true,
+      "isCA": true
+    },
+    {
+      "Question": "Accidents happen. What is the fastest way to report your card lost or stolen?",
+      "A": "Call the bank",
+      "B": "Go to your nearest bank",
+      "C": "Use your Mobile Banking App or Online Banking",
+      "D": "Call the police",
+      "Answer": "C",
+      "Tip": "The BMO Mobile Banking App makes it easy to report a lost or stolen card.",
+      "CTA": "Speak with a banker today or visit BMO.com to learn more.",
+      "isUS": true,
+      "isCA": true
+    },
+    {
+      "Question": "Online investing gives you more control of the investment process. Which of these can you keep in an online investing account?",
+      "A": "Stocks",
+      "B": "GICs",
+      "C": "Mutual Funds",
+      "D": "All of the above and more",
+      "Answer": "D",
+      "Tip": "Benefits to online investing include round-the-clock access, ease of use, and lower fees.",
+      "CTA": "Speak with a banker today or visit BMO.com to learn more.",
+      "isUS": true,
+      "isCA": true
+    },
+    {
+      "Question": "Mark your calendar! When is the deadline to contribute to an RRSP each year?",
+      "A": "December 31",
+      "B": "March 2",
+      "C": "April 30",
+      "D": "None of the above",
+      "Answer": "B",
+      "Tip": "You can save money on your taxes when you contribute to your BMO RRSP.",
+      "CTA": "Speak with a banker today or visit BMO.com to learn more.",
+      "isUS": false,
+      "isCA": true
+    }
+  ]
+}

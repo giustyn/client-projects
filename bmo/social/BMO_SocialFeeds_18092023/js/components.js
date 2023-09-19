@@ -2,6 +2,10 @@
  *  API Components
  */
 
+function delay(time) {
+  return new Promise((resolve) => setTimeout(resolve, time));
+}
+
 const isOverflown = ({ clientHeight, scrollHeight }) =>
   scrollHeight > clientHeight;
 const resizeText = ({
@@ -80,12 +84,12 @@ function randomInt(min, max) {
 
 function timer() {
   var startTime = Date.now();
-  var counter = setInterval(function () {
+  var interval = setInterval(function () {
     var elapsedTime = Date.now() - startTime;
-    var clock = document.getElementById("timer");
-    clock.innerHTML = (elapsedTime / 1000).toFixed(2);
-    if (elapsedTime >= 30000) return clearInterval(counter);
-  }, 10);
+    document.getElementById("timer").innerHTML = (elapsedTime / 1000).toFixed(
+      2
+    );
+  }, 100);
 }
 
 function fps() {
@@ -176,5 +180,6 @@ function diag(enabled) {
 
     // Get Resource Timing entries:
     // console.log(performance.getEntriesByType("resource"));
+
   } else return diagnostic.remove();
 }

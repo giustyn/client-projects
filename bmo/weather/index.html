@@ -3,13 +3,13 @@
   <head>
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>BMO | Weather</title>
     <link rel="stylesheet" href="./css/DaxPro.css" />
-    <link rel="stylesheet" href="./css/revealer.css" />
+    <!-- <link rel="stylesheet" href="./css/revealer.css" /> -->
     <link rel="stylesheet" href="./css/styles.css" />
+    <!-- <script src="./js/ua-parser.min.js" defer></script> -->
     <script src="./js/jquery.min.js" defer></script>
-    <script src="./js/ua-parser.min.js" defer></script>
     <script src="./js/anime.min.js" defer></script>
     <script src="./js/utils_api.js" defer></script>
     <script src="./js/moment.js" defer></script>
@@ -17,11 +17,12 @@
     <!-- <script src="./js/sdk.js" defer></script> -->
   </head>
   <body>
-    <div class="background">
-      <video autoplay muted loop playsinline></video>
-    </div>
     <main class="container">
-      <div class="overlay"></div>
+      <div class="background">
+        <video muted loop playsinline></video>
+        <!-- <div class="bmo-logo"></div> -->
+        <div class="overlay"></div>
+      </div>
       <!-- Weather -->
       <section id="weather">
         <div class="heading">
@@ -82,12 +83,8 @@
         <div class="bmo-logo"></div>
       </section>
     </main>
-    <div class="revealer">
-      <div class="revealer__layer top"></div>
-      <div class="revealer__layer middle"></div>
-      <div class="revealer__layer bottom"></div>
-    </div>
     <!-- Error -->
-    <div id="error"></div>
+
+    <div id="error"><img id="bmo-logo" /></div>
   </body>
 </html>
