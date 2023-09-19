@@ -19,20 +19,22 @@
       Name: "Facebook",
       Logo: "./img/facebook.png",
     },
-  ][2]; // 0 = Twitter, 1 = Instagram, 2 = Facebook
+  ][0]; // 0 = Twitter, 1 = Instagram, 2 = Facebook
 
   const dataURI = [
     {
       Content: "BMO_US",
-      Url: "https://kitchen.screenfeed.com/social/data/6w24z789gena94j8yt3728zgzw.json",
+      ScreenfeedUrl:
+        "https://kitchen.screenfeed.com/social/data/6w24z789gena94j8yt3728zgzw.json",
     },
     {
       Content: "BMO_CA",
-      Url: "https://kitchen.screenfeed.com/social/data/4qsr8pzd9vpp64n6cx26kazya3.json",
+      ScreenfeedUrl:
+        "https://kitchen.screenfeed.com/social/data/4qsr8pzd9vpp64n6cx26kazya3.json",
     },
     {
-      Content: "DEV_TEST",
-      Url: "./_data/test.json",
+      Content: "BMO_TEST",
+      ScreenfeedUrl: "./_data/test.json",
     },
   ][0]; // 0 = US, 1 = CA, 2 = DEV
 
@@ -78,26 +80,65 @@
     loop = false;
 
   function setContent($template, data, index, feeds) {
-    const $container = $("main");
-    const $clone = $template.clone();
+    // const $container = $("main");
+    // const $clone = $template.clone();
+    const $container = document.getElementsByTagName("main")[0];
+    const $clone = $template.cloneNode(true);
 
-    $clone.attr({ id: data.ContentId }).css("z-index", feeds.length - index);
-    $clone.find(".usericon img").attr("src", clientId.Logo);
-    $clone.find(".socialicon img").attr("src", socialProvider.Logo);
-    $clone.find(".message").html(data.Content);
-    $clone.find(".published").text(data.DisplayTime);
-    $clone.find(".media img").attr("src", data.Images[0].Url);
-    if (data.User.Name) $clone.find(".username").text(data.User.Name);
-    if (!data.User.Name) $clone.find(".username").text(clientId.Name);
-    if (data.User.Username)
-      $clone.find(".useraccount").text(data.User.Username);
-    if (!data.User.Username) $clone.find(".useraccount").remove();
+    $clone.setAttribute("id", data.ContentId);
+    $clone.style.zIndex = ("id", feeds.length - index);
+    $clone
+      .querySelectorAll(".usericon img")
+      .forEach((e) => e.setAttribute("src", clientId.Logo));
+    $clone
+      .querySelectorAll(".socialicon img")
+      .forEach((e) => e.setAttribute("src", socialProvider.Logo));
+    $clone
+      .querySelectorAll(".message")
+      .forEach((e) => (e.innerHTML = data.Content));
+    $clone
+      .querySelectorAll(".published")
+      .forEach((e) => (e.innerHTML = data.DisplayTime));
+    $clone
+      .querySelectorAll(".media img")
+      .forEach((e) => e.setAttribute("src", data.Images[0].Url));
+    if (data.User.Name) {
+      $clone
+        .querySelectorAll(".username")
+        .forEach((e) => (e.innerHTML = data.User.Name));
+    } else {
+      $clone
+        .querySelectorAll(".username")
+        .forEach((e) => (e.innerHTML = clientId.Name));
+    }
+    if (data.User.Name) {
+      $clone
+        .querySelectorAll(".useraccount")
+        .forEach((e) => (e.innerHTML = data.User.Name));
+    } else {
+      $clone
+        .querySelectorAll(".useraccount")
+        .forEach((e) => (e.remove()));
+    }
 
-    $container.append($clone);
-    $template.remove();
+    // $clone.attr({ id: data.ContentId }).css("z-index", feeds.length - index);
+    // $clone.find(".usericon img").attr("src", clientId.Logo);
+    // $clone.find(".socialicon img").attr("src", socialProvider.Logo);
+    // $clone.find(".message").html(data.Content);
+    // $clone.find(".published").text(data.DisplayTime);
+    // $clone.find(".media img").attr("src", data.Images[0].Url);
+    // if (data.User.Name) $clone.find(".username").text(data.User.Name);
+    // if (!data.User.Name) $clone.find(".username").text(clientId.Name);
+    // if (data.User.Username)
+    //   $clone.find(".useraccount").text(data.User.Username);
+    // if (!data.User.Username) $clone.find(".useraccount").remove();
 
-    resizeText({ elements: $clone[0].querySelectorAll(".message") });
-    isolateTag({ element: $clone[0].querySelectorAll(".message") });
+    $container.appendChild($clone);
+    // $container.append($clone);
+    // $template.remove();
+
+    resizeText({ elements: $clone.querySelectorAll(".message") });
+    isolateTag({ element: $clone.querySelectorAll(".message") });
   }
 
   function animateTemplate(data) {
@@ -135,15 +176,16 @@
   function onError(result) {
     console.warn(result);
     if (result.Status != undefined && result.Status.Code == 400) {
-      result = defaultMedia;
-      console.log(result, "fallback data");
+      // result = defaultMedia;
       // console.log(results.filter((obj) => obj.Provider !== socialProvider.Id));
+      // console.log(result, "fallback data");
     }
   }
 
   function onSuccess(result) {
     let results = result.Items;
-    let $template = $("article");
+    // let $template = $("article");
+    let $template = document.getElementsByTagName("article")[0];
     let feeds = [];
 
     feeds = results
@@ -176,7 +218,7 @@
   }
 
   function init() {
-    getData(onSuccess, onError, dataURI.Url);
+    getData(onSuccess, onError, dataURI.ScreenfeedUrl);
   }
 
   init(diag(false));
