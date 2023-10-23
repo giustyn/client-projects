@@ -114,7 +114,7 @@ $(function () {
       })
       .add({
         targets: container[0],
-        delay: $revealerSpeed,
+        delay: 500,
         opacity: [0, 1],
         // begin: () => revealer(),
       })
@@ -175,7 +175,7 @@ $(function () {
   function init() {
     window.parent.PlayerSDK = {
       getTagsPlayer: function () {
-        return [{ Id: 2, Name: "ZIP-84003" }];
+        return [{ Id: 2, Name: "ZIP-10001" }];
       },
     };
     var intervalId = setInterval(function () {

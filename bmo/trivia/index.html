@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>BMO Social</title>
+    <link rel="stylesheet" href="./css/style.css" />
+  </head>
+
+  <body>
+    <header>
+      <h2>Trivia</h2>
+    </header>
+    <main>
+      <article id="page1">
+        <h2 class="bold" id="question"></h2>
+
+        <section id="answers">
+          <div><span class="bold">a.</span><span id="answers-A"></span></div>
+          <div><span class="bold">b.</span><span id="answers-B"></span></div>
+          <div><span class="bold">c.</span><span id="answers-C"></span></div>
+          <div><span class="bold">d.</span><span id="answers-D"></span></div>
+        </section>
+      </article>
+
+      <div id="page2" class="hidden">
+        <h2 id="tip"></h2>
+        <div id="cta"></div>
+      </div>
+
+      <div id="page3" class="hidden">
+        <div>
+          Financial Tips brought to you by <b>BMO</b>
+          <img
+            height="50px"
+            width="50px"
+            src="assets/bmo-logo.svg"
+            alt="BMO Logo"
+          />
+        </div>
+      </div>
+
+      <div id="countdown">
+        <svg class="progress-ring" width="440" height="440">
+          <circle
+            class="progress-ring__circle"
+            stroke="white"
+            stroke-width="4"
+            fill="transparent"
+            r="216"
+            cx="220"
+            cy="220"
+          />
+        </svg>
+        <div id="timer"></div>
+        <div id="animation"></div>
+      </div>
+    </main>
+    <footer id="footer"></footer>
+
+    <script src="./js/app.js" defer></script>
+  </body>
+</html>

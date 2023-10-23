@@ -19,7 +19,7 @@
       Name: "Facebook",
       Logo: "./img/facebook.png",
     },
-  ][2]; // 0 = Twitter, 1 = Instagram, 2 = Facebook
+  ][0]; // 0 = Twitter, 1 = Instagram, 2 = Facebook
 
   const dataURI = [
     {
@@ -30,11 +30,7 @@
       Content: "BMO_CA",
       Url: "https://kitchen.screenfeed.com/social/data/4qsr8pzd9vpp64n6cx26kazya3.json",
     },
-    {
-      Content: "DEV_TEST",
-      Url: "./_data/test.json",
-    },
-  ][0]; // 0 = US, 1 = CA, 2 = DEV
+  ][1]; // 0 = US, 1 = CA
 
   const defaultMedia = {
     Status: {
@@ -44,7 +40,7 @@
     },
     Items: [
       {
-        ContentId: "0",
+        ContentId: "defaultId",
         User: {
           Id: "0",
           Username: "",
@@ -54,15 +50,12 @@
         },
         Images: [
           {
-            // Url: "./img/BMO_FollowUs_BokehWhite.png",
             Url: "./img/BMO_FollowUs_BokehBlue.png",
-            // Url: "./img/BMO_FollowUs_Blue.png",
             Width: 1080,
             Height: 1080,
           },
         ],
         Content: "<div class='logo'><img src='./img/bmo-logo_blue.svg'></div>",
-        // Content: "Lorem ipsum dolor sit amet consectetur adipisicing elit.",
         Provider: socialProvider.Id,
         ProviderIcon: "",
         CreatedDate: "",
@@ -74,14 +67,18 @@
   };
 
   let timerDuration = 10000,
+    animeSpeed = 750,
     limit = 3,
     loop = false;
 
-  function setContent($template, data, index, feeds) {
+  const root = document.documentElement;
+  root.style.setProperty("--anime-speed", animeSpeed + "ms");
+
+  function setContent($template, data) {
     const $container = $("main");
     const $clone = $template.clone();
 
-    $clone.attr({ id: data.ContentId }).css("z-index", feeds.length - index);
+    $clone.attr({ id: data.ContentId });
     $clone.find(".usericon img").attr("src", clientId.Logo);
     $clone.find(".socialicon img").attr("src", socialProvider.Logo);
     $clone.find(".message").html(data.Content);
@@ -91,10 +88,8 @@
     if (!data.User.Name) $clone.find(".username").text(clientId.Name);
     if (data.User.Username)
       $clone.find(".useraccount").text(data.User.Username);
-    if (!data.User.Username) $clone.find(".useraccount").remove();
-
+    if (!data.User.Username) $clone.find(".useraccount").text(data.User.Name);
     $container.append($clone);
-    $template.remove();
 
     resizeText({ elements: $clone[0].querySelectorAll(".message") });
     isolateTag({ element: $clone[0].querySelectorAll(".message") });
@@ -105,7 +100,7 @@
     item.classList.add("active");
     let delay = setTimeout(() => {
       item.classList.remove("active");
-    }, timerDuration);
+    }, timerDuration + animeSpeed);
   }
 
   function iterateAnimations(data) {
@@ -113,6 +108,7 @@
     timerDuration = (limit * timerDuration) / data.length;
 
     animateTemplate(data[index]);
+    if (data.length == 1) return;
     index = index + 1;
 
     let interval = setInterval(() => {
@@ -133,33 +129,37 @@
   }
 
   function onError(result) {
-    console.warn(result);
-    if (result.Status != undefined && result.Status.Code == 400) {
-      result = defaultMedia;
-      console.log(result, "fallback data");
-      // console.log(results.filter((obj) => obj.Provider !== socialProvider.Id));
-    }
+    let $template = $("article");
+    let results = defaultMedia.Items;
+    let feeds = results;
+    let removeLogos = $(".socialicon, .account").remove();
+    feeds.forEach((article) => {
+      setContent($template, article);
+    });
+    iterateAnimations(feeds);
+    // console.error(result);
   }
 
   function onSuccess(result) {
-    let results = result.Items;
     let $template = $("article");
-    let feeds = [];
+    let results = result.Items;
+    let feeds = {};
 
     feeds = results
-      // .filter((obj) => pastDate(obj.CreatedDate, 30) != true)
+      .filter((obj) => obj.Images != null && obj.Images.length != 0)
       .filter((obj) => obj.Provider == socialProvider.Id)
-      .filter((obj) => obj.Images.length != 0)
-      .sort((a, b) => {
-        if (a.CreatedDate > b.CreatedDate) return -1;
-      })
+      // .filter((obj) => pastDate(obj.CreatedDate, 30) != true)
+      // .sort((a, b) => {
+      //   if (a.CreatedDate > b.CreatedDate) return -1;
+      // })
       .splice(0, limit);
 
-    feeds.forEach((el, i, arr) => {
-      setContent($template, el, i, arr);
+    feeds.forEach((article) => {
+      setContent($template, article);
     });
-
-    iterateAnimations(feeds);
+    if (feeds.length >= 1) iterateAnimations(feeds);
+    if (feeds.length == 0) onError(result);
+    $template.remove();
   }
 
   async function getData(onSuccess, onError, url) {
@@ -179,5 +179,5 @@
     getData(onSuccess, onError, dataURI.Url);
   }
 
-  init(diag(false));
+  init();
 })();

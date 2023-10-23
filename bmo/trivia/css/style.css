@@ -1,0 +1,214 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+:root {
+    --clr-primary: rgb(255, 255, 255);
+    --clr-secondary: rgb(255, 41, 11);
+    --clr-tertiary: rgb(0, 0, 0);
+    --clr-background: rgb(29, 31, 40);
+    --font-primary: url("../assets/DaxOT.otf");
+    --font-secondary: 'Rift';
+    --font-color: #fff;
+    --font-size: calc(1.1vw + 1.1vh);
+    --clr-revealer-layer-1: var(--clr-background);
+    --clr-revealer-layer-2: var(--clr-secondary);
+    --clr-revealer-layer-3: var(--clr-background);
+    --countdown-timer: 13000ms;
+    --revealer-speed: 1200ms;
+    --revealer-opacity: 0.9;
+    --revealer-enabled: 0;
+}
+
+@font-face {
+    font-family: "daxot-medium";
+    src: url("../assets/DaxOT-Medium.otf");
+}
+
+@font-face {
+    font-family: "daxot-light";
+    src: url("../assets/DaxOT-Light.otf");
+}
+
+body {
+    display: flex;
+    flex-direction: column;
+    position: absolute;
+    overflow: hidden;
+    width: 1920px;
+    height: 1080px;
+    background-image: url("../assets/BMO_Trivia-bkgrnd.jpg");
+    background-size: cover;
+    font-family: "daxot-light";
+    font-size: var(--font-size);
+    font-weight: normal;
+    color: var(--clr-primary);
+}
+
+header {
+    text-align: right;
+    margin: 2em 3em;
+}
+
+h2 {
+    font-family: "daxot-medium";
+    font-size: 1.5em;
+    font-weight: 600;
+}
+
+article {
+    padding: 2em 4em;
+    width: 70%;
+}
+
+article #question {
+    margin-bottom: 2em;
+}
+
+article #answers div {
+    font-family: "daxot-light";
+    font-size: 1.5em;
+    font-weight: 100;
+}
+
+article #answers div span.bold {
+    font-family: "daxot-medium";
+    padding-right: 0.5em;
+}
+
+#countdown {
+    position: absolute;
+    right: 166px;
+    bottom: 67px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+#countdown #timer {
+    width: 400px;
+    height: 400px;
+    font-size: 200px;
+    border-radius: 50%;
+    background-color: white;
+    color: #0284c7;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#countdown #timer.done{
+    background-color: red;
+    color: white;
+}
+
+#countdown #timer.small{
+    font-size: 150px;
+}
+
+#countdown #animation {
+    margin-top: 15px;
+    height: 108px;
+    width: 3px;
+    background-color: white;
+}
+
+footer {
+    background-image: url("../assets/BtmLine.png");
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    right: 0;
+    left: 0;
+}
+
+.hide {
+    display: none;
+}
+
+#page2 {
+    position: absolute;
+    overflow: hidden;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    z-index: 1;
+    width: 100%;
+    height: 100vh;
+    background-image: url("../assets/BMO_Trivia-bkgrnd.jpg");
+    background-size: cover;
+    display: flex;
+    justify-content: center;
+    align-items: start;
+    flex-direction: column;
+    padding: 4em;
+}
+
+#page2.hide {
+    display: none;
+}
+
+#page2 #tip {
+    margin-bottom: 1em;
+}
+
+#page3 {
+    position: absolute;
+    overflow: hidden;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    z-index: 2;
+    width: 100%;
+    height: 100vh;
+    background-image: url("../assets/BMO_Trivia-bkgrnd.jpg");
+    background-size: cover;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 4em;
+}
+
+#page3 div {
+    font-weight: 400;
+    font-size: 1.5em;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#page3 div b {
+    padding: 0 0.25em;
+}
+
+#page3.hide {
+    display: none;
+}
+
+.visible {
+  visibility: visible;
+  opacity: 1;
+  transition: opacity 1s linear;
+}
+
+.hidden {
+  visibility: hidden;
+  opacity: 0;
+  transition: visibility 0s 1s, opacity 1s linear;
+}
+
+.progress-ring {
+    position: absolute;
+    top: -20px;
+}
+
+.progress-ring__circle {
+    transition: 1s stroke-dashoffset linear;
+    transform: rotate(-270deg);
+    transform-origin: 50% 50%;
+    stroke-dashoffset: 1357.1680263507906px;
+}

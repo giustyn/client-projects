@@ -18,7 +18,7 @@
   --clr-revealer-layer-1: var(--bmo-blue);
   --clr-revealer-layer-2: var(--bmo-light-grey);
   --clr-revealer-layer-3: var(--bmo-dark-blue);
-  --revealer-speed: 1500ms;
+  --revealer-speed: 1200ms;
   --revealer-opacity: 0.95;
 }
 @media screen and (min-width: 5760px) {
@@ -459,7 +459,6 @@ main.container {
 .forecast .day img.icon {
   width: auto;
   height: 10em;
-  filter: drop-shadow(var(--drop-shadow));
 }
 .forecast .day .high {
   font-size: 3em;
