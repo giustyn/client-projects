@@ -1,0 +1,290 @@
+*,
+::before,
+::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+:root {
+  --primary-clr: 255, 255, 255;
+  --secondary-clr: 0, 0, 0;
+  --white: 255, 255, 255;
+  --black: 0, 0, 0;
+  --font-family: "Oxygen", sans-serif;
+  --font-size: calc(0.75vw + 0.75vh);
+  --drop-shadow: 0.1em 0.1em 0.1em rgba(var(--secondary-clr), 0);
+  --clr-revealer-layer-1: var(--primary-clr);
+  --clr-revealer-layer-2: var(--primary-clr);
+  --clr-revealer-layer-3: var(--secondary-clr);
+  --revealer-speed: 1200ms;
+  --revealer-opacity: 0.95;
+}
+@media screen and (orientation: landscape) {
+  main.container {
+    grid-template-rows: 1.618fr 1fr;
+    grid-template-columns: 1fr;
+    grid-template-areas:
+      "weather"
+      "news";
+  }
+  section#news {
+    display: none;
+    border-top: 5px solid white;
+  }
+  section#news .heading,
+  .wrapper {
+    margin: 0;
+  }
+  section#news .heading {
+    font-size: 3.3em;
+    /* padding-bottom: 0.2em; */
+  }
+  section#news .headlines {
+    font-size: 1.5em;
+    font-weight: 400;
+  }
+  .conditions {
+    min-width: 30%;
+    font-size: 1.65em;
+    font-weight: 500;
+    line-height: 1.5;
+    margin-left: -0.5em;
+    text-transform: uppercase;
+  }
+  .sm-conditions {
+    display: none;
+  }
+  .temp {
+    font-size: 14em;
+  }
+  .current .icon {
+    --icon-size: 17em;
+  }
+}
+body {
+  position: absolute;
+  width: 100vw;
+  height: 100vh;
+  font-size: var(--font-size);
+  font-family: var(--font-family);
+  background: rgb(var(--primary-clr));
+  color: rgba(var(--white), 1);
+  overflow: hidden;
+  /* cursor: none; */
+  /* user-select: none; */
+}
+#intro {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 1000;
+}
+#intro video {
+  object-fit: cover;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+}
+section {
+  z-index: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  font-weight: 300;
+  padding: 0 3em;
+}
+section#weather {
+  grid-area: weather;
+  /* background-color: rgba(var(--secondary-clr), 0.1); */
+}
+section#news {
+  grid-area: news;
+  /* background-color: rgba(var(--primary-clr), 0.7); */
+}
+section#weather .location,
+section#news .category {
+  font-weight: 500;
+}
+section#weather .location::before {
+  font-weight: 100;
+  /* content: "Today in "; */
+}
+section#news .category::before {
+  font-weight: 100;
+  content: "Top ";
+}
+section#news .category::after {
+  content: "News Stories";
+}
+section#news .headlines {
+  line-height: 1.5;
+  margin-top: 0.35em;
+  margin-bottom: 0.35em;
+  margin-left: -0.5em;
+  padding-left: 0.85em;
+}
+section#news .wrapper {
+  justify-content: initial;
+}
+section#weather .current {
+  padding-left: 8em;
+}
+main .background {
+  position: absolute;
+  background-image: url(../img/bg-img.jpg);
+  background-size: cover;
+  width: 100%;
+  height: 100%;
+}
+main .background video {
+  object-fit: cover;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+}
+main .background .overlay {
+  /* display: none; */
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(var(--secondary-clr), 0.6);
+}
+main.container {
+  display: grid;
+  width: 100%;
+  height: 100%;
+  gap: 0px 0px;
+  grid-auto-flow: row;
+  opacity: 0;
+}
+.heading {
+  display: flex;
+  font-size: 2em;
+  line-height: 1;
+  padding-bottom: 1em;
+}
+.heading > div {
+  flex-grow: 1;
+}
+.heading > div:nth-child(2) {
+  text-align: right;
+}
+.heading .location,
+.heading .time {
+  font-size: 1.5em;
+  font-weight: 600;
+}
+.current {
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+}
+.current .icon {
+  display: flex;
+  align-items: center;
+  width: var(--icon-size);
+  height: var(--icon-size);
+}
+.current .icon img {
+  width: auto;
+  height: 100%;
+  filter: brightness(110%) contrast(110%);
+}
+.temp {
+  font-weight: 400;
+}
+.stanchion {
+  height: 80%;
+  /* margin: auto 2em; */
+  border-left: 5px solid white;
+}
+.conditions .high::after {
+  content: " /";
+  white-space: pre-wrap;
+}
+.forecast {
+  --gap: 0em;
+  display: grid;
+  grid-area: forecast;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
+  grid-template-rows: 1fr;
+  align-items: center;
+  justify-content: center;
+  gap: var(--gap);
+  margin-left: var(--gap);
+  margin-right: var(--gap);
+}
+.forecast .day {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 100%;
+  overflow: hidden;
+  text-shadow: var(--drop-shadow);
+  will-change: transform, opacity;
+}
+.forecast .day .dayofweek {
+  font-size: 2.25em;
+  font-weight: 600;
+  color: rgb(var(--clr-light));
+  text-transform: uppercase;
+}
+.forecast .day .icon-wrapper {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.forecast .day img.icon {
+  width: auto;
+  height: 10em;
+}
+.forecast .day .high {
+  font-size: 5em;
+  font-weight: 600;
+  color: rgb(var(--clr-light));
+  /* align-items: flex-start; */
+  /* justify-content: start; */
+  /* line-height: 1.5; */
+}
+.forecast .day .low {
+  font-size: 2.5em;
+  font-weight: 400;
+  color: rgb(var(--clr-light));
+  line-height: 0.5;
+  display: none;
+}
+
+/*  Revealer layer colors  */
+.revealer__layer.top {
+  will-change: transform, opacity;
+  background: rgba(var(--clr-revealer-layer-1), var(--revealer-opacity));
+}
+.revealer__layer.middle {
+  will-change: transform, opacity;
+  background: rgba(var(--clr-revealer-layer-2), var(--revealer-opacity));
+}
+.revealer__layer.bottom {
+  will-change: transform, opacity;
+  background: rgba(var(--clr-revealer-layer-3), var(--revealer-opacity));
+}
+#error {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 100;
+  display: flex;
+  justify-content: center;
+  font-size: 2em;
+  visibility: hidden;
+}

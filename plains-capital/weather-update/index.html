@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>PlainsCapital | Weather</title>
+    <link rel="stylesheet" href="./css/Oxygen.css" />
+    <!-- <link rel="stylesheet" href="./css/revealer.css" /> -->
+    <link rel="stylesheet" href="./css/styles.css" />
+    <!-- <script src="./js/ua-parser.min.js" defer></script> -->
+    <script src="./js/jquery.min.js" defer></script>
+    <script src="./js/anime.min.js" defer></script>
+    <script src="./js/utils_api.js" defer></script>
+    <script src="./js/moment.js" defer></script>
+    <script src="./js/app.js" defer></script>
+    <!-- <script src="./js/sdk.js" defer></script> -->
+  </head>
+  <body>
+    <div id="intro">
+      <video id="bumper" autoplay="" muted="" playsinline=""></video>
+    </div>
+    <main class="container">
+      <div class="background">
+        <!-- <video muted loop playsinline></video> -->
+        <!-- <div class="bmo-logo"></div> -->
+        <div class="overlay"></div>
+      </div>
+      <!-- Weather -->
+      <section id="weather">
+        <div class="heading">
+          <div>
+            <div class="salutation"></div>
+            <div class="location"></div>
+          </div>
+          <div>
+            <div class="date"></div>
+            <div class="time"></div>
+          </div>
+        </div>
+        <div class="current">
+          <div class="icon"><img alt="" /></div>
+          <div class="temp"></div>
+          <div class="stanchion"></div>
+          <div class="conditions">
+            <div class="description"></div>
+            <div>
+              <span class="high"></span>
+              <span class="low"></span>
+            </div>
+            <div class="feels"></div>
+            <div class="wind"></div>
+            <div class="humidity"></div>
+          </div>
+          <div class="sm-conditions">
+            <div>
+              <div>
+                <span class="high"></span>
+                <span class="low"></span>
+              </div>
+              <div class="feels"></div>
+            </div>
+            <div>
+              <div class="wind"></div>
+              <div class="humidity"></div>
+            </div>
+          </div>
+        </div>
+      </section>
+      <!-- Forecast -->
+      <section id="forecast">
+        <div class="forecast">
+          <div id="template" class="day">
+            <div class="icon-wrapper">
+              <img alt="" class="icon" />
+              <span class="high"></span>
+              <span class="low"></span>
+            </div>
+            <span class="dayofweek"></span>
+          </div>
+        </div>
+      </section>
+      <!-- News -->
+      <section id="news">
+        <div class="heading">
+          <span class="category"></span>
+        </div>
+        <div class="wrapper">
+          <ul class="headlines">
+            <li class="story1"></li>
+            <li class="story2"></li>
+            <li class="story3"></li>
+          </ul>
+        </div>
+      </section>
+    </main>
+    <!-- Error -->
+    <div id="error"></div>
+  </body>
+</html>
